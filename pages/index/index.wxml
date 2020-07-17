@@ -1,13 +1,26 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<van-button type="primary">主要按钮</van-button>
+<van-cell-group>
+  <van-cell title="单元格" value="内容" />
+  <van-cell title="单元格" value="内容" label="描述信息" border="{{ false }}" />
+</van-cell-group>
+<van-icon name="chat" info="9" size="40px"/>
+
+
+<view class="van-ellipsis">
+  这是一段宽度限制 250px 的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略
 </view>
+
+<!-- 最多显示两行 -->
+<view class="van-multi-ellipsis--l2">
+  这是一段最多显示两行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略
+</view>
+
+<!-- 最多显示三行 -->
+<view class="van-multi-ellipsis--l3">
+  这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略
+</view>
+
+
+<van-button class="my-button">
+  默认按钮
+</van-button>
