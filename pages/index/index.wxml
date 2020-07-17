@@ -1,26 +1,74 @@
-<van-button type="primary">主要按钮</van-button>
-<van-cell-group>
-  <van-cell title="单元格" value="内容" />
-  <van-cell title="单元格" value="内容" label="描述信息" border="{{ false }}" />
-</van-cell-group>
-<van-icon name="chat" info="9" size="40px"/>
-
-
-<view class="van-ellipsis">
-  这是一段宽度限制 250px 的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略
+<view class="bc">
+    <image class="image1" src="../../icons/banner2.jpg" mode="aspectFill">
+        <cover-view class="logo">
+            <cover-view class="flex-item demo-text-3">
+                <cover-image src="../../icons/logo.png" mode="aspectFit"></cover-image>
+            </cover-view>
+        </cover-view>
+    </image>
+    <view class="navigateto">
+    <van-grid clickable column-num="4">
+        <van-grid-item
+          icon="column"
+          link-type="navigateTo"
+          url="/pages/reinformation/reinformation"
+          text="Navigate 跳转"
+        />
+        <van-grid-item
+          icon="comment"
+          link-type="navigateTo"
+          url="/pages/reinformation/reinformation"
+          text="Navigate 跳转"
+        />
+        <van-grid-item
+          icon="map-marked"
+          link-type="navigateTo"
+          url="/pages/reinformation/reinformation"
+          text="Navigate 跳转"
+        />
+        <van-grid-item
+          icon="todo-list"
+          link-type="navigateTo"
+          url="/pages/reinformation/reinformation"
+          text="Navigate 跳转"
+        />
+      </van-grid>
+    </view>
+    <view class="cell">
+        <van-cell title="门票预约" size="large" icon="bars"/>
+        <van-cell title="预约参观日期选择" bind:click="onDisplay" is-link value="选择日期"/>
+            <van-calendar
+            show="{{ show }}"
+            min-date="{{ minDate }}"
+            max-date="{{ maxDate }}"
+            bind:close="onClose" 
+            bind:confirm="onConfirm"
+            />
+        <van-checkbox-group max="{{1}}" value="{{ result }}" bind:change="onChange">
+            <van-cell-group>
+              <van-cell
+                center
+                wx:for="{{ list }}"
+                wx:key="index"
+                title="上午票"
+                label="9:00-10:00" 
+                value-class="value-class"
+                clickable
+                data-index="{{ index }}"
+                bind:click="toggle"
+                value="请选择时间段"
+            >
+                <van-checkbox
+                    slot="right-icon"
+                    catch:tap="noop"
+                    class="checkboxes-{{ index }}"
+                    name="{{ item }}"
+                />
+              </van-cell>
+            </van-cell-group>
+          </van-checkbox-group>
+    <view class="btn">
+        <button class="btn_btn" bindtap = 'gotoreinformation'>立即预约</button>
+      </view>
 </view>
-
-<!-- 最多显示两行 -->
-<view class="van-multi-ellipsis--l2">
-  这是一段最多显示两行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略
 </view>
-
-<!-- 最多显示三行 -->
-<view class="van-multi-ellipsis--l3">
-  这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略这是一段最多显示三行的文字，后面的内容会省略
-</view>
-
-
-<van-button class="my-button">
-  默认按钮
-</van-button>
