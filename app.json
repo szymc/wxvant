@@ -43,6 +43,6 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-calendar": "@vant/weapp/calendar/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
-  "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   }
 }
