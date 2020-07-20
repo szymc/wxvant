@@ -1,1 +1,23 @@
-/* pages/reinformation/reinformation.wxss */
+page {
+  background: #f5f5f5;
+}
+  .cell{
+    /* margin-top: 26rpx; */
+  }
+  .value-class {
+    flex: none !important;
+  }
+  van-checkbox{
+    margin-left: 10rpx;
+  }
+  
+  .btn{
+    text-align: center;
+    padding: 40rpx;
+  }
+  van-radio{
+    margin-left: 10rpx;
+  }
+  van-button{
+      margin: 20rpx;
+  }

@@ -73,9 +73,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "修改密码",
-					"pathName": "pages/changepassword/changepassword",
+					"id": 1,
+					"name": "改签",
+					"pathName": "pages/reinformation/reinformation",
 					"query": "",
 					"scene": null
 				},

@@ -29,9 +29,6 @@
             />
         <van-cell title="地区" is-link value="内容" size="large" bind:click="showregion"/>
         <van-popup show="{{ regionshow }}" position="bottom" custom-style="height: 40%;" >
-            <!-- <van-picker  show-toolbar title="选择地区" bind:confirm="onConfirm"  bind:cancel="onCancel">
-                
-            </van-picker> -->
             <van-area  show-toolbar title="选择地区"  bind:confirm="onConfirm"  bind:cancel="onCancel" area-list="{{ areaList }}" />
         </van-popup>
     </van-cell-group>

@@ -97,7 +97,11 @@ Page({
 	},
 	onSelectsexshow(event) {
 		console.log(event.detail.name);
-		this.sex=event.detail.name;
+		this.setData({
+			sex:event.detail.name
+		})
+		//用onLoad周期方法重新加载，实现当前页面的刷新
+		this.onLoad()
 	},
 	showjob(){
 		this.setData({ jobshow: true });
@@ -107,7 +111,9 @@ Page({
 	},
 	onSelectjobshow(event) {
 		console.log(event.detail.name);
-		this.job=event.detail.name;
+		this.setData({
+			job:event.detail.name
+		})
 	},
 	showregion() {
 		this.setData({ regionshow: true });
