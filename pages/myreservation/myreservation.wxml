@@ -1,0 +1,77 @@
+<view class="bc">
+    <view class="mianban">
+    <van-panel title="博物馆入场卷" status="NO.123456789" use-footer-slot >
+        <view>
+            <van-cell-group>
+                <van-field
+                  value="张三啊"
+                  label="姓名"
+                  readonly
+                  border="{{ false }}"
+                />
+                <van-field
+                  value="360103199910310049"
+                  label="证件号"
+                  readonly
+                  border="{{ false }}"
+                />
+                <van-field
+                  value="18702695874"
+                  label="手机号"
+                  readonly
+                  border="{{ false }}"
+                />
+                <van-field
+                  value="2020-07-20 14：00-17：30"
+                  label="参观日期"
+                  readonly
+                  border="{{ false }}"
+                />
+              </van-cell-group>
+        </view>
+        <view slot="footer" class="btn">
+          <van-button size="small" color="#1296DB">取票</van-button>
+          <van-button size="small">改签</van-button>
+          <van-button size="small" type="danger">取消</van-button>
+        </view>
+    </van-panel>
+    </view>
+    <view class="mianban">
+    <van-panel title="博物馆入场卷" status="NO.123456789" use-footer-slot class="mianban">
+        <view>
+            <van-cell-group>
+                <van-field
+                  value="张三啊"
+                  label="姓名"
+                  readonly
+                  border="{{ false }}"
+                />
+                <van-field
+                  value="360103199910310049"
+                  label="证件号"
+                  readonly
+                  border="{{ false }}"
+                />
+                <van-field
+                  value="18702695874"
+                  label="手机号"
+                  readonly
+                  border="{{ false }}"
+                />
+                <van-field
+                  value="2020-07-20 14：00-17：30"
+                  label="参观日期"
+                  readonly
+                  border="{{ false }}"
+                />
+              </van-cell-group>
+        </view>
+        <view slot="footer" class="btn">
+          <van-button size="small" color="#1296DB">取票</van-button>
+          <van-button size="small">改签</van-button>
+          <van-button size="small" type="danger">取消</van-button>
+        </view>
+    </van-panel>
+    </view>
+    
+</view>

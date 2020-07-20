@@ -1,0 +1,15 @@
+.bc{
+    padding-top: 20rpx;
+    width: 100%;
+    height: 1200rpx;
+    background-color: #E6E6E6;
+  }
+  .btn{
+    text-align: right;
+  }
+  van-button{
+      margin-left: 12rpx;
+  }
+  .mianban{
+      margin-bottom: 20rpx;
+  }

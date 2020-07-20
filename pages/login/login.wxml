@@ -1,2 +1,38 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="bc">
+    <view class="picture">
+        <van-image
+        round
+        fit="cover"
+        width="8rem"
+        height="8rem"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        />
+        <view class="text">
+        张三啊
+        </view>
+    </view>
+    <view class="main">
+        <van-cell 
+        title="用户基本信息" 
+        is-link 
+        link-type="navigateTo"
+        url="/pages/userinformation/userinformation"/>
+        <van-cell 
+        title="我的预约" 
+        is-link 
+        value="已预约3张票" 
+        link-type="navigateTo"
+        url="/pages/myreservation/myreservation"/>
+        <van-cell 
+        title="订票信息" 
+        is-link 
+        value="3条" 
+        link-type="navigateTo"
+        url="/pages/bookinginformation/bookinginformation"/>
+        <van-cell 
+        title="修改密码" 
+        is-link  
+        link-type="navigateTo"
+        url="/pages/changepassword/changepassword"/>
+    </view>
+</view>
