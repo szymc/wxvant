@@ -1,1 +1,16 @@
-/* pages/login/login.wxss */
+.bc{
+  /* width: 100%; */
+  height: 1110rpx;
+  background-color: #E6E6E6;
+}
+.picture{
+  padding-top: 30rpx;
+  text-align: center;
+}
+.text{
+  font-size: 20px;
+  margin: 20rpx 0;
+}
+.van-cell{
+  margin: 50rpx 0;
+}

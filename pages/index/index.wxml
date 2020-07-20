@@ -56,7 +56,7 @@
           </van-radio-group>
     </view>
     <view class="btn">
-      <van-button color="#1296DB" size="large" bindtap = 'gotoreinformation'>立即预约</van-button>
+      <van-button color="#1296DB" size="large" bind:click = 'gotoreinformation'>立即预约</van-button>
     </view>
     <van-toast id="van-toast" />
 </view>

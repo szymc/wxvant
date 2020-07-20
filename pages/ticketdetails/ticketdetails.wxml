@@ -1,0 +1,77 @@
+<view class="main">
+    <view class="notice_box_cls">
+        <view class="notice_body0">
+            <view class="img">
+                <van-image
+                    width="100%"
+                    height="100%"
+                    fit="cover"
+                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+                    />
+            </view>
+            <view class="code">NO.48154207784123546</view>
+            <view class="img2">
+                <van-image
+                    width="100%"
+                    height="100%"
+                    fit="cover"
+                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+                    />
+            </view>
+            <view class="notice_body">
+            </view>
+            <view class="notice_body1">
+            </view>
+            <view class="notice_body2">
+            </view>
+            <view class="notice_body3">
+            </view>
+        </view>
+    </view>
+    <view class="notice">
+        <view class="notice_bodybottom">
+            <view class="notice_title">{{tessera.companyName}}参观入场卷</view>
+            <view class="center">
+                <van-cell-group >
+                    <van-field
+                    value="48154207784123546"
+                    label="门票编号"
+                    readonly
+                    border="{{ false }}"
+                    />
+                    <van-field
+                    value="2020-07-20 14：00-17：30"
+                    label="预约日期"
+                    readonly
+                    border="{{ false }}"
+                    />
+                    <van-field
+                    value="下午"
+                    label="预约场次"
+                    readonly
+                    border="{{ false }}"
+                    />
+                    <van-field
+                    value="江西省南昌市圣东智能有限公司"
+                    label="地址"
+                    readonly
+                    border="{{ false }}"
+                    />
+                    <van-field
+                    value="400-88104832"
+                    label="联系电话"
+                    readonly
+                    border="{{ false }}"
+                    />
+                </van-cell-group>
+            </view>
+            <view class="logo">
+                <cover-image class="pic" src="../../icons/logo.png" mode="aspectFit"></cover-image>
+            </view>
+            <view class="notice_body">
+            </view>
+            <view class="notice_body1">
+            </view>
+        </view>
+    </view>  
+</view>
