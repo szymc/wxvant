@@ -1,14 +1,46 @@
 // pages/subscribe/subscribe.js
 Page({
-  
+
   /**
    * 页面的初始数据
    */
   data: {
     subscribeDate: '2020.7.20',
-    timeSlice: '00:00-00:00'
+    timeSlice: '00:00-00:00',
+    total: 0,
+    show: false,
+    choose: 0,
+    max: 0,
+    list: [{name:'a',tel: 123,no: 111},{name:'b',tel: 456,no: 222},{name:'c',tel: 789,no: 333}],
+    result: []
   },
 
+  choosePerson() {
+    this.setData({ show: true });
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
+  cancel() {
+    this.setData({ show: false });
+  },
+  add() {
+
+  },
+  onChange(event) {
+    console.log(event)
+    // this.setData({
+    //   result: event.detail
+    // });
+  },
+  toggle(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    checkbox.toggle();
+  },
+  noop() {
+    
+  },
   cmdSubmit() {
     console.log('11')
   },
@@ -17,7 +49,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       subscribeDate: options.date,
       radio: options.radio,
