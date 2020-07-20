@@ -10,6 +10,14 @@ Page({
   gotocheck(){
     wx.navigateTo({ url: '/pages/ticketdetails/ticketdetails',})
   },
+  changetick(){
+    wx.navigateTo({
+      url: '/pages/reinformation/reinformation'
+    })
+  },
+  go_update(){
+    console.log('我更新啦')
+  },
   /**
    * 生命周期函数--监听页面加载
    */

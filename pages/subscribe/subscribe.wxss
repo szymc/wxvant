@@ -8,7 +8,9 @@ page {
 }
 
 .subscribeData,
-.choosePerson {
+.choosePerson,
+.popupBox,
+.popupBox_2 {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -60,6 +62,7 @@ page {
 .submit_1 .van-col--12{
     height: 50px;
     background-color: rgb(255, 255, 255);
+    padding: 10px 0 0 15px;
 }
 .submit_2 .van-col--12{
     height: 50px;
@@ -70,3 +73,46 @@ page {
     line-height: 50px;
     color: white;
 }
+
+.subscribe .van-popup {
+    background: #f5f5f5;
+}
+
+.popupBox {
+    
+}
+.popupBox_1 {
+    margin: 10px 15px;
+    width: 100%;
+    height: 36px;
+}
+.popupBox_1_2 {
+    float: right;
+}
+.popupBox_2_1 {
+    margin: 0 15px;
+    width: 100%;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    color:rgba(25,137,250);
+    text-align: center;
+    line-height: 36px;
+    font-size: 0.8rem;
+}
+.popupBox_3 {
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    /* font-size: 0.8rem; */
+    margin: 5px 0 5px 0;
+}
+.popupBox_3 .tit {
+    color:rgba(25,137,250);
+}
+.popupBox_4 {
+
+}
+.value-class {
+    flex: none !important;
+  }
