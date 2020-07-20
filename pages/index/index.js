@@ -1,15 +1,21 @@
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    subscribeDate: '选择日期',
     show: false,
-    minDate: new Date(2020, 6, 1).getTime(),
-    maxDate: new Date(2010, 6, 31).getTime(),
-    list: ['a', 'b'],
-    result: []
+    isCalendar: false,
+    minDate: new Date(2020, 7, 1).getTime(),
+    maxDate: new Date(2020, 7, 30).getTime(),
+    radio: '0',
+    timeSlice1: '9:00-10:00',
+    timeSlice2: '13:00-17:00',
   },
+  // 日历
   onDisplay() {
     this.setData({ show: true });
   },
@@ -18,26 +24,45 @@ Page({
   },
   formatDate(date) {
     date = new Date(date);
-    return `${date.getMonth() + 1}/${date.getDate()}`;
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   },
   onConfirm(event) {
     this.setData({
       show: false,
-      date: this.formatDate(event.detail),
+      subscribeDate: this.formatDate(event.detail),
+      isCalendar: true
     });
   },
+  // 时间段
   onChange(event) {
     this.setData({
-      result: event.detail
+      radio: event.detail,
     });
   },
-  toggle(event) {
-    const { index } = event.currentTarget.dataset;
-    const checkbox = this.selectComponent(`.checkboxes-${index}`);
-    checkbox.toggle();
+  onClick(event) {
+    const { name } = event.currentTarget.dataset;
+    this.setData({
+      radio: name,
+    });
   },
+  // 预约
   gotoreinformation(){
-    wx.navigateTo({ url: '/pages/reinformation/reinformation',})
+    // console.log(this.data)
+    if (!this.data.isCalendar) {
+      Toast.fail('请选择一个日期');
+      return
+    }
+    if (this.data.radio == 0) {
+      Toast.fail('请选择一个时间段');
+      return
+    }
+    let timeSlice;
+    if (this.data.radio == 1) {
+      timeSlice = this.data.timeSlice1
+    } else if (this.data.radio == 2) {
+      timeSlice = this.data.timeSlice2
+    }
+    wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}`})
   },
   noop() {},
   /**

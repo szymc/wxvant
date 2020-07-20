@@ -1,0 +1,26 @@
+<view class="subscribe">
+    <view class="subscribeData">
+        <view class="subscribeData_1">
+            <view class="subscribeData_1_1 subscribeData_1_2">
+                <view style="font-weight:bolder">预约日期</view>
+                <view>{{subscribeDate}}</view>
+            </view>
+            <view class="subscribeData_1_1">
+                <view style="font-weight:bolder">预约时间</view>
+                <view>{{timeSlice}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="choosePerson">
+        <view class="choosePerson_1">
+            <van-button type="info">选择参观人员</van-button>
+            <view class="choosePerson_1_2">请确保姓名、证件号填写正确</view>
+        </view>
+    </view>
+    <view class="submit">
+        <van-row>
+            <van-col span="12" class="submit_1">span: 8</van-col>
+            <van-col span="12" class="submit_2" bindtap="cmdSubmit">立即预约</van-col>
+          </van-row>
+    </view>
+</view>

@@ -1,15 +1,18 @@
 {
-  "pages":[
+  "pages": [
+    
     "pages/index/index",
     "pages/login/login",
-    "pages/reinformation/reinformation"
+    "pages/reinformation/reinformation",
+    "pages/subscribe/subscribe"
+    
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#1296DB",
     "navigationBarTitleText": "票务预约系统",
-    "navigationBarTextStyle":"white",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#E6E6E6",
@@ -30,10 +33,12 @@
         "iconPath": "icons/user.png",
         "selectedIconPath": "icons/useractive.png"
       }
-    ]  
-  }, 
+    ]
+  },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
     "van-button": "@vant/weapp/button/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
@@ -42,6 +47,10 @@
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-calendar": "@vant/weapp/calendar/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   }
