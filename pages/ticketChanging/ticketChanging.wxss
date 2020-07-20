@@ -1,0 +1,12 @@
+.btn{
+  margin:0 30rpx;
+  margin-top: 30rpx;
+  /* display: flex; */
+  /* justify-content: space-around; */
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
+}
+.van-button{
+  width: 300rpx;
+}

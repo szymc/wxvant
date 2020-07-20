@@ -1,15 +1,19 @@
 {
   "pages": [
-    
-    "pages/index/index",
+    "pages/upload/upload",   
+    "pages/test/test",
     "pages/login/login",
+   
+    "pages/index/index",
+
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
     "pages/userinformation/userinformation",
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",
     "pages/changepassword/changepassword",
-    "pages/ticketdetails/ticketdetails"
+    "pages/ticketdetails/ticketdetails",
+    "pages/ticketChanging/ticketChanging"
     
   ],
   "window": {
@@ -64,6 +68,7 @@
     "van-toast": "@vant/weapp/toast/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-area": "@vant/weapp/area/index",
-    "van-panel": "@vant/weapp/panel/index"
+    "van-panel": "@vant/weapp/panel/index",
+    "van-uploader": "@vant/weapp/uploader/index"
   }
 }
