@@ -12,25 +12,25 @@
           icon="column"
           link-type="navigateTo"
           url="/pages/reinformation/reinformation"
-          text="Navigate 跳转"
+          text="观众须知"
         />
         <van-grid-item
           icon="comment"
           link-type="navigateTo"
           url="/pages/reinformation/reinformation"
-          text="Navigate 跳转"
+          text="馆内介绍"
         />
         <van-grid-item
           icon="map-marked"
           link-type="navigateTo"
           url="/pages/reinformation/reinformation"
-          text="Navigate 跳转"
+          text="地理位置"
         />
         <van-grid-item
           icon="todo-list"
           link-type="navigateTo"
           url="/pages/reinformation/reinformation"
-          text="Navigate 跳转"
+          text="我的预约"
         />
       </van-grid>
     </view>
@@ -67,8 +67,8 @@
               </van-cell>
             </van-cell-group>
           </van-checkbox-group>
+    </view>
     <view class="btn">
-        <button class="btn_btn" bindtap = 'gotoreinformation'>立即预约</button>
-      </view>
-</view>
+      <van-button color="#1296DB" size="large" bindtap = 'gotoreinformation'>立即预约</van-button>
+    </view>
 </view>

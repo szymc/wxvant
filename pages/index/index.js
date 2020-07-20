@@ -36,7 +36,9 @@ Page({
     const checkbox = this.selectComponent(`.checkboxes-${index}`);
     checkbox.toggle();
   },
-
+  gotoreinformation(){
+    wx.navigateTo({ url: '/pages/reinformation/reinformation',})
+  },
   noop() {},
   /**
    * 生命周期函数--监听页面加载
