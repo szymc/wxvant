@@ -88,13 +88,6 @@
 				},
 				{
 					"id": -1,
-					"name": "我的预约",
-					"pathName": "pages/myreservation/myreservation",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "订票信息",
 					"pathName": "pages/bookinginformation/bookinginformation",
 					"query": "",

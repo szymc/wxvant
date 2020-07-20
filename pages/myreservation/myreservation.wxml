@@ -30,7 +30,7 @@
               </van-cell-group>
         </view>
         <view slot="footer" class="btn">
-          <van-button size="small" color="#1296DB">取票</van-button>
+          <van-button size="small" color="#1296DB"  bind:click='gotocheck'>取票</van-button>
           <van-button size="small">改签</van-button>
           <van-button size="small" type="danger">取消</van-button>
         </view>
@@ -67,7 +67,7 @@
               </van-cell-group>
         </view>
         <view slot="footer" class="btn">
-          <van-button size="small" color="#1296DB">取票</van-button>
+          <van-button size="small" color="#1296DB" bind:click='gotocheck'>取票</van-button>
           <van-button size="small">改签</van-button>
           <van-button size="small" type="danger">取消</van-button>
         </view>
