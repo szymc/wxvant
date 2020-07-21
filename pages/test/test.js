@@ -21,6 +21,7 @@ formSubmit: function (e) {
         }).catch(e => {
           console.log(e)
         })
+        
     //  删除的方法
         // let   params=
         //       {id:"1"

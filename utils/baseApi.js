@@ -20,7 +20,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         success: (e) => {
                             if (e.confirm) {
                                 wx.navigateTo({
-                                    url: '/pages/upload/upload'
+                                    url: '/pages/index/index'
                                 })
                             }
                         },
