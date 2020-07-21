@@ -21,11 +21,11 @@
     <view class="confirmPerson">
         <block wx:for="{{list1}}" wx:key="item.id" class="confirmPerson_1">
             <van-cell>
-                <view slot="title">
-                    <view>
-                        <span>{{item.name}}</span><span>手机号{{item.tel}}</span>
+                <view slot="title" class="certer">
+                    <view class="linetext2">
+                        <view>{{item.name}}</view><view>手机号: {{item.tel}}</view>
                     </view>
-                    <view>身份证{{item.no}}</view>
+                    <view>身份证: {{item.no}}</view>
                 </view>
             </van-cell>
         </block>
@@ -57,11 +57,12 @@
             <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ max }}">
                 <van-cell-group>
                     <van-cell wx:for="{{ list2 }}" wx:key="index" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
+                        
                         <view slot="title">
-                            <view>
-                                <span>{{item.name}}</span><span>手机号{{item.tel}}</span>
+                            <view class="linetext">
+                                <view>{{item.name}}</view><view>手机号: {{item.tel}}</view>
                             </view>
-                            <view>身份证{{item.no}}</view>
+                            <view>身份证: {{item.no}}</view>
                         </view>
                         <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
                     </van-cell>
