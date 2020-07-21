@@ -47,7 +47,7 @@ Page({
     });
   },
   add() {
-
+    wx.navigateTo({url:'/pages/subscribeAdd/subscribeAdd'})
   },
   onChange(event) {
     // console.log(event.detail)

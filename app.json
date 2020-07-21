@@ -6,6 +6,7 @@
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
+    "pages/subscribeAdd/subscribeAdd",
     "pages/userinformation/userinformation",
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",

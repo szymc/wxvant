@@ -1,0 +1,14 @@
+<van-cell-group class="subAdd">
+    <van-field value="{{ name }}" label="用户姓名" placeholder="请输入用户姓名" required />
+    <van-field value="{{ idNo }}" label="证件号码" placeholder="请输入证件号码" required />
+    <van-cell title="性别" is-link value="{{sex}}" bind:click="showsexs" value-class="value-class"/>
+    <van-action-sheet show="{{ showsex }}" actions="{{ actionssex }}" bind:close="onClose" bind:select="onSelect" />
+    <van-field value="{{ phone }}" label="手机号码" placeholder="请输入手机号码" required />
+    <view style="margin-top: 20px;">
+    <van-cell title="职业" is-link value="{{job}}" bind:click="showjob" value-class="value-class"/>
+    <van-action-sheet show="{{ jobshow }}" actions="{{ jobactions }}" bind:close="onClosejobshow" bind:select="onSelectjobshow" />
+</view>
+</van-cell-group>
+<view class="subBtn">
+    <van-button type="info" bind:click="cmdSubmit">确认</van-button>
+</view>
