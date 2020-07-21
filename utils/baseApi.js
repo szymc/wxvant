@@ -44,6 +44,7 @@ const getUrl = (url) => {
 }
  
 // get方法
+
 const _get = (url, param = {}) => {
 
     return http({
@@ -63,7 +64,6 @@ const _post = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
-
 //  delete方法
 const _delete = (url, param = {}) => {
     return http({
