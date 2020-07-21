@@ -1,11 +1,13 @@
 {
-  "pages": [   "pages/upload/upload", 
-    "pages/test/test",
+  "pages": [
+    
     "pages/index/index",
- 
+    "pages/upload/upload",
+    "pages/test/test",
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
+    "pages/subscribeAdd/subscribeAdd",
     "pages/userinformation/userinformation",
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",
