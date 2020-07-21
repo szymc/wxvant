@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 var api = require('../../utils/baseApi.js');
 Page({
@@ -41,3 +42,5 @@ formSubmit: function (e) {
         // })
   }
 })
+=======
+>>>>>>> test
