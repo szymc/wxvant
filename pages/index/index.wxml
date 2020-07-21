@@ -11,25 +11,25 @@
         <van-grid-item
           icon="column"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/audienceguidelines/audienceguidelines"
           text="观众须知"
         />
         <van-grid-item
           icon="comment"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/museumintroduced/museumintroduced"
           text="馆内介绍"
         />
         <van-grid-item
           icon="map-marked"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/location/location"
           text="地理位置"
         />
         <van-grid-item
           icon="todo-list"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/myreservation/myreservation"
           text="我的预约"
         />
       </van-grid>

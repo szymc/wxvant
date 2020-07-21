@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/login/login",
     "pages/reinformation/reinformation",
@@ -9,7 +8,10 @@
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",
     "pages/changepassword/changepassword",
-    "pages/ticketdetails/ticketdetails"
+    "pages/ticketdetails/ticketdetails",
+    "pages/audienceguidelines/audienceguidelines",
+    "pages/museumintroduced/museumintroduced",
+    "pages/location/location"
     
   ],
   "window": {
