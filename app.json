@@ -1,9 +1,8 @@
 {
-  "pages": [
-    
+  "pages": [   
     "pages/index/index",
-    "pages/upload/upload",
     "pages/test/test",
+    "pages/upload/upload", 
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
@@ -17,7 +16,6 @@
     "pages/audienceguidelines/audienceguidelines",
     "pages/museumintroduced/museumintroduced",
     "pages/location/location"
-    
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -74,5 +72,10 @@
     "van-area": "@vant/weapp/area/index",
     "van-panel": "@vant/weapp/panel/index",
     "van-uploader": "@vant/weapp/uploader/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
   }
 }

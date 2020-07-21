@@ -54,9 +54,7 @@ page {
     margin-top: 10px;
 }
 .confirmPerson {
-    /* width: 100%; */
-    /* display: flex; */
-    /* flex-direction: column */
+    margin: 15px;
 }
 .confirmPerson_1 {
     /* margin: 10px 15px; */
@@ -121,7 +119,20 @@ page {
     color:rgba(25,137,250);
 }
 .popupBox_4 {
-
+    margin: 10px 15px;
+}
+.linetext{
+    display: flex;
+    justify-content: space-between;
+    width: 68%;
+}
+.certer{
+    padding-left: 18%;
+}
+.linetext2{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
 .value-class {
     flex: none !important;

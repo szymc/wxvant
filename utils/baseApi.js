@@ -20,7 +20,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         success: (e) => {
                             if (e.confirm) {
                                 wx.navigateTo({
-                                    url: '/pages/upload/upload'
+                                    url: '/pages/index/index'
                                 })
                             }
                         },
@@ -44,6 +44,7 @@ const getUrl = (url) => {
 }
  
 // get方法
+
 const _get = (url, param = {}) => {
 
     return http({
@@ -63,7 +64,6 @@ const _post = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
-
 //  delete方法
 const _delete = (url, param = {}) => {
     return http({
@@ -73,7 +73,6 @@ const _delete = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
-
 // 上传方法
 const _upload = (url, file) => {
     console.log(file)
@@ -90,7 +89,6 @@ const _upload = (url, file) => {
                 success: function (res) {
                  console.log(res)
                     resolve(res)
-                   
                 }
               })
         })
