@@ -1,4 +1,5 @@
 // pages/subscribeAdd/subscribeAdd.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -39,7 +40,25 @@ Page({
 		  {
 			name: '其他',
 		  }
-		],
+    ],
+    // 表单验证
+    nameMsg: ''
+  },
+  // 姓名
+  onChangeName(event) {
+    this.setData({name: event.detail})
+  },
+  blurName(event) {
+    console.log(event)
+    if (event.detail.value.length == 0) {
+      this.setData({
+        nameMsg: '用户姓名不能为空'
+      })
+    } else {
+      this.setData({
+        nameMsg: ''
+      })
+    }
   },
   showsexs() {
     this.setData({ showsex: true });
@@ -64,7 +83,13 @@ Page({
 		})
   },
   cmdSubmit() {
-
+    // console.log(this.data.name)
+    // if (this.data.name.length == 0) {
+    //   Toast.fail('用户姓名不能为空');
+    //   return
+    // }
+    console.log('su')
+    // wx.navigateBack()
   },
 
   /**

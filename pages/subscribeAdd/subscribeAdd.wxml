@@ -1,6 +1,6 @@
 <van-cell-group class="subAdd">
-    <van-field value="{{ name }}" label="用户姓名" placeholder="请输入用户姓名" required />
-    <van-field value="{{ idNo }}" label="证件号码" placeholder="请输入证件号码" required />
+    <van-field value="{{ name }}" label="用户姓名" placeholder="请输入用户姓名" required bind:change="onChangeName"bind:blur="blurName"  error-message="{{nameMsg}}"/>
+    <van-field value="{{ idNo }}" label="证件号码" placeholder="请输入证件号码" required error-message="55"/>
     <van-cell title="性别" is-link value="{{sex}}" bind:click="showsexs" value-class="value-class"/>
     <van-action-sheet show="{{ showsex }}" actions="{{ actionssex }}" bind:close="onClose" bind:select="onSelect" />
     <van-field value="{{ phone }}" label="手机号码" placeholder="请输入手机号码" required />
@@ -12,3 +12,4 @@
 <view class="subBtn">
     <van-button type="info" bind:click="cmdSubmit">确认</van-button>
 </view>
+<!-- <van-toast id="van-toast" /> -->
