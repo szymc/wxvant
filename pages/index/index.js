@@ -11,6 +11,10 @@ Page({
     isCalendar: false,
     minDate: new Date(2020, 7, 1).getTime(),
     maxDate: new Date(2020, 7, 30).getTime(),
+    time1: '请选择时间段',
+    time2: '请选择时间段',
+    remain1: 0,
+    remain2: 500,
     radio: '0',
     timeSlice1: '9:00-10:00',
     timeSlice2: '13:00-17:00',
@@ -30,7 +34,9 @@ Page({
     this.setData({
       show: false,
       subscribeDate: this.formatDate(event.detail),
-      isCalendar: true
+      isCalendar: true,
+      time1: `剩余票数${this.data.remain1}张`,
+      time2: `剩余票数${this.data.remain2}张`,
     });
   },
   // 时间段
@@ -58,8 +64,16 @@ Page({
     }
     let timeSlice;
     if (this.data.radio == 1) {
+      if (this.data.remain1 == 0) {
+        Toast.fail('该时间段暂无票，请重新选择');
+        return
+      }
       timeSlice = this.data.timeSlice1
     } else if (this.data.radio == 2) {
+      if (this.data.remain2 == 0) {
+        Toast.fail('该时间段暂无票，请重新选择');
+        return
+      }
       timeSlice = this.data.timeSlice2
     }
     wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}`})
