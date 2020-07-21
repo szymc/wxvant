@@ -12,7 +12,8 @@ Page({
     show: false,
     choose: 0,
     max: 3,
-    list: [{id: 1,name: 'aa',tel: '11'},{id: 2,name: 'bb',tel: '22'},{id: 3,name: 'cc',tel: '33'}],
+    list1: [],
+    list2: [{ id: 6, name: 'aa', tel: '11', no: '100' }, { id: 1, name: 'bb', tel: '22', no: '200' }, { id: 4, name: 'cc', tel: '33', no: '300' }, { id: 2, name: 'dd', tel: '44', no: '400' }],
     result: []
   },
 
@@ -20,7 +21,9 @@ Page({
     this.setData({ show: true });
   },
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
   cancel() {
     this.setData({ show: false });
@@ -30,13 +33,24 @@ Page({
       Toast.fail('至少选择一个参观人员');
       return
     }
-    this.setData({ show: false });
+    let listarr = []
+    if (this.data.list2.length > 0) {
+      this.data.list2.forEach( item => {
+        if (this.data.result.includes(String(item.id))) {
+          listarr.push(item)
+        }
+      })
+    }
+    this.setData({
+      show: false,
+      list1: listarr
+    });
   },
   add() {
 
   },
   onChange(event) {
-    // console.log(event)
+    // console.log(event.detail)
     this.setData({
       result: event.detail
     });
@@ -49,7 +63,7 @@ Page({
     checkbox.toggle();
   },
   noop() {
-    
+
   },
   cmdSubmit() {
     console.log('11')

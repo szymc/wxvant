@@ -53,6 +53,16 @@ page {
 .choosePerson_1_2 {
     margin-top: 10px;
 }
+.confirmPerson {
+    /* width: 100%; */
+    /* display: flex; */
+    /* flex-direction: column */
+}
+.confirmPerson_1 {
+    /* margin: 10px 15px; */
+    /* width: 100%; */
+    /* height: 300px; */
+}
 .submit {
     position: fixed;
     bottom: 0;

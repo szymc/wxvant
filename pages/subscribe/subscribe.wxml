@@ -13,21 +13,34 @@
     </view>
     <view class="choosePerson">
         <view class="choosePerson_1">
-            <van-button type="info" bind:click="choosePerson">选择参观人员</van-button>
+            <van-button wx:if="{{list1.length == 0 }}" type="info" bind:click="choosePerson">选择参观人员</van-button>
+            <van-button wx:else type="info" bind:click="choosePerson">修改/添加参观人员</van-button>
             <view class="choosePerson_1_2">请确保姓名、证件号填写正确</view>
         </view>
+    </view>
+    <view class="confirmPerson">
+        <block wx:for="{{list1}}" wx:key="item.id" class="confirmPerson_1">
+            <van-cell>
+                <view slot="title">
+                    <view>
+                        <span>{{item.name}}</span><span>手机号{{item.tel}}</span>
+                    </view>
+                    <view>身份证{{item.no}}</view>
+                </view>
+            </van-cell>
+        </block>
     </view>
     <view class="submit">
         <van-row>
             <van-col span="12" class="submit_1">
-                <view><span style="color: red;">{{total}}</span>张</view>
+                <view><span style="color: red;">{{list1.length}}</span>张</view>
                 <view style="font-size: 0.6rem;">总票数</view>
             </van-col>
             <van-col span="12" class="submit_2" bindtap="cmdSubmit">立即预约</van-col>
         </van-row>
     </view>
     <!-- 选择参观人员 -->
-    <van-popup show="{{ show }}" position="bottom" custom-style="height: 50%;" bind:close="onClose">
+    <van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
         <view class="popupBox">
             <view class="popupBox_1">
                 <van-button type="danger" size="small" bind:click="cancel">取消</van-button>
@@ -43,23 +56,17 @@
         <view class="popupBox_4">
             <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ max }}">
                 <van-cell-group>
-                  <van-cell
-                    wx:for="{{ list }}"
-                    wx:key="index"
-                    title="复选框"
-                    value-class="value-class"
-                    clickable
-                    data-index="{{ index }}"
-                    bind:click="toggle"
-                  >
-                    <van-checkbox
-                      catch:tap="noop"
-                      class="checkboxes-{{ index }}"
-                      name="{{ item.id }}"
-                    />
-                  </van-cell>
+                    <van-cell wx:for="{{ list2 }}" wx:key="index" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
+                        <view slot="title">
+                            <view>
+                                <span>{{item.name}}</span><span>手机号{{item.tel}}</span>
+                            </view>
+                            <view>身份证{{item.no}}</view>
+                        </view>
+                        <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
+                    </van-cell>
                 </van-cell-group>
-              </van-checkbox-group>
+            </van-checkbox-group>
         </view>
         <van-toast id="van-toast" />
     </van-popup>
