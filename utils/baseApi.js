@@ -73,7 +73,6 @@ const _delete = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
-
 // 上传方法
 const _upload = (url, file) => {
     console.log(file)
@@ -90,7 +89,6 @@ const _upload = (url, file) => {
                 success: function (res) {
                  console.log(res)
                     resolve(res)
-                   
                 }
               })
         })
