@@ -1,11 +1,9 @@
 {
-  "pages": [
-    "pages/upload/upload",   
+  "pages": [   "pages/upload/upload", 
     "pages/test/test",
-    "pages/login/login",
-   
     "pages/index/index",
-
+ 
+    "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
     "pages/userinformation/userinformation",
@@ -14,7 +12,6 @@
     "pages/changepassword/changepassword",
     "pages/ticketdetails/ticketdetails",
     "pages/ticketChanging/ticketChanging"
-    
   ],
   "window": {
     "backgroundTextStyle": "dark",

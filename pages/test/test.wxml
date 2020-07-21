@@ -1,5 +1,4 @@
 
-<text>pages/test/test.wxml</text>
 <view class='imagesize'>
 
   </view>
@@ -24,4 +23,6 @@
   </form>
   <view>
   <lable>{{register}}</lable>
+
+  
   </view>
