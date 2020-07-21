@@ -1,4 +1,5 @@
 // pages/subscribe/subscribe.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -10,8 +11,8 @@ Page({
     total: 0,
     show: false,
     choose: 0,
-    max: 0,
-    list: [{name:'a',tel: 123,no: 111},{name:'b',tel: 456,no: 222},{name:'c',tel: 789,no: 333}],
+    max: 3,
+    list: [{id: 1,name: 'aa',tel: '11'},{id: 2,name: 'bb',tel: '22'},{id: 3,name: 'cc',tel: '33'}],
     result: []
   },
 
@@ -24,16 +25,25 @@ Page({
   cancel() {
     this.setData({ show: false });
   },
+  submitChoose() {
+    if (this.data.result.length == 0) {
+      Toast.fail('至少选择一个参观人员');
+      return
+    }
+    this.setData({ show: false });
+  },
   add() {
 
   },
   onChange(event) {
-    console.log(event)
-    // this.setData({
-    //   result: event.detail
-    // });
+    // console.log(event)
+    this.setData({
+      result: event.detail
+    });
   },
+  // 点击单元格触发
   toggle(event) {
+    // console.log(event)
     const { index } = event.currentTarget.dataset;
     const checkbox = this.selectComponent(`.checkboxes-${index}`);
     checkbox.toggle();
