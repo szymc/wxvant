@@ -1,0 +1,21 @@
+page {
+    background: #f5f5f5;
+  }
+  .bc{
+    margin: 40rpx;
+}
+.text{
+    text-align: center;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 20rpx;
+}
+rich-text{
+    font-size: 14px;
+}
+.picture{
+    text-align: center;
+}
+.cell{
+    margin-bottom: 20rpx;
+}
