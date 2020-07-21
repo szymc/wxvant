@@ -11,7 +11,11 @@
     "pages/bookinginformation/bookinginformation",
     "pages/changepassword/changepassword",
     "pages/ticketdetails/ticketdetails",
-    "pages/ticketChanging/ticketChanging"
+    "pages/ticketChanging/ticketChanging",
+    "pages/audienceguidelines/audienceguidelines",
+    "pages/museumintroduced/museumintroduced",
+    "pages/location/location"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",

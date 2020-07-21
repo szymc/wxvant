@@ -11,25 +11,25 @@
         <van-grid-item
           icon="column"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/audienceguidelines/audienceguidelines"
           text="观众须知"
         />
         <van-grid-item
           icon="comment"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/museumintroduced/museumintroduced"
           text="馆内介绍"
         />
         <van-grid-item
           icon="map-marked"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/location/location"
           text="地理位置"
         />
         <van-grid-item
           icon="todo-list"
           link-type="navigateTo"
-          url="/pages/reinformation/reinformation"
+          url="/pages/myreservation/myreservation"
           text="我的预约"
         />
       </van-grid>
@@ -46,10 +46,10 @@
             />
           <van-radio-group value="{{ radio }}" bind:change="onChange">
             <van-cell-group>
-              <van-cell center title="上午票" clickable data-name="1" value="请选择时间段" label="{{timeSlice1}}" value-class="value-class" bind:click="onClick">
+              <van-cell center title="上午票" clickable data-name="1" value="{{time1}}" label="{{timeSlice1}}" value-class="value-class" bind:click="onClick">
                 <van-radio slot="right-icon" name="1" />
               </van-cell>
-              <van-cell center title="下午票" clickable data-name="2" value="请选择时间段" label="{{timeSlice2}}" value-class="value-class" bind:click="onClick">
+              <van-cell center title="下午票" clickable data-name="2" value="{{time2}}" label="{{timeSlice2}}" value-class="value-class" bind:click="onClick">
                 <van-radio slot="right-icon" name="2" />
               </van-cell>
             </van-cell-group>

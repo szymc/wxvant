@@ -31,17 +31,17 @@
         <view class="popupBox">
             <view class="popupBox_1">
                 <van-button type="danger" size="small" bind:click="cancel">取消</van-button>
-                <van-button type="info" size="small" class="popupBox_1_2">确定</van-button>
+                <van-button type="info" size="small" class="popupBox_1_2" bind:click="submitChoose">确定</van-button>
             </view>
         </view>
         <view class="popupBox_2" bindtap="add">
             <view class="popupBox_2_1">+添加参观人员</view>
         </view>
         <view class="popupBox_3">
-            已选择<span class="tit">{{choose}}</span>张票，同一账户最多同时预约<span class="tit">{{max}}</span>张票
+            已选择<span class="tit">{{result.length}}</span>张票，同一账户最多同时预约<span class="tit">{{max}}</span>张票
         </view>
         <view class="popupBox_4">
-            <van-checkbox-group value="{{ result }}" bind:change="onChange">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ max }}">
                 <van-cell-group>
                   <van-cell
                     wx:for="{{ list }}"
@@ -55,11 +55,12 @@
                     <van-checkbox
                       catch:tap="noop"
                       class="checkboxes-{{ index }}"
-                      name="{{ item }}"
+                      name="{{ item.id }}"
                     />
                   </van-cell>
                 </van-cell-group>
               </van-checkbox-group>
         </view>
+        <van-toast id="van-toast" />
     </van-popup>
 </view>
