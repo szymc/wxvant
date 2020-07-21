@@ -1,4 +1,4 @@
-const baseUrl = 'http://192.168.4.220:8082/api/'//	正式
+const baseUrl = 'http://192.168.4.220:8082/api/'//	192 
 const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
     const token = wx.getStorageSync('token');
     return new Promise((resolve, reject) => {
@@ -75,25 +75,24 @@ const _delete = (url, param = {}) => {
 }
 
 // 上传方法
-const _upload = (url, file={}) => {
+const _upload = (url, file) => {
     console.log(file)
         const token = wx.getStorageSync('token');
         return new Promise((resolve, reject) => {
-          wx.uploadFile({
-            url: getUrl(url), 
-            filePath: file, 
-            name: 'file',
-            header: {
-				'sys-token': token,
-                contentType:"application/x-www-form-urlencoded"
-            },
-            success: (res) => {
-              resolve(res)
-            },
-            fail: (err) => {
-              reject(err)
-            }
-          });
+            wx.uploadFile({
+                url: getUrl(url), // 上传的服务器接口地址
+                filePath: file.detail.file.path, 
+                name: 'file', //上传的所需字段，后端提供
+                header: {
+                  'sys-token': token,
+          
+                      },
+                success: function (res) {
+                 console.log(res)
+                    resolve(res)
+                   
+                }
+              })
         })
     }
 module.exports = {

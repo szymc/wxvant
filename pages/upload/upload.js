@@ -9,46 +9,13 @@ Page({
   },
   // },
   afterRead(uploadFile) {
-    const token = wx.getStorageSync('token');
-    return new Promise((resolve, reject) => {
+    api._upload('file/upload',uploadFile).then(res => {
+    console.log(res.data)
+       var  data= JSON.parse(res.data)
+       console.log(data.datas)
 
-      wx.chooseImage({
-        success: function (res) {
-          console.log('临时路径：' + res.tempFilePaths[0])
-              wx.uploadFile({
-                url: 'http://192.168.4.220:8082/api/guest/avatar',
-                filePath: uploadFile.detail.file.path, 
-                name: 'file',
-                header: {
-                  'sys-token': token,
-          
-                      },
-                success: function (result) {
-                  console.log("返回路径：" + result.data)
-                }
-
-              })
-        },
-      })
-  
-    //   wx.uploadFile({
-    //     url: 'http://192.168.4.220:8082/api/guest/avatar', // 上传的服务器接口地址
-    //     filePath: uploadFile.detail.file.path, 
-    //     name: 'file', //上传的所需字段，后端提供
-    //     header: {
-    //       'sys-token': token,
-  
-    //           },
-    //     success: (res) => {
-    //       // 上传完成操作
-    //     console.log(res)
-    //       resolve(res)
-    //     },
-    //     fail: (err) => {
-    //       //上传失败：修改pedding为reject
-    //       reject(err)
-    //     }
-    //   });
+    }).catch(e => {
+    console.log(e)
     })
   },
   /**
