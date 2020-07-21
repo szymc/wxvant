@@ -1,2 +1,31 @@
-<!--pages/museumintroduced/museumintroduced.wxml-->
-<text>pages/museumintroduced/museumintroduced.wxml</text>
+<view class="bc">
+    <view class="cell">
+        <view class="text">
+        博物馆介绍标题1
+        </view>
+        <rich-text nodes="{{htmlSnip}}"></rich-text>
+        <view class="picture">
+            <van-image
+            width="10rem"
+            height="10rem"
+            fit="contain"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+        </view>
+        
+    </view>
+    <view class="cell">
+        <view class="text">
+        博物馆介绍标题2
+        </view>
+        <rich-text nodes="{{htmlSnip}}"></rich-text>
+        <view class="picture">
+            <van-image
+            width="10rem"
+            height="10rem"
+            fit="contain"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+        </view>
+    </view>
+</view>
