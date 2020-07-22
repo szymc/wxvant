@@ -57,18 +57,23 @@
             <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ max }}">
                 <van-cell-group>
                     <van-cell wx:for="{{ list2 }}" wx:key="index" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
-                        
+                        <view slot="icon">
+                            <van-icon name="edit" size="22px" bind:click="edit" data-id="{{item.id}}"/>
+                            <van-icon name="delete" size="22px" bind:click="delete" data-id="{{item.id}}"/>
+                        </view>
+                        <!-- <view bindtap="tagName" data-id="{{item.id}}">cs</view> -->
                         <view slot="title">
                             <view class="linetext">
                                 <view>{{item.name}}</view><view>手机号: {{item.tel}}</view>
                             </view>
                             <view>身份证: {{item.no}}</view>
                         </view>
-                        <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
+                        <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" label-disabled="true"/>
                     </van-cell>
                 </van-cell-group>
             </van-checkbox-group>
         </view>
         <van-toast id="van-toast" />
+        <van-dialog id="van-dialog" />
     </van-popup>
 </view>

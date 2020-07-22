@@ -160,8 +160,8 @@ const CheckIdCard = val => {
   // 15位转18位身份证号
   function changeFivteenToEighteen(card) {
     if (card.length === 15) {
-      var arrInt = new window.Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2)
-      var arrCh = new window.Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2')
+      var arrInt = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+      var arrCh = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2']
       var cardTemp = 0
       var i
       card = card.substr(0, 6) + '19' + card.substr(6, card.length - 6)
