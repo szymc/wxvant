@@ -1,68 +1,44 @@
 <view class="bc">
-    <view class="mianban">
-        <van-panel title="博物馆入场卷" desc="NO.123456789" status="已使用">
+    <view class="mianban" wx:for="{{tabledata}}" wx:key="item.id">
+        <van-panel title="博物馆入场卷" status="{{item.noid}}">
             <view>
                 <van-cell-group >
                     <van-field
-                    value="张三啊"
+                    label-class="label-class"
+                    value="{{item.name}}"
                     label="姓名"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="360103199910310049"
+                    label-class="label-class"
+                    value="{{item.cardid}}"
                     label="证件号"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="18702695874"
+                    label-class="label-class"
+                    value="{{item.phone}}"
                     label="手机号"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="2020-07-20 14：00-17：30"
+                    label-class="label-class"
+                    value="{{item.visitiedata}}"
                     label="参观日期"
                     readonly
                     border="{{ false }}"
                     />
                 </van-cell-group>
             </view>
+            <view class="statussty">
+              状态
+              <view style="color: {{item.color}};">
+                {{item.status}}
+              </view>
+            </view>
         </van-panel>
     </view>
-    <view class="mianban">
-    <van-panel title="博物馆入场卷"  desc="NO.123456789" status="已使用">
-        <view>
-            <van-cell-group>
-                <van-field
-                  value="张三啊"
-                  label="姓名"
-                  readonly
-                  border="{{ false }}"
-                />
-                <van-field
-                  value="360103199910310049"
-                  label="证件号"
-                  readonly
-                  border="{{ false }}"
-                />
-                <van-field
-                  value="18702695874"
-                  label="手机号"
-                  readonly
-                  border="{{ false }}"
-                />
-                <van-field
-                  value="2020-07-20 14：00-17：30"
-                  label="参观日期"
-                  readonly
-                  border="{{ false }}"
-                />
-              </van-cell-group>
-        </view>
-        
-    </van-panel>
-    </view>
-    
 </view>

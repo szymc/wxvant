@@ -5,7 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabledata:[
+      {
+        id:'1',
+        noid:"NO.123456789",
+        name:'张三啊',
+        cardid:'360103199910310049',
+        phone:'18702695874',
+        visitiedata:'2020-07-20 14：00-17：30',
+      },
+      {
+        id:'2',
+        noid:"NO.123456789",
+        name:'张三啊',
+        cardid:'360103199910310049',
+        phone:'18702695874',
+        visitiedata:'2020-07-20 14：00-17：30',
+      },
+      {
+        id:'3',
+        noid:"NO.123456789",
+        name:'张三啊',
+        cardid:'360103199910310049',
+        phone:'18702695874',
+        visitiedata:'2020-07-20 14：00-17：30',
+      },
+    ]
   },
   gotocheck(){
     wx.navigateTo({ url: '/pages/ticketdetails/ticketdetails',})
