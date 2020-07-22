@@ -1,1 +1,26 @@
-/* pages/subscribeEdit/subscribeEdit.wxss */
+page {
+    background: #f5f5f5;
+}
+
+.subEdit {
+    margin-top: 20px;
+}
+
+.value-class {
+    -webkit-flex: 5 !important;
+    flex: 5 !important;
+    text-align: left !important;
+    padding-left: 86rpx;
+    /* color: rgba(200,201,204) !important; */
+}
+.subBtn {
+    text-align: center;
+}
+.subBtn .van-button__text {
+    /* color: #000; */
+    font-size: 32rpx;
+}
+.subBtn .van-button {
+    margin-top: 50px;
+    width: 300rpx;
+}

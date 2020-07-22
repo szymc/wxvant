@@ -61,7 +61,6 @@
                             <van-icon class="iconsty_c" name="edit" size="22px" bind:click="edit" data-id="{{item.id}}"/>
                             <van-icon name="delete" size="22px" bind:click="delete" data-id="{{item.id}}"/>
                         </view>
-                        <!-- <view bindtap="tagName" data-id="{{item.id}}">cs</view> -->
                         <view slot="title" class="titlesty">
                             <view class="linetext">
                                 <view>{{item.name}}</view><view>手机号: {{item.tel}}</view>
