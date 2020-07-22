@@ -55,6 +55,7 @@ const _get = (url, param = {}) => {
 }
 
 //  post方法 
+
 const _post = (url, param = {}) => {
     return http({
         url,
@@ -64,6 +65,7 @@ const _post = (url, param = {}) => {
     })
 }
 //  delete方法
+
 const _delete = (url, param = {}) => {
     return http({
         url,

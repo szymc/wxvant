@@ -1,4 +1,5 @@
 // pages/userLogin/userLogin.js
+var api = require('../../utils/apiManagement.js');
 Page({
 
   /**
@@ -15,9 +16,20 @@ Page({
     this.setData({password: event.detail})
   },
   submit() {
-    // console.log(this.data.username)
-    // console.log(this.data.password)
-    wx.switchTab({url: '/pages/index/index'})
+      let params ={
+          phone:this.data.username,
+          password:this.data.password,
+      }
+      api.login(params).then(res => {
+        wx.switchTab({url: '/pages/index/index'})
+        wx.setStorage({
+          key: 'token',
+          data: res.data.datas
+        })
+      }).catch(e => {
+        console.log(e)
+      })
+   
   },
   register() {
     wx.navigateTo({url: '/pages/register/register'})
