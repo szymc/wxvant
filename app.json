@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/test/test",
-    "pages/upload/upload",
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
@@ -16,7 +14,10 @@
     "pages/ticketChanging/ticketChanging",
     "pages/audienceguidelines/audienceguidelines",
     "pages/museumintroduced/museumintroduced",
-    "pages/location/location"
+    "pages/location/location",
+    "pages/logs/logs",
+    "pages/upload/upload",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,1 +1,4 @@
 /* pages/upload/upload.wxss */
+.bc{
+    margin-top: 40rpx;
+}

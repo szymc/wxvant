@@ -51,10 +51,8 @@ Page({
     wx.getLocation({
       type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
       success: function (res) {
-        console.log(111)
         console.log(res.latitude)
         console.log(res.longitude)
-        console.log(111)
         _this.setData({
           latitude: res.latitude,
           longitude: res.longitude,
