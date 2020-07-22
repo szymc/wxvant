@@ -1,5 +1,4 @@
 <van-row>
-    <van-col span="16" offset="4">
         <view class="box">
             <van-row class="boxrow">
                 <view class="boxrow_1">
@@ -13,10 +12,9 @@
                 </view>
                 <view class="boxrow_3">忘记密码</view>
                 <view class="boxrow_4">
-                    <van-button type="info" bind:click="submit">登录</van-button>
+                    <van-button type="info" round size="large" bind:click="submit">登录</van-button>
                 </view>
                 <view class="boxrow_5" catchtap="register">没有账号？请注册</view>
             </van-row>         
         </view>
-    </van-col>
 </van-row>
