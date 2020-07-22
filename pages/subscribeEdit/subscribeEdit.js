@@ -9,7 +9,7 @@ Page({
    */
   data: {
     name: '',
-    idNo: '360111199511280997',
+    idNo: '',
     sex: '请选择性别',
     showsex: false,
     actionssex: [
@@ -23,7 +23,7 @@ Page({
         name: '保密',
       },
     ],
-    phone: '13122222222',
+    phone: '',
     jobshow: false,
     job: '请选择职业',
     jobactions: [
@@ -155,11 +155,17 @@ Page({
       Toast.fail('用户姓名不能为空');
       return
     }
+    if (!(/^[\u4e00-\u9fa5]{2,6}$/.test(this.data.name))) {
+      this.setData({nameMsg: '用户姓名输入有误'})
+    }
     if (this.data.nameMsg.length > 0) return
-
+  
     if (this.data.idNo.length == 0) {
       Toast.fail('证件号码不能为空');
       return
+    }
+    if (CheckIdCard(this.data.idNo) != 2) {
+      this.setData({cardMsg: '请输入正确的证件号码格式'})
     }
     if (this.data.cardMsg.length > 0) return
 
@@ -171,6 +177,9 @@ Page({
     if (this.data.phone.length == 0) {
       Toast.fail('手机号码不能为空');
       return
+    }
+    if (!isCellphone(this.data.phone)) {
+      this.setData({phoneMsg: '请输入正确的手机格式'})
     }
     if (this.data.phoneMsg.length > 0) return
 
@@ -201,22 +210,21 @@ Page({
       job = '5'
     }
 
-    console.log(this.data.name)
-    console.log(this.data.idNo)
-    console.log(sex)
-    console.log(this.data.phone)
-    console.log(job)
-    console.log(this.data.areaCode)
+    // console.log(this.data.name)
+    // console.log(this.data.idNo)
+    // console.log(sex)
+    // console.log(this.data.phone)
+    // console.log(job)
+    // console.log(this.data.areaCode)
 
-    // wx.navigateBack()
+    wx.navigateBack()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({name: 'zcs'})
+    // console.log(options)
   },
 
   /**
