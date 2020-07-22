@@ -107,11 +107,9 @@ Page({
 		this.setData({ regionshow: false });
 	},
 	showimg() {
-		console.log("mad")
 		this.setData({ imgshow: true });
 	},
 	onCloseimgshow() {
-		console.log("ff")
 		this.setData({ imgshow: false });
 	  },
 	afterRead(uploadFile) {
