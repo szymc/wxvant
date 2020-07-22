@@ -1,6 +1,6 @@
 <view class="bc">
     <van-cell-group>
-        <van-cell title="用户头像" is-link size="large" bind:click="showimg">
+        <van-cell title="用户头像" is-link size="large" bind:click="showimg" value-class="value-class">
             <van-image
             width="20%"
             height="100%"
@@ -17,24 +17,24 @@
             </van-popup>
         </van-cell>
         <van-toast id="van-toast" />
-        <van-cell title="用户姓名" is-link value="{{name}}" size="large" bind:click="showname"/>
-        <van-cell title="证件号码" is-link value="{{userid}}" size="large" bind:click="showuserid"/>
-        <van-cell title="年龄" is-link value="{{age}}" size="large" bind:click="showage"/>
-        <van-cell title="性别" is-link value="{{sex}}" size="large" bind:click="showsex"/>
+        <van-cell title="用户姓名" is-link value="{{name}}" size="large" bind:click="showname" value-class="value-class"/>
+        <van-cell title="证件号码" is-link value="{{userid}}" size="large" bind:click="showuserid" value-class="value-class"/>
+        <van-cell title="年龄" is-link value="{{age}}" size="large" bind:click="showage" value-class="value-class"/>
+        <van-cell title="性别" is-link value="{{sex}}" size="large" bind:click="showsex" value-class="value-class"/>
             <van-action-sheet
             show="{{ sexshow }}"
             actions="{{ sexactions }}"
             bind:close="onClosesexshow"
             bind:select="onSelectsexshow"
             />
-        <van-cell title="职业" is-link value="{{job}}" size="large" bind:click="showjob"/>
+        <van-cell title="职业" is-link value="{{job}}" size="large" bind:click="showjob" value-class="value-class"/>
             <van-action-sheet
             show="{{ jobshow }}"
             actions="{{ jobactions }}"
             bind:close="onClosejobshow"
             bind:select="onSelectjobshow"
             />
-        <van-cell title="地区" is-link value="内容" size="large" bind:click="showregion"/>
+        <van-cell title="地区" is-link value="{{area}}" size="large" bind:click="showregion" value-class="value-class"/>
             <van-popup show="{{ regionshow }}" position="bottom" custom-style="height: 40%;" >
                 <van-area  show-toolbar title="选择地区"  bind:confirm="onConfirm"  bind:cancel="onCancel" area-list="{{ areaList }}" />
             </van-popup>

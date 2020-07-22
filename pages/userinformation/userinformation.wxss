@@ -18,3 +18,9 @@ page {
       width: 100%;
       margin-top: 10%;
   }
+  .value-class {
+    -webkit-flex: 5 !important;
+    flex: 4 !important;
+    text-align: right !important;
+    /* color: rgba(200,201,204) !important; */
+}
