@@ -7,7 +7,9 @@ Page({
    */
   data: {
     username: '',
-    password: ''
+    password: '',
+    nameErr: '',
+    passErr: ''
   },
   inputName(event) {
     this.setData({username: event.detail})
@@ -16,6 +18,18 @@ Page({
     this.setData({password: event.detail})
   },
   submit() {
+    if (this.data.username.length == 0) {
+      this.setData({nameErr: '用户名不能为空'})
+      return
+    } else {
+      this.setData({nameErr: ''})
+    }
+    if (this.data.password.length == 0) {
+      this.setData({passErr: '密码不能为空'})
+      return
+    } else {
+      this.setData({passErr: ''})
+    }
       let params ={
           phone:this.data.username,
           password:this.data.password,
