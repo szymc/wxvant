@@ -1,25 +1,34 @@
-// pages/launch/launch.js
+// pages/userLogin/userLogin.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    username: '',
+    password: ''
   },
-
+  inputName(event) {
+    this.setData({username: event.detail})
+  },
+  inputPass(event) {
+    this.setData({password: event.detail})
+  },
+  submit() {
+    // console.log(this.data.username)
+    // console.log(this.data.password)
+    wx.switchTab({url: '/pages/index/index'})
+  },
+  register() {
+    wx.navigateTo({url: '/pages/register/register'})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad () {
-    let timer = setTimeout(() => {
-      clearTimeout(timer)
-      wx.redirectTo({ 
-        url: '/pages/userLogin/userLogin'
-      });  
-    }, 3000)
+  onLoad: function (options) {
+
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

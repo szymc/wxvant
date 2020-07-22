@@ -1,6 +1,8 @@
 {
-  "pages": [   
+  "pages": [
     "pages/launch/launch",
+    "pages/register/register",
+    "pages/userLogin/userLogin",
     "pages/index/index",
     "pages/login/login",
     "pages/reinformation/reinformation",
@@ -19,6 +21,7 @@
     "pages/logs/logs",
     "pages/upload/upload",
     "pages/test/test"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",

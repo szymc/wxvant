@@ -1,25 +1,47 @@
-// pages/launch/launch.js
+// pages/register/register.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    phone: '',
+    sms: '',
+    password: '',
+    checkpass: '',
+    checked: false
+  },
+  inputPhone(event) {
+    this.setData({phone: event.detail})
+  },
+  inputSms(event) {
+    this.setData({sms: event.detail})
+  },
+  inputPass(event) {
+    this.setData({password: event.detail})
+  },
+  inputCheckpass(event) {
+    this.setData({checkpass: event.detail})
+  },
+  onUserInfo(event) {
+    this.setData({
+      checked: event.detail,
+    });
+  },
+  userInfo() {
 
+  },
+  submit() {
+    wx.navigateBack()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad () {
-    let timer = setTimeout(() => {
-      clearTimeout(timer)
-      wx.redirectTo({ 
-        url: '/pages/userLogin/userLogin'
-      });  
-    }, 3000)
+  onLoad: function (options) {
+
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

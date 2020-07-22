@@ -1,10 +1,7 @@
 var api = require('../../utils/baseApi.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import { AreaList } from '../../utils/area'
 
-const citys = {
-	浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-	福建: ['福州', '厦门', '莆田', '三明', '泉州'],
-  };
 Page({
 
 /**
@@ -45,42 +42,10 @@ Page({
 		  }
 		],
 		regionshow:false,
-		columns: [
-			{
-			  values: Object.keys(citys),
-			  className: 'column1',
-			},
-			{
-			  values: citys['浙江'],
-			  className: 'column2',
-			  defaultIndex: 2,
-			},
-		],
-		areaList:{
-			province_list: {
-			  110000: '北京市',
-			  120000: '天津市'
-			},
-			city_list: {
-			  110100: '北京市',
-			  110200: '县',
-			  120100: '天津市',
-			  120200: '县'
-			},
-			county_list: {
-			  110101: '东城区',
-			  110102: '西城区',
-			  110105: '朝阳区',
-			  110106: '丰台区',
-			  120101: '和平区',
-			  120102: '河东区',
-			  120103: '河西区',
-			  120104: '南开区',
-			  120105: '河北区',
-			  // ....
-			}
-		  },
-		  fileurl:'https://img.yzcdn.cn/vant/cat.jpeg',
+		area: '请选择地区',
+		areaCode: [],
+		areaList:AreaList,
+		fileurl:'https://img.yzcdn.cn/vant/cat.jpeg',
 		//   fileList: [
 		// 	{
 		// 		url: 'https://img.yzcdn.cn/vant/cat.jpeg'
@@ -126,21 +91,25 @@ Page({
 		this.setData({ regionshow: true });
 	},
 	onConfirm(event) {
-		const { picker, value, index } = event.detail;
+		// const { picker, value, index } = event.detail;
 		// picker.setColumnValues(1, citys[value[0]]);
-		console.log(event.detail);
-
-		this.setData({ regionshow: false });
+		const areaValues = event.detail.values
+		console.log(areaValues);
+		let arr = [areaValues[0].name, areaValues[1].name, areaValues[2].name]
+		let arrcode = [areaValues[0].code, areaValues[1].code, areaValues[2].code]
+		this.setData({ 
+			area : arr,
+			regionshow: false,
+			areaCode: arrcode
+		})
 	},
 	onCancel() {
 		this.setData({ regionshow: false });
 	},
 	showimg() {
-		console.log("mad")
 		this.setData({ imgshow: true });
 	},
 	onCloseimgshow() {
-		console.log("ff")
 		this.setData({ imgshow: false });
 	  },
 	afterRead(uploadFile) {
