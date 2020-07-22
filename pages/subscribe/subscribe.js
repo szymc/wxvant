@@ -83,10 +83,6 @@ Page({
       
     });
   },
-  tagName(evnet) {
-    console.log('cs')
-    console.log(evnet)
-  },
   cmdSubmit() {
     console.log('11')
   },
