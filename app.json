@@ -1,5 +1,6 @@
 {
-  "pages": [
+  "pages": [   
+    "pages/launch/launch",
     "pages/index/index",
     "pages/login/login",
     "pages/reinformation/reinformation",
@@ -73,7 +74,8 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-area": "@vant/weapp/area/index",
     "van-panel": "@vant/weapp/panel/index",
-    "van-uploader": "@vant/weapp/uploader/index"
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-loading": "@vant/weapp/loading/index"
   },
   "permission": {
     "scope.userLocation": {

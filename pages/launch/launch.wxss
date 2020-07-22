@@ -1,0 +1,10 @@
+/* pages/launch/launch.wxss */
+.pic{
+    text-align: center;
+}
+.text{
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+}

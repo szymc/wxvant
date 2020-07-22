@@ -124,7 +124,7 @@ page {
 .linetext{
     display: flex;
     justify-content: space-between;
-    width: 68%;
+    width: 88%;
 }
 .certer{
     padding-left: 18%;
@@ -136,4 +136,14 @@ page {
 }
 .value-class {
     flex: none !important;
+  }
+  .iconsty{
+    
+      margin: auto;
+  }
+  .iconsty_c{
+      margin-right: 16rpx;
+  }
+  .titlesty{
+      margin-left: 36rpx;
   }
