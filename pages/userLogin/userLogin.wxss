@@ -1,0 +1,31 @@
+/* pages/userLogin/userLogin.wxss */
+.box {
+    width: 100%;
+    height: 300px;
+    margin-top: 200rpx;
+}
+.boxrow {
+
+}
+.boxrow_1 {
+    text-align: center;
+}
+.boxrow_2 {
+    margin-top: 40rpx;
+}
+.boxrow_3 {
+    text-align: right;
+    color: rgba(33,139,249);
+    font-size: 25rpx;
+    margin-top: 8rpx;
+}
+.boxrow_4 {
+    margin-top: 80rpx;
+    text-align: center;
+}
+.boxrow_5 {
+    text-align: center;
+    color: rgba(33,139,249);
+    font-size: 28rpx;
+    margin-top: 30rpx;
+}
