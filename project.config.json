@@ -105,6 +105,19 @@
 					"pathName": "pages/subscribe/subscribe",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/userLogin/userLogin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "register",
+					"pathName": "pages/register/register",
+					"scene": null
 				}
 			]
 		}
