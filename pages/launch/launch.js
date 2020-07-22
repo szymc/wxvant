@@ -1,39 +1,32 @@
-// pages/upload/upload.js
-var api = require('../../utils/baseApi.js');
+// pages/launch/launch.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    fileList: []
+
   },
-  // },
-  afterRead(uploadFile) {
-    api._upload('file/upload',uploadFile).then(res => {
-      console.log(res.data)
-       var  data= JSON.parse(res.data)
-       console.log(data.datas)
-       const {fileList} = this.data
-       fileList.push({ url: data.datas});
-       console.log(fileList)
-       this.setData({ 
-         fileList
-        });
-    }).catch(e => {
-    console.log(e)
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad () {
+    let timer = setTimeout(() => {
+      clearTimeout(timer)
+      wx.switchTab({ 
+        url: '/pages/index/index'
+      });  
+    }, 3000)
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
+
   /**
    * 生命周期函数--监听页面显示
    */

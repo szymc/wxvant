@@ -1,0 +1,17 @@
+<view>
+  <view class="pic">
+    <van-image
+    width="10rem"
+    height="10rem"
+    fit="cover"
+    src="https://img.yzcdn.cn/vant/cat.jpeg"
+  />
+  </view>
+  <view class="text">
+      票务预约系统
+      
+  </view>
+  <view class="text">
+      <van-loading type="spinner" color="#1989fa" />
+  </view>
+</view>

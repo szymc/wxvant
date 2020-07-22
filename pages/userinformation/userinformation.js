@@ -1,4 +1,4 @@
-// pages/userinformation/userinformation.js
+var api = require('../../utils/baseApi.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
 const citys = {
@@ -14,6 +14,7 @@ Page({
 		name:'张三啊',
 		userid:"360103199910310049",
 		age:'21岁',
+		imgshow: false,
 		sexshow: false,
 		sex:'无',
 		sexactions: [
@@ -79,6 +80,12 @@ Page({
 			  // ....
 			}
 		  },
+		  fileurl:'https://img.yzcdn.cn/vant/cat.jpeg',
+		//   fileList: [
+		// 	{
+		// 		url: 'https://img.yzcdn.cn/vant/cat.jpeg'
+		// 	},
+		//   ],
 	},
 	showname(){
 		Toast(`用户姓名不可修改`);
@@ -125,9 +132,32 @@ Page({
 
 		this.setData({ regionshow: false });
 	},
-	
 	onCancel() {
 		this.setData({ regionshow: false });
+	},
+	showimg() {
+		console.log("mad")
+		this.setData({ imgshow: true });
+	},
+	onCloseimgshow() {
+		console.log("ff")
+		this.setData({ imgshow: false });
+	  },
+	afterRead(uploadFile) {
+		api._upload('file/upload',uploadFile).then(res => {
+			console.log(res.data)
+			var  data= JSON.parse(res.data)
+			console.log(data.datas)
+			// const {fileList} = this.data
+			// fileList.push({ url: data.datas});
+			// console.log(fileList)
+			this.setData({ 
+				fileurl:data.datas,
+				imgshow: false
+				});
+		}).catch(e => {
+		console.log(e)
+		})
 	},
 /**
  * 生命周期函数--监听页面加载

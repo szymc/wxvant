@@ -1,6 +1,6 @@
-<view>
+<view class="bc">
     <!-- <van-uploader bind:before-read="afterRead" /> -->
-    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" max-count="1"/>
     <!-- <van-cell title="选择单个日期" :value="date" @click="show = true" />
     <van-calendar v-model="show" @confirm="onConfirm" /> -->
 </view>

@@ -1,11 +1,12 @@
 {
   "pages": [   
+    "pages/launch/launch",
     "pages/index/index",
-    "pages/test/test",
-    "pages/upload/upload", 
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
+    "pages/subscribeAdd/subscribeAdd",
+    "pages/subscribeEdit/subscribeEdit",
     "pages/userinformation/userinformation",
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",
@@ -14,7 +15,10 @@
     "pages/ticketChanging/ticketChanging",
     "pages/audienceguidelines/audienceguidelines",
     "pages/museumintroduced/museumintroduced",
-    "pages/location/location"
+    "pages/location/location",
+    "pages/logs/logs",
+    "pages/upload/upload",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -70,6 +74,12 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-area": "@vant/weapp/area/index",
     "van-panel": "@vant/weapp/panel/index",
-    "van-uploader": "@vant/weapp/uploader/index"
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-loading": "@vant/weapp/loading/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }
