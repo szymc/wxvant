@@ -1,6 +1,12 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
-</view>
+<!-- <image src='{{personImage}}' bindtap='changeAvatar' ></image> -->
+
+<view class="container">
+  <view>
+  <button type="default" bindtap="gotoShow" >点击上传照片</button> 
+  </view>
+  <view>
+  <image class= "show-image" mode="aspectFitf" src="{{src}}"></image>
+  </view>
+ </view>
+ 
+ 

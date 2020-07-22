@@ -10,10 +10,15 @@ Page({
   // },
   afterRead(uploadFile) {
     api._upload('file/upload',uploadFile).then(res => {
-    console.log(res.data)
+      console.log(res.data)
        var  data= JSON.parse(res.data)
        console.log(data.datas)
-
+       const {fileList} = this.data
+       fileList.push({ url: data.datas});
+       console.log(fileList)
+       this.setData({ 
+         fileList
+        });
     }).catch(e => {
     console.log(e)
     })
