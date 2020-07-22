@@ -1,5 +1,6 @@
 var  api=require('../utils/baseApi.js')
 //  api_post  post 请求方式
+
 //  api._upload  upload 请求方式        
 
 //  api._delete delete 请求方式

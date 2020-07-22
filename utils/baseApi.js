@@ -26,10 +26,9 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         },
                         fail: () => {},
                     })
-            }
+                }
 				resolve(res)
 			},
-			
 			fail: function(err) {
 				reject(err)
 			}
@@ -42,7 +41,6 @@ const getUrl = (url) => {
     }
     return url
 }
- 
 // get方法
 
 const _get = (url, param = {}) => {
@@ -53,8 +51,8 @@ const _get = (url, param = {}) => {
         method: 'get',
         contentType:"application/x-www-form-urlencoded"
     })
-
 }
+
 //  post方法 
 const _post = (url, param = {}) => {
     return http({
@@ -74,6 +72,7 @@ const _delete = (url, param = {}) => {
     })
 }
 // 上传方法
+
 const _upload = (url, file) => {
     console.log(file)
         const token = wx.getStorageSync('token');
