@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/test/test",
     "pages/launch/launch",
     "pages/register/register",
     "pages/userLogin/userLogin",
@@ -19,8 +20,8 @@
     "pages/museumintroduced/museumintroduced",
     "pages/location/location",
     "pages/logs/logs",
-    "pages/upload/upload",
-    "pages/test/test"
+    "pages/upload/upload"
+ 
     
   ],
   "window": {

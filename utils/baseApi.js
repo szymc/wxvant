@@ -11,7 +11,8 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
 				'content-type': contentType 
             },
             success: function(res) {
-                if(res.data.code==1102&&res.data.msg=="未登录--onAccessDenied"){
+              console.log(res.data.msg)
+                if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
                     wx.showModal({
                         title: '登录提示',
                         content: '您尚未登录，是否立即登录？',
@@ -20,7 +21,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         success: (e) => {
                             if (e.confirm) {
                                 wx.navigateTo({
-                                    url: '/pages/index/index'
+                                    url: 'pages/userLogin/userLogin'
                                 })
                             }
                         },
@@ -83,13 +84,12 @@ const _upload = (url, file) => {
                 name: 'file', //上传的所需字段，后端提供
                 header: {
                   'sys-token': token,
-          
                       },
                 success: function (res) {
                  console.log(res)
                     resolve(res)
                 }
-              })
+            })
         })
     }
 module.exports = {
