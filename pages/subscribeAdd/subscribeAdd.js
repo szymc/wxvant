@@ -1,6 +1,7 @@
 // pages/subscribeAdd/subscribeAdd.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
-import {isCellphone, CheckIdCard} from '../../utils/util'
+import { isCellphone, CheckIdCard } from '../../utils/util'
+import { AreaList } from '../../utils/area'
 Page({
 
   /**
@@ -24,24 +25,28 @@ Page({
     ],
     phone: '13122222222',
     jobshow: false,
-		job:'请选择职业',
-		jobactions: [
-		  {
-			name: '在职',
-		  },
-		  {
-			name: '小学',
-		  },
-		  {
-			name: '中学',
-		  },
-		  {
-			name: '大学',
-		  },
-		  {
-			name: '其他',
-		  }
+    job: '请选择职业',
+    jobactions: [
+      {
+        name: '在职',
+      },
+      {
+        name: '小学',
+      },
+      {
+        name: '中学',
+      },
+      {
+        name: '大学',
+      },
+      {
+        name: '其他',
+      }
     ],
+    area: '请选择地区',
+    areaCode: [],
+    showAreaSelect: false,
+    areaList: AreaList,
     // 表单验证
     nameMsg: '',
     cardMsg: '',
@@ -51,14 +56,14 @@ Page({
   },
   // 姓名
   onChangeName(event) {
-    this.setData({name: event.detail})
+    this.setData({ name: event.detail })
   },
   blurName(event) {
     const name = event.detail.value;
     let message = '';
     if (name.length == 0) {
       message = '用户姓名不能为空'
-    } else if (!(/^[\u4e00-\u9fa5]{2,6}$/.test(name))){
+    } else if (!(/^[\u4e00-\u9fa5]{2,6}$/.test(name))) {
       message = '用户姓名输入有误'
     }
     this.setData({
@@ -67,7 +72,7 @@ Page({
   },
   // 身份证
   onChangeCard(event) {
-    this.setData({idNo: event.detail})
+    this.setData({ idNo: event.detail })
   },
   blurCard(event) {
     const card = event.detail.value;
@@ -90,13 +95,13 @@ Page({
   },
   onSelect(event) {
     this.setData({
-      sex:event.detail.name,
+      sex: event.detail.name,
       sexChoose: true
-		})
+    })
   },
   // 手机
   onChangePhone(event) {
-    this.setData({phone: event.detail})
+    this.setData({ phone: event.detail })
   },
   blurPhone(event) {
     const phone = event.detail.value;
@@ -111,32 +116,52 @@ Page({
     })
   },
   // 职业
-  showjob(){
-		this.setData({ jobshow: true });
-	},
-	onClosejobshow() {
-		this.setData({ jobshow: false });
-	},
-	onSelectjobshow(event) {
-		this.setData({
-      job:event.detail.name,
+  showjob() {
+    this.setData({ jobshow: true });
+  },
+  onClosejobshow() {
+    this.setData({ jobshow: false });
+  },
+  onSelectjobshow(event) {
+    this.setData({
+      job: event.detail.name,
       jobChoose: true
-		})
+    })
+  },
+  // 地区
+  showarea() {
+    this.setData({ showAreaSelect: true })
+  },
+  onCloseArea() {
+    this.setData({ showAreaSelect: false })
+  },
+  confirmArea(event) {
+    // console.log(event.detail.values)
+    const areaValues = event.detail.values
+    let arr = [areaValues[0].name, areaValues[1].name, areaValues[2].name]
+    let arrcode = [areaValues[0].code, areaValues[1].code, areaValues[2].code]
+    this.setData({ 
+      area : arr,
+      areaCode: arrcode
+    })
+    this.onCloseArea()
+  },
+  closeArea() {
+    this.onCloseArea()
   },
   // 确认
   cmdSubmit() {
-    // console.log(this.data.name)
     if (this.data.name.length == 0) {
       Toast.fail('用户姓名不能为空');
       return
     }
-    if(this.data.nameMsg.length > 0) return
+    if (this.data.nameMsg.length > 0) return
 
     if (this.data.idNo.length == 0) {
       Toast.fail('证件号码不能为空');
       return
     }
-    if(this.data.cardMsg.length > 0) return
+    if (this.data.cardMsg.length > 0) return
 
     if (!this.data.sexChoose) {
       Toast.fail('请选择性别');
@@ -147,7 +172,7 @@ Page({
       Toast.fail('手机号码不能为空');
       return
     }
-    if(this.data.phoneMsg.length > 0) return
+    if (this.data.phoneMsg.length > 0) return
 
     if (!this.data.jobChoose) {
       Toast.fail('请选择职业');
@@ -181,15 +206,16 @@ Page({
     // console.log(sex)
     // console.log(this.data.phone)
     // console.log(job)
-    
-    // wx.navigateBack()
+    // console.log(this.data.areaCode)
+
+    wx.navigateBack()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(CheckIdCard('360111199511280997'))
+    // console.log(AreaList)
   },
 
   /**

@@ -1,5 +1,6 @@
 // pages/subscribe/subscribe.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import Dialog  from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -58,12 +59,33 @@ Page({
   // 点击单元格触发
   toggle(event) {
     // console.log(event)
-    const { index } = event.currentTarget.dataset;
-    const checkbox = this.selectComponent(`.checkboxes-${index}`);
-    checkbox.toggle();
+    // 单元格绑定选中状态
+    // const { index } = event.currentTarget.dataset;
+    // const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    // checkbox.toggle();
   },
   noop() {
 
+  },
+  edit(evnet) {
+    let id = evnet.currentTarget.dataset.id
+    // console.log(id)
+    wx.navigateTo({url:'/pages/subscribeEdit/subscribeEdit'})
+  },
+  delete(evnet) {
+    let id = evnet.currentTarget.dataset.id
+    // console.log(id)
+    Dialog.confirm({
+      message: '是否确定删除?',
+    }).then(() => {
+      // on close
+    }).catch(() => {
+      
+    });
+  },
+  tagName(evnet) {
+    console.log('cs')
+    console.log(evnet)
   },
   cmdSubmit() {
     console.log('11')
