@@ -1,20 +1,23 @@
 <van-row>
-        <view class="box">
-            <van-row class="boxrow">
-                <view class="boxrow_1">
-                    <van-image width="75" height="75" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                </view>
-                <view class="boxrow_2">
-                    <van-cell-group>
-                        <van-field value="{{ username }}" clearable label="用户名" placeholder="请输入用户名" bind:change="inputName" />
-                        <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" border="{{ false }}" bind:change="inputPass"/>
-                    </van-cell-group>
-                </view>
-                <view class="boxrow_3">忘记密码</view>
-                <view class="boxrow_4">
-                    <van-button type="info" round size="large" bind:click="submit">登录</van-button>
-                </view>
-                <view class="boxrow_5" catchtap="register">没有账号？请注册</view>
-            </van-row>         
-        </view>
+    <view class="box">
+        <van-row class="boxrow">
+            <view class="boxrow_1">
+                <van-image width="75" height="75" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            </view>
+            <view class="boxrow_2">
+                <van-cell-group>
+                    <van-field value="{{ username }}" clearable label="用户名" placeholder="请输入用户名或手机号" bind:change="inputName"
+                        error-message="{{nameErr}}" />
+                    <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码"
+                        border="{{ false }}" bind:change="inputPass" error-message="{{passErr}}" />
+                </van-cell-group>
+            </view>
+            <view class="boxrow_3">忘记密码</view>
+            <view class="boxrow_4">
+                <van-button type="info" round size="large" bind:click="submit">登录</van-button>
+            </view>
+            <view class="boxrow_5" catchtap="register">没有账号？请注册</view>
+        </van-row>
+    </view>
 </van-row>
+<van-dialog id="van-dialog" />

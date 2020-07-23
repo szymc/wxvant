@@ -1,4 +1,4 @@
-var  api=require('../utils/baseApi.js')
+var api = require('../utils/baseApi.js')
 //  api_post  post 请求方式
 
 //  api._upload  upload 请求方式        
@@ -25,15 +25,24 @@ var  api=require('../utils/baseApi.js')
 const   login  = params => api._post("guest/login", params); 
 const   f_guestbaseInfo  = params => api._get("guest/baseInfo", params); 
 const   f_orderlist  = params => api._get("order/list", params); 
-const   imgUpload  = params => api._upload("file/upload", params); 
 const   p_guestavatar  = params => api._post("guest/avatar", params); 
+
+// 登录注册
+const p_guestregister = params => api._post("guest/register", params);
+const f_guestsmsCode = params => api._get("guest/smsCode", params);
+const f_noticeGetInfo = params => api._get("notice/getInfo", params); // 用户须知
+// 
+const   upload  = params => api._upload("file/upload", params); //  上传                       
 
 
 // 导出接口
 module.exports = {
         login,
         f_guestbaseInfo,
-        imgUpload,
         p_guestavatar,
-        f_orderlist
+        f_orderlist,
+        p_guestregister,
+        f_guestsmsCode,
+        f_noticeGetInfo,
+        upload
 }

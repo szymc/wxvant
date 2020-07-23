@@ -2,8 +2,12 @@
   "pages": [
     "pages/logs/logs",
     "pages/launch/launch",
+    "pages/userLoginInfo/userLoginInfo",
     "pages/register/register",
+<<<<<<< HEAD
     "pages/userLogin/userLogin",
+=======
+>>>>>>> test
     "pages/index/index",
     "pages/login/login",
     "pages/reinformation/reinformation",
@@ -19,10 +23,15 @@
     "pages/audienceguidelines/audienceguidelines",
     "pages/museumintroduced/museumintroduced",
     "pages/location/location",
+<<<<<<< HEAD
     
     "pages/upload/upload",
     "pages/test/test"
     
+=======
+    "pages/logs/logs",
+    "pages/upload/upload"
+>>>>>>> test
   ],
   "window": {
     "backgroundTextStyle": "dark",

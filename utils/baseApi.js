@@ -11,7 +11,6 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
 				'content-type': contentType 
             },
             success: function(res) {
-              console.log(res.data.msg)
                 if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
                     wx.showModal({
                         title: '登录提示',

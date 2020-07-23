@@ -1,33 +1,34 @@
-// pages/upload/upload.js
+// pages/userLoginInfo/userLoginInfo.js
 var api = require('../../utils/apiManagement.js');
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    fileList: []
+    htmlSnip: "",
   },
-  // },
-  afterRead(uploadFile) {
-    api.upload(uploadFile).then(res => {
-      console.log(res.data)
-       var  data= JSON.parse(res.data)
-       console.log(data.datas)
-    }).catch(e => {
-    console.log(e)
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    api.f_noticeGetInfo().then( res => {
+      if (res.data.code == 200) {
+        this.setData({
+          htmlSnip: res.data.datas.content
+        })
+      }     
+    })
   },
+
   /**
    * 生命周期函数--监听页面显示
    */

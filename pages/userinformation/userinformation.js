@@ -110,7 +110,7 @@ Page({
 		this.setData({ imgshow: false });
 	  },
 	afterRead(uploadFile) {
-		api.imgUpload(uploadFile).then(res => {
+		api.upload(uploadFile).then(res => {
 			console.log(res.data)
 			var  data= JSON.parse(res.data)
 			console.log(11)
