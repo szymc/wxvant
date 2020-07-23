@@ -19,14 +19,6 @@ Page({
     this.setData({ password: event.detail })
   },
   submit() {
-<<<<<<< HEAD
-      let params ={
-          phone:this.data.username,
-          password:this.data.password,
-      }
-      api.login(params).then(res => {
-        wx.navigateTo({url: '/pages/upload/upload'})
-=======
     if (this.data.username.length == 0) {
       this.setData({ nameErr: '用户名不能为空' })
       return
@@ -51,23 +43,16 @@ Page({
           
         });
       } else {
->>>>>>> 1fae1557bd17e63b35ca9ddcb8aafcd837210762
         wx.setStorage({
           key: 'token',
           data: res.data.datas
         })
-<<<<<<< HEAD
-      }).catch(e => {
-        console.log(e)
-      })
-=======
         wx.switchTab({url: '/pages/index/index'})
       } 
     }).catch(e => {
       console.log(e)
     })
 
->>>>>>> 1fae1557bd17e63b35ca9ddcb8aafcd837210762
   },
   register() {
     wx.navigateTo({ url: '/pages/register/register' })

@@ -11,12 +11,8 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
 				'content-type': contentType 
             },
             success: function(res) {
-<<<<<<< HEAD
               console.log(res.data.msg)
                 if(res.data.code==1102){
-=======
-                if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
->>>>>>> 1fae1557bd17e63b35ca9ddcb8aafcd837210762
                     wx.showModal({
                         title: '登录提示',
                         content: '您尚未登录，是否立即登录？',
@@ -68,6 +64,7 @@ const _post = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
+
 //  delete方法
 
 const _delete = (url, param = {}) => {
@@ -78,6 +75,7 @@ const _delete = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
+
 // 上传方法
 
 const _upload = (url, file) => {
@@ -100,7 +98,7 @@ const _upload = (url, file) => {
     }
 module.exports = {
     baseUrl,
-    _get,
+    _get,    
     _post,
     _delete,
     _upload

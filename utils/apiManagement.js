@@ -25,7 +25,6 @@ var  api=require('../utils/baseApi.js')
 const   login  = params => api._post("guest/login", params);    //  登录
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 
-
 // 导出接口
 module.exports = {
         login,

@@ -1,28 +1,8 @@
-
-<view class='imagesize'>
-
-  </view>
-  <form  bindsubmit="formSubmit" bindreset="formReset">
-  <view class='form'>
-  <view class='row'>
-
-  <view class='text'>
-  <input placeholder='请输入账号' value='聂康乔' name="name" bindinput='bindinputName' />
-  </view>
-  </view>
-  <view class='row'>
-
-  <view class='text wid2'>
-  <input placeholder='输入密码'  value='123456' name="pwd" password='true' bindinput='bindinputPaw'  />
-  </view>
-  </view>
-  </view>
-  <view class='save'>
-    <button  type='primary' formType="submit">登录</button>
-  </view>
-  </form>
-  <view>
-  <lable>{{register}}</lable>
-
-  
-  </view>
+<view >
+  <scroll-view class="scrollview">
+    <block wx:for="{{list}}" wx:key="index">
+        <view class="item">{{item.title}} ({{item.author}})</view>
+    </block>
+  </scroll-view>
+  <view class="fixed-bottom" bindtap="loadMore">加载更多</view>
+</view>
