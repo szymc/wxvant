@@ -1,5 +1,6 @@
 // pages/userLogin/userLogin.js
 var api = require('../../utils/apiManagement.js');
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -12,41 +13,49 @@ Page({
     passErr: ''
   },
   inputName(event) {
-    this.setData({username: event.detail})
+    this.setData({ username: event.detail })
   },
   inputPass(event) {
-    this.setData({password: event.detail})
+    this.setData({ password: event.detail })
   },
   submit() {
     if (this.data.username.length == 0) {
-      this.setData({nameErr: '用户名不能为空'})
+      this.setData({ nameErr: '用户名不能为空' })
       return
     } else {
-      this.setData({nameErr: ''})
+      this.setData({ nameErr: '' })
     }
     if (this.data.password.length == 0) {
-      this.setData({passErr: '密码不能为空'})
+      this.setData({ passErr: '密码不能为空' })
       return
     } else {
-      this.setData({passErr: ''})
+      this.setData({ passErr: '' })
     }
-      let params ={
-          phone:this.data.username,
-          password:this.data.password,
-      }
-      api.login(params).then(res => {
-        wx.switchTab({url: '/pages/index/index'})
+    let params = {
+      phone: this.data.username,
+      password: this.data.password,
+    }
+    api.login(params).then(res => {
+      if (res.data.code != 200) {
+        Dialog.alert({
+          message: `${res.data.message}`,
+        }).then(() => {
+          
+        });
+      } else {
         wx.setStorage({
           key: 'token',
           data: res.data.datas
         })
-      }).catch(e => {
-        console.log(e)
-      })
-   
+        wx.switchTab({url: '/pages/index/index'})
+      } 
+    }).catch(e => {
+      console.log(e)
+    })
+
   },
   register() {
-    wx.navigateTo({url: '/pages/register/register'})
+    wx.navigateTo({ url: '/pages/register/register' })
   },
   /**
    * 生命周期函数--监听页面加载
