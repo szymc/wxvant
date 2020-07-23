@@ -38,10 +38,8 @@ Page({
   },
   onConfirm(event) {
     let params = {
-      date: new Date(this.formatDate(event.detail))
+      date: String(new Date(this.formatDate(event.detail)))
     }
-    console.log(params.date)
-    console.log(new Date(this.formatDate(event.detail)))
     api.getTickets(params).then( res => {
       console.log(res)
     })
