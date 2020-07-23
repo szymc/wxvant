@@ -1,5 +1,5 @@
 <view class="bc">
-    <view class="cell" wx:for="{{tabledata}}" wx:key="item.id">
+    <view class="cell" wx:for="{{tabledata}}" wx:key="index">
         <view class="text">
         {{item.title}}
         </view>

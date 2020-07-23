@@ -21,7 +21,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         success: (e) => {
                             if (e.confirm) {
                                 wx.navigateTo({
-                                    url: 'pages/userLogin/userLogin'
+                                    url: '/pages/userLogin/userLogin'
                                 })
                             }
                         },
@@ -94,6 +94,7 @@ const _upload = (url, file) => {
             })
         })
     }
+
 module.exports = {
     baseUrl,
     _get,

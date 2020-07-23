@@ -35,4 +35,5 @@
         link-type="navigateTo"
         url="/pages/changepassword/changepassword"/>
     </view>
+    <van-toast id="van-toast" />
 </view>

@@ -1,6 +1,6 @@
 <view class="bc">
-    <view class="mianban" wx:for="{{tabledata}}" wx:key="item.id">
-        <van-panel title="博物馆入场卷" status="{{item.noid}}">
+    <view class="mianban" wx:for="{{tabledata}}" wx:key="index">
+        <van-panel title="博物馆入场卷" status="NO.{{item.id}}">
             <view>
                 <van-cell-group >
                     <van-field
@@ -12,7 +12,7 @@
                     />
                     <van-field
                     label-class="label-class"
-                    value="{{item.cardid}}"
+                    value="{{item.idNo}}"
                     label="证件号"
                     readonly
                     border="{{ false }}"
@@ -26,7 +26,7 @@
                     />
                     <van-field
                     label-class="label-class"
-                    value="{{item.visitiedata}}"
+                    value="{{item.visitDate}}"
                     label="参观日期"
                     readonly
                     border="{{ false }}"
@@ -41,4 +41,5 @@
             </view>
         </van-panel>
     </view>
+    <van-toast id="van-toast" />
 </view>
