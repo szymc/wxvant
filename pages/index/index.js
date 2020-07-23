@@ -8,18 +8,22 @@ Page({
    */
   data: {
     logo: '',
+    banner: '',
     subscribeDate: '选择日期',
+    advance: 0,
     show: false,
     isCalendar: false,
-    minDate: new Date(2020, 7, 1).getTime(),
-    maxDate: new Date(2020, 7, 30).getTime(),
+    minDate: new Date().getTime(),
+    // maxDate: new Date(2020,7,30).getTime(),
+    maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 14).getTime(),
     time1: '请选择时间段',
     time2: '请选择时间段',
     remain1: 0,
     remain2: 500,
     radio: '0',
-    timeSlice1: '9:00-10:00',
-    timeSlice2: '13:00-17:00',
+    timeSlice1: '00:00-00:00',
+    timeSlice2: '00:00-00:00',
+    isGotoreinformation: true
   },
   // 日历
   onDisplay() {
@@ -33,6 +37,14 @@ Page({
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   },
   onConfirm(event) {
+    let params = {
+      date: new Date(this.formatDate(event.detail))
+    }
+    console.log(params.date)
+    console.log(new Date(this.formatDate(event.detail)))
+    api.getTickets(params).then( res => {
+      console.log(res)
+    })
     this.setData({
       show: false,
       subscribeDate: this.formatDate(event.detail),
@@ -54,8 +66,11 @@ Page({
     });
   },
   // 预约
-  gotoreinformation(){
-    // console.log(this.data)
+  gotoreinformation() {
+    if (!this.data.isGotoreinformation) {
+      Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
+      return
+    }
     if (!this.data.isCalendar) {
       Toast.fail('请选择一个日期');
       return
@@ -78,67 +93,84 @@ Page({
       }
       timeSlice = this.data.timeSlice2
     }
-    wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}`})
+    wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}` })
   },
-  noop() {},
+  noop() { },
+
+  ticketInfo() {
+    api.getTicketInfo().then(res => {
+      console.log(res)
+      this.setData({
+        advance: res.data.datas.advance,
+        timeSlice1: res.data.datas.duration1,
+        timeSlice2: res.data.datas.duration2
+      })
+      if (res.data.datas.ticketMax <= 0) {
+        this.setData({
+          isGotoreinformation: false
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     api.f_companyInfo().then(res => {
-      console.log(res)
       this.setData({
-        logo: res.data.datas.logo
+        logo: res.data.datas.logo,
+        banner: res.data.datas.banner
       })
-    })
+    });
+    this.ticketInfo()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

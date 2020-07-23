@@ -1,5 +1,5 @@
 const baseUrl = 'http://192.168.4.220:8082/api/'//	192 
-const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
+const http = ({ url = '', param = {} ,...other } = {}) => {
     const token = wx.getStorageSync('token');
     return new Promise((resolve, reject) => {
         wx.request({
@@ -8,7 +8,8 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             ...other,
             header: {
 				'sys-token': token,
-				'content-type': contentType 
+                // 'content-type': contentType 
+                'Accept': 'application/json, text/plain',
             },
             success: function(res) {
                 if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
@@ -49,7 +50,7 @@ const _get = (url, param = {}) => {
         url,
         param,
         method: 'get',
-        contentType:"application/x-www-form-urlencoded"
+        // contentType:"application/x-www-form-urlencoded"
     })
 }
 

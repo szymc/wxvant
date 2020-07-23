@@ -35,7 +35,8 @@ const f_noticeGetInfo = params => api._get("notice/getInfo", params); // 用户�
 // 基本信息
 const f_companyInfo = params => api._get("company/info", params);
 // 预约
-
+const getTickets = params => api._get("order/remain", params);
+const getTicketInfo = params => api._get("order/ticketInfo", params);
 
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
@@ -48,6 +49,8 @@ module.exports = {
         f_guestsmsCode,
         f_noticeGetInfo,
         f_companyInfo,
+        getTickets,
+        getTicketInfo,
         f_guestbaseInfo,
         p_guestavatar,
         f_orderlist,

@@ -36,7 +36,7 @@ Page({
       password: this.data.password,
     }
     api.login(params).then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.data.code != 200) {
         Dialog.alert({
           message: `${res.data.message}`,

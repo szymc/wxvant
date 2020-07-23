@@ -1,5 +1,13 @@
 <view class="bc">
-    <image class="image1" src="../../icons/banner2.jpg" mode="aspectFill">
+    <image wx:if="{{banner != null && banner.length > 0}}" class="image1" src="{{banner}}" mode="scaleToFill">
+        <cover-view class="logo">
+            <cover-view class="flex-item demo-text-3">
+                <cover-image wx:if="{{logo != null && logo.length > 0}}" src="{{logo}}" mode="aspectFit"></cover-image>
+                <cover-image wx:else src="../../icons/logo.png" mode="aspectFit"></cover-image>
+            </cover-view>
+        </cover-view>
+    </image>
+    <image wx:else class="image1" src="../../icons/banner3.png" mode="aspectFill">
         <cover-view class="logo">
             <cover-view class="flex-item demo-text-3">
                 <cover-image wx:if="{{logo != null && logo.length > 0}}" src="{{logo}}" mode="aspectFit"></cover-image>
