@@ -1,0 +1,6 @@
+<view class="bc" >
+    <view class="text">
+        用户须知
+    </view>
+    <rich-text nodes="{{htmlSnip}}"></rich-text>
+</view>

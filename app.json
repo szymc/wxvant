@@ -3,8 +3,8 @@
     "pages/userLogin/userLogin",
     "pages/test/test",
     "pages/launch/launch",
+    "pages/userLoginInfo/userLoginInfo",
     "pages/register/register",
-   
     "pages/index/index",
     "pages/login/login",
     "pages/reinformation/reinformation",
@@ -22,8 +22,6 @@
     "pages/location/location",
     "pages/logs/logs",
     "pages/upload/upload"
- 
-    
   ],
   "window": {
     "backgroundTextStyle": "dark",

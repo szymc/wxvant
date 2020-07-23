@@ -1,4 +1,4 @@
-var  api=require('../utils/baseApi.js')
+var api = require('../utils/baseApi.js')
 //  api_post  post 请求方式
 
 //  api._upload  upload 请求方式        
@@ -22,13 +22,19 @@ var  api=require('../utils/baseApi.js')
         }
 */
 //编写请求接口的地址
-const   login  = params => api._post("guest/login", params); 
-                        
 
+// 登录注册
+const login = params => api._post("guest/login", params);
+const p_guestregister = params => api._post("guest/register", params);
+const f_guestsmsCode = params => api._get("guest/smsCode", params);
+const f_noticeGetInfo = params => api._get("notice/getInfo", params); // 用户须知
 // 
 
 
 // 导出接口
 module.exports = {
-        login
+    login,
+    p_guestregister,
+    f_guestsmsCode,
+    f_noticeGetInfo
 }
