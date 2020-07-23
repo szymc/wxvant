@@ -11,12 +11,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
 				'content-type': contentType 
             },
             success: function(res) {
-<<<<<<< HEAD
-              console.log(res.data.msg)
-                if(res.data.code==1102){
-=======
                 if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
->>>>>>> 1fae1557bd17e63b35ca9ddcb8aafcd837210762
                     wx.showModal({
                         title: '登录提示',
                         content: '您尚未登录，是否立即登录？',
