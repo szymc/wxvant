@@ -12,7 +12,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             },
             success: function(res) {
               console.log(res.data.msg)
-                if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
+                if(res.data.code==1102){
                     wx.showModal({
                         title: '登录提示',
                         content: '您尚未登录，是否立即登录？',

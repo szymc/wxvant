@@ -1,5 +1,5 @@
 // pages/upload/upload.js
-var api = require('../../utils/baseApi.js');
+var api = require('../../utils/apiManagement.js');
 Page({
   /**
    * 页面的初始数据
@@ -9,16 +9,10 @@ Page({
   },
   // },
   afterRead(uploadFile) {
-    api._upload('file/upload',uploadFile).then(res => {
+    api.upload(uploadFile).then(res => {
       console.log(res.data)
        var  data= JSON.parse(res.data)
        console.log(data.datas)
-       const {fileList} = this.data
-       fileList.push({ url: data.datas});
-       console.log(fileList)
-       this.setData({ 
-         fileList
-        });
     }).catch(e => {
     console.log(e)
     })

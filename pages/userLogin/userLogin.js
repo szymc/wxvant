@@ -21,7 +21,7 @@ Page({
           password:this.data.password,
       }
       api.login(params).then(res => {
-        wx.switchTab({url: '/pages/index/index'})
+        wx.navigateTo({url: '/pages/upload/upload'})
         wx.setStorage({
           key: 'token',
           data: res.data.datas
@@ -29,7 +29,6 @@ Page({
       }).catch(e => {
         console.log(e)
       })
-   
   },
   register() {
     wx.navigateTo({url: '/pages/register/register'})

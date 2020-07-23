@@ -25,28 +25,21 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-<<<<<<< HEAD
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"compileHotReLoad": false,
-		"useIsolateContext": true
-=======
-		"useIsolateContext": true,
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
->>>>>>> ef82a11339cd737ae62a271dca2163b1c5a4a6cb
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
 	"appid": "wx113c190ca2512b25",
 	"projectname": "vantdemo",
+	"cloudfunctionTemplateRoot": "",
+	"watchOptions": {
+		"ignore": []
+	},
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"scripts": {},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -61,7 +54,6 @@
 			"list": []
 		},
 		"game": {
-			"current": -1,
 			"list": []
 		},
 		"gamePlugin": {
@@ -104,19 +96,6 @@
 					"name": "预约",
 					"pathName": "pages/subscribe/subscribe",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "登录",
-					"pathName": "pages/userLogin/userLogin",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "register",
-					"pathName": "pages/register/register",
 					"scene": null
 				}
 			]

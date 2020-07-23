@@ -23,12 +23,11 @@ var  api=require('../utils/baseApi.js')
 */
 //编写请求接口的地址
 const   login  = params => api._post("guest/login", params); 
-                        
+const   upload  = params => api._upload("file/upload", params);                        
 
 // 
-
-
 // 导出接口
 module.exports = {
-        login
+        login,
+        upload
 }
