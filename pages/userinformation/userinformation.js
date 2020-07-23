@@ -1,7 +1,6 @@
-var api = require('../../utils/baseApi.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import { AreaList } from '../../utils/area'
-
+var api = require('../../utils/apiManagement.js');
 Page({
 
 /**
@@ -91,12 +90,10 @@ Page({
 		this.setData({ regionshow: true });
 	},
 	onConfirm(event) {
-		// const { picker, value, index } = event.detail;
-		// picker.setColumnValues(1, citys[value[0]]);
 		const areaValues = event.detail.values
-		console.log(areaValues);
 		let arr = [areaValues[0].name, areaValues[1].name, areaValues[2].name]
 		let arrcode = [areaValues[0].code, areaValues[1].code, areaValues[2].code]
+		console.log(arr);
 		this.setData({ 
 			area : arr,
 			regionshow: false,
@@ -113,26 +110,72 @@ Page({
 		this.setData({ imgshow: false });
 	  },
 	afterRead(uploadFile) {
-		api._upload('file/upload',uploadFile).then(res => {
+		api.upload(uploadFile).then(res => {
 			console.log(res.data)
 			var  data= JSON.parse(res.data)
+			console.log(11)
 			console.log(data.datas)
-			// const {fileList} = this.data
-			// fileList.push({ url: data.datas});
-			// console.log(fileList)
-			this.setData({ 
-				fileurl:data.datas,
-				imgshow: false
-				});
+			console.log(22)
+			let params={
+				avatar:data.datas
+			}
+			api.p_guestavatar(params).then(res => {
+				console.log(res)
+				this.setData({ 
+					fileurl:data.datas,
+					imgshow: false
+					});
+			}).catch(e => {
+			console.log(e)
+			})
 		}).catch(e => {
 		console.log(e)
 		})
+
 	},
 /**
  * 生命周期函数--监听页面加载
  */
 onLoad: function (options) {
-
+	let params ={
+	}
+	api.f_guestbaseInfo(params).then(res => {
+		console.log(res.data.datas)
+		let sexname=""
+		if(res.data.datas.sex == 0){
+			sexname="男"
+		}else if(res.data.datas.sex == 1){
+			sexname="女"
+		}else{
+			sexname="保密"
+		}
+		let jobname=""
+		if(res.data.datas.job == 1){
+			jobname="在职"
+		}else if(res.data.datas.job == 2){
+			jobname="小学"
+		}else if(res.data.datas.job == 3){
+			jobname="中学"
+		}else if(res.data.datas.job == 4){
+			jobname="大学"
+		}else{
+			jobname="其他"
+		}
+		let arr = JSON.parse(res.data.datas.region)
+		console.log(arr)
+		this.setData({ 
+			fileurl:res.data.datas.avatar,
+			name:res.data.datas.name,
+			age:res.data.datas.age,
+			userid:res.data.datas.idNo,
+			sex:sexname,
+			job:jobname,
+			area:arr
+		});
+	}).catch(e => {
+		Toast(e.errMsg);
+		console.log(e)
+	})
 },
 
 /**
