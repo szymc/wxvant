@@ -1,3 +1,4 @@
+var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
 Page({
@@ -6,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    logo: '',
     subscribeDate: '选择日期',
     show: false,
     isCalendar: false,
@@ -83,7 +85,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    api.f_companyInfo().then(res => {
+      console.log(res)
+      this.setData({
+        logo: res.data.datas.logo
+      })
+    })
   },
 
   /**

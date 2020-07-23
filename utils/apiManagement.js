@@ -28,6 +28,12 @@ const login = params => api._post("guest/login", params);
 const p_guestregister = params => api._post("guest/register", params);
 const f_guestsmsCode = params => api._get("guest/smsCode", params);
 const f_noticeGetInfo = params => api._get("notice/getInfo", params); // 用户须知
+
+// 基本信息
+const f_companyInfo = params => api._get("company/info", params);
+// 预约
+
+
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 
@@ -38,5 +44,6 @@ module.exports = {
     p_guestregister,
     f_guestsmsCode,
     f_noticeGetInfo,
+    f_companyInfo,
     upload
 }

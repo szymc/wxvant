@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username: '',
-    password: '',
+    username: 'admin',
+    password: '123456',
     nameErr: '',
     passErr: ''
   },
@@ -36,6 +36,7 @@ Page({
       password: this.data.password,
     }
     api.login(params).then(res => {
+      console.log(res)
       if (res.data.code != 200) {
         Dialog.alert({
           message: `${res.data.message}`,
