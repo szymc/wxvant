@@ -84,7 +84,6 @@ Page({
           Toast.fail(res.data.message);
           return
         }
-        Toast.fail(res.data.message);
         this.setData({
           expasswordmessage:"",
           acc_expassword:'',
@@ -92,6 +91,10 @@ Page({
           acc_newpassword:'',
           repasswordmessage:"",
           acc_repassword:'',
+        })
+        wx.redirectTo({
+          url: '/pages/userLogin/userLogin',
+          
         })
       }).catch(e => {
         Toast(e.errMsg);
