@@ -34,6 +34,11 @@
         is-link  
         link-type="navigateTo"
         url="/pages/changepassword/changepassword"/>
+        <van-cell 
+        bind:click="cancel"
+        title="退出登录" 
+        is-link  />
     </view>
     <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
 </view>

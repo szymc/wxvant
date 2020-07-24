@@ -1,6 +1,6 @@
 var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
-
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -42,7 +42,36 @@ Page({
       Toast(e.errMsg);
     })
   },
+  cancel(){
+    Dialog.confirm({
+    title: '提示',
+    message: '将退出登录, 是否继续?',
+  })
+    .then(() => {
+      wx.removeStorage({
+        key: 'token',
+        success (res) {
+          console.log(res)
+        }
 
+      })
+      wx.redirectTo({
+        url: '/pages/userLogin/userLogin',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    })
+    .catch(() => {
+      
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

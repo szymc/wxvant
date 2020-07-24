@@ -1,4 +1,4 @@
-<scroll-view class="scrollview">
+<!-- <scroll-view class="scrollview">
   <block wx:for="{{listArr}}" wx:key="index">
     <van-panel title="博物馆入场卷" status="{{item.idNo}}">
       <view>
@@ -42,12 +42,65 @@
   </van-panel>
   </block>
 </scroll-view>
-<view class="fixed-bottom" bindtap="loadMore">加载更多</view>
+<view class="fixed-bottom" bindtap="loadMore">加载更多</view> -->
 
-<!-- <scroll-view class="scrollview">
-  <block wx:for="{{listArr}}" wx:key="index" wx:for-item="caption">
-    <view wx:for="{{caption}}" wx:key="index">
-      <view class="item">{{item.title}} ({{item.author}})</view>
-    </view>
+<!-- <scroll-view class='dataContainer' scroll-y bindscrolltolower="nextDataPage">
+ 
+  <block wx:for="{{userList}}" wx:key="index">
+        <text>这是一条数据：{{item.data}}</text>
   </block>
+   
+  <view class='bottomline' wx:if="{{userList.length > 0}}" >{{isLastPage?"没有更多数据了":"加载中..."}}</view>
+  <view class='bottomline' wx:if="{{userList.length == 0}}" >暂时没有数据</view>
+
+
 </scroll-view> -->
+
+
+<scroll-view class="scroll_view" scroll-y bindscrolltolower="nextPage">
+  <view style="height:100vh">
+   <block wx:for="{{lists}}" wx:key="index">
+    <van-panel title="博物馆入场卷" status="{{item.idNo}}">
+      <view>
+          <van-cell-group >
+              <van-field
+              label-class="label-class"
+              value="{{item.name}}"
+              label="姓名"
+              readonly
+              border="{{ false }}"
+              />
+              <van-field
+              label-class="label-class"
+              value="{{item.idNo}}"
+              label="证件号"
+              readonly
+              border="{{ false }}"
+              />
+              <van-field
+              label-class="label-class"
+              value="{{item.phone}}"
+              label="手机号"
+              readonly
+              border="{{ false }}"
+              />
+              <van-field
+              label-class="label-class"
+              value="{{item.visitDate}}"
+              label="参观日期"
+              readonly
+              border="{{ false }}"
+              />
+          </van-cell-group>
+      </view>
+      <view class="statussty">
+        状态
+        <view style="color: {{item.color}};">
+          {{item.status}}
+        </view>
+      </view>
+  </van-panel>
+   </block>
+  </view>
+  <van-toast id="van-toast" />
+ </scroll-view>
