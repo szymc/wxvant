@@ -52,18 +52,15 @@ const orderSave = params => api._post("order/save", params);
 
 //  改签   
 
-<<<<<<< HEAD
 const update_endorse = params => api._post("order/endorse", params);                       
 const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
 
-=======
 const update_endorse = params => api._post("order/endorse", params);    
 
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
 const   p_guestcomplete  = params => api._post("guest/complete", params); 
->>>>>>> cd71464f0240c69e2ec8c7b43b81609ade126650
 // 导出接口
 module.exports = {
         login,
@@ -88,10 +85,6 @@ module.exports = {
         contactsEel,
         orderSave,
         upload,
-<<<<<<< HEAD
-        p_introductiongetAllIntrduction
-=======
         p_introductiongetAllIntrduction,
         p_guestcomplete
->>>>>>> cd71464f0240c69e2ec8c7b43b81609ade126650
 }
