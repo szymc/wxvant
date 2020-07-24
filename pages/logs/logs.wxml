@@ -1,12 +1,53 @@
-<!-- <image src='{{personImage}}' bindtap='changeAvatar' ></image> -->
+<scroll-view class="scrollview">
+  <block wx:for="{{listArr}}" wx:key="index">
+    <van-panel title="博物馆入场卷" status="{{item.idNo}}">
+      <view>
+          <van-cell-group >
+              <van-field
+              label-class="label-class"
+              value="{{item.name}}"
+              label="姓名"
+              readonly
+              border="{{ false }}"
+              />
+              <van-field
+              label-class="label-class"
+              value="{{item.idNo}}"
+              label="证件号"
+              readonly
+              border="{{ false }}"
+              />
+              <van-field
+              label-class="label-class"
+              value="{{item.phone}}"
+              label="手机号"
+              readonly
+              border="{{ false }}"
+              />
+              <van-field
+              label-class="label-class"
+              value="{{item.visitDate}}"
+              label="参观日期"
+              readonly
+              border="{{ false }}"
+              />
+          </van-cell-group>
+      </view>
+      <view class="statussty">
+        状态
+        <view style="color: {{item.color}};">
+          {{item.status}}
+        </view>
+      </view>
+  </van-panel>
+  </block>
+</scroll-view>
+<view class="fixed-bottom" bindtap="loadMore">加载更多</view>
 
-<view class="container">
-  <view>
-  <button type="default" bindtap="gotoShow" >点击上传照片</button> 
-  </view>
-  <view>
-  <image class= "show-image" mode="aspectFitf" src="{{src}}"></image>
-  </view>
- </view>
- 
- 
+<!-- <scroll-view class="scrollview">
+  <block wx:for="{{listArr}}" wx:key="index" wx:for-item="caption">
+    <view wx:for="{{caption}}" wx:key="index">
+      <view class="item">{{item.title}} ({{item.author}})</view>
+    </view>
+  </block>
+</scroll-view> -->

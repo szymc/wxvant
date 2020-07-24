@@ -1,28 +1,36 @@
 // pages/register/register.js
+var api = require('../../utils/apiManagement.js');
 import { isCellphone } from '../../utils/util'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    name: '',
     phone: '',
     sms: '',
+    isSms: false,
     password: '',
     checkpass: '',
     checked: false,
     // 表单验证
+    nameMsg: '',
     phoneMsg: '',
     smsMsg: '',
     passMsg: '',
     checkpassMsg: ''
   },
+  inputName(event) {
+    this.setData({ name: event.detail })
+  },
   inputPhone(event) {
-    this.setData({phone: event.detail})
+    this.setData({ phone: event.detail })
   },
   inputSms(event) {
-    this.setData({sms: event.detail})
+    this.setData({ sms: event.detail })
   },
   sendSms() {
     if (this.data.phone.length == 0) {
@@ -33,13 +41,28 @@ Page({
       Toast.fail('请输入正确的手机格式');
       return
     }
-    
+
+    let params = {
+      phone: this.data.phone,
+      isUser: true
+    }
+    api.f_guestsmsCode(params).then(res => {
+      if (res.data.code == 200) {
+        Notify({ type: 'primary', message: '验证码发送成功,5分钟内有效' });
+        this.setData({ isSms: true })
+      } else {
+        Toast.fail(res.data.message);
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+
   },
   inputPass(event) {
-    this.setData({password: event.detail})
+    this.setData({ password: event.detail })
   },
   inputCheckpass(event) {
-    this.setData({checkpass: event.detail})
+    this.setData({ checkpass: event.detail })
   },
   blurCheckpass(event) {
     let message = '';
@@ -56,44 +79,56 @@ Page({
     });
   },
   userInfo() {
-
+    wx.navigateTo({ url: '/pages/userLoginInfo/userLoginInfo' })
   },
   submit() {
-    if (this.data.phone.length == 0) {
-      this.setData({phoneMsg: '手机号不能为空'})
-      return
-    } else if (!isCellphone(this.data.phone)) {
-      this.setData({phoneMsg: '请输入正确的手机格式'})
+    if (this.data.name.length == 0) {
+      this.setData({ nameMsg: '用户名不能为空' })
       return
     } else {
-      this.setData({phoneMsg: ''})
+      this.setData({ nameMsg: '' })
+    }
+
+    if (this.data.phone.length == 0) {
+      this.setData({ phoneMsg: '手机号不能为空' })
+      return
+    } else if (!isCellphone(this.data.phone)) {
+      this.setData({ phoneMsg: '请输入正确的手机格式' })
+      return
+    } else {
+      this.setData({ phoneMsg: '' })
+    }
+
+    if (!this.data.isSms) {
+      Toast.fail('请先发送验证码或发送失败');
+      return
     }
 
     if (this.data.sms.length == 0) {
-      this.setData({smsMsg: '验证码不能为空'})
+      this.setData({ smsMsg: '验证码不能为空' })
       return
     } else {
-      this.setData({smsMsg: ''})
+      this.setData({ smsMsg: '' })
     }
 
     if (this.data.password.length == 0) {
-      this.setData({passMsg: '密码不能为空'})
+      this.setData({ passMsg: '密码不能为空' })
       return
     } else if (!(/^.{6,20}$/.test(this.data.password))) {
-      this.setData({passMsg: '密码长度为6-20位'})
+      this.setData({ passMsg: '密码长度为6-20位' })
       return
     } else {
-      this.setData({passMsg: ''})
+      this.setData({ passMsg: '' })
     }
 
     if (this.data.checkpass.length == 0) {
-      this.setData({checkpassMsg: '确认密码不能为空'})
+      this.setData({ checkpassMsg: '确认密码不能为空' })
       return
     } else if (this.data.password != this.data.checkpass) {
-      this.setData({checkpassMsg: '两次密码输入不一致'})
+      this.setData({ checkpassMsg: '两次密码输入不一致' })
       return
     } else {
-      this.setData({passMsg: ''})
+      this.setData({ passMsg: '' })
     }
     if (this.data.checkpassMsg.length > 0) return
 
@@ -101,8 +136,27 @@ Page({
       Toast.fail('注册需同意用户须知');
       return
     }
-    
-    wx.navigateBack()
+
+    let params = {
+      account: this.data.name,
+      phone: this.data.phone,
+      captcha: this.data.sms,
+      password: this.data.password,
+      password2: this.data.checkpass,
+      read: String(this.data.checked)
+    }
+    api.p_guestregister(params).then(res => {
+      if (res.data.code == 200) {
+        Dialog.alert({
+          message: '恭喜您，注册成功，将前往登录界面',
+        }).then(() => {
+          wx.navigateBack()
+        });
+      } else {
+        Toast.fail(res.data.message);
+      }
+    })
+    // wx.navigateBack()
   },
 
   /**

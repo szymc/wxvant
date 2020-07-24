@@ -27,7 +27,11 @@
 		},
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false,
+<<<<<<< HEAD
 		"compileHotReLoad": false
+=======
+		"useIsolateContext": true
+>>>>>>> b3b6a42c4823b800897a121ea84e82f72a3ae3d6
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",

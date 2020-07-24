@@ -1,5 +1,5 @@
 <view class="bc">
-    <view class="mianban" wx:for="{{tabledata}}" wx:key="item.id">
+    <view class="mianban" wx:for="{{tabledata}}" wx:key="index">
     <van-panel title="博物馆入场卷" status="{{item.noid}}" use-footer-slot >
         <view>
             <van-cell-group>

@@ -6,6 +6,7 @@
             </view>
             <view class="boxrow_2">
                 <van-cell-group>
+                    <van-field value="{{ name }}" clearable label="用户名" placeholder="请输入用户名" bind:change="inputName" error-message="{{nameMsg}}"/>
                     <van-field value="{{ phone }}" clearable label="手机号" placeholder="请输入手机号" bind:change="inputPhone" error-message="{{phoneMsg}}"/>
                     <van-field value="{{ sms }}" center clearable label="短信验证码" placeholder="请输入短信验证码"  bind:change="inputSms" use-button-slot error-message="{{smsMsg}}">
                         <van-button slot="button" size="small" type="primary" bind:click="sendSms">发送验证码</van-button>
@@ -28,3 +29,4 @@
         <van-toast id="van-toast" />
     </view>
 </van-row>
+<van-notify id="van-notify" />

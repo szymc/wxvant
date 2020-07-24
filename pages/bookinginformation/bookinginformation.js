@@ -1,4 +1,6 @@
-// pages/bookinginformation/bookinginformation.js
+var api = require('../../utils/apiManagement.js');
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
   /**
@@ -9,99 +11,162 @@ Page({
       {
         id:1,
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
-        noid:"NO.123456789",
+        visitDate:'2020-07-20 14：00-17：30',
         status:"弃票",
         color:"red"
       },
       {
         id:2,
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
-        noid:"NO.123456789",
+        visitDate:'2020-07-20 14：00-17：30',
         status:"已使用",
         color:"#323233"
       },
       {
         id:3,
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
-        noid:"NO.123456789",
+        visitDate:'2020-07-20 14：00-17：30',
         status:"待使用",
         color:"#1AAD19"
       },
       {
         id:1,
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
-        noid:"NO.123456789",
+        visitDate:'2020-07-20 14：00-17：30',
         status:"弃票",
         color:"red"
       }
-    ]
+    ],
+    pageIndex:1,    //展示的当前页码
+    pageSize: 40,   //每页加载的数据量（使用的json数据就是40条，实际工作根据需求来）
+    pageCount:3,    //总页数(假设的，实际应该是根据后台返回的数据)
+  },
+  
+  //加载初始页数据
+  loadInitData(){
+    var that = this
+    // 刷新时，清空listArr，防止新数据与原数据冲突
+    that.setData({
+      tabledata: []
+    })
+    let params ={
+      pageNo:this.data.pageIndex
+    }
+    api.f_orderlist(params).then(res => {
+      
+          var tempList = res.data.datas
+          
+          tempList.records.forEach(element => {
+            console.log(element)
+            
+            if(tempList.status == 1){
+              let listArr=element.push({status:'待使用',color:"#1AAD19"})
+            //   that.setData({
+            //     tabledata:[
+            //       {
+            //         status:'待使用',
+            //         color:"#1AAD19"
+            //       }
+            //     ]
+              // })
+            }else if(tempList.status==2){
+              let listArr=element.push({status:'已使用',color:"#1296DB"})
+            //   that.setData({
+            //     status:'已使用',
+            //     color:"#1296DB"
+            //   })
+            }else if(tempList.status==3){
+              let listArr=element.push({status:'弃票',color:"red"})
+            //   that.setData({
+            //     status:'弃票',
+            //     color:"red"
+            //   })
+            }else if(tempList.status==4){
+              let listArr=element.push({status:'取消预约',color:"#323233"})
+            //   that.setData({
+            //     status:'取消预约',
+            //     color:"#323233"
+            //   })
+            }
+            console.log(listArr)
+          });
+          console.log(listArr)
+          that.setData({
+            pageIndex: tempList.pages,
+            pageCount:tempList.total,
+            pageSize:tempList.pageSize,
+            tabledata:tempList.records,
+          })
+    }).catch(e => {
+      Toast(e.errMsg);
+      console.log(e)
+    })
+  },
+
+  //加载更多
+  loadMore(){
+    var that = this
+    var pageIndex = that.data.pageIndex
+    pageIndex += 1
+    wx.showLoading({
+      title: '加载第'+ pageIndex +'页',
+    })
+    let params ={
+      pageNo:pageIndex
+    }
+    api.f_orderlist(params).then(res => {
+      //将新一页的数据添加到原数据后面
+      let newList = res.data.data;
+      that.setData({
+        pageIndex: pageIndex,
+        ['tabledata[' + (pageIndex - 1) + ']'] : newList
+      })
+      console.log(that.data.tabledata)
+    }).catch(e => {
+      Toast(e.errMsg);
+      console.log(e)
+    })
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    this.loadInitData()
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let that = this
+    that.loadInitData()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    let that= this,
+        pageIndex = that.data.pageIndex,
+        pageCount = that.data.pageCount;
+    //当页面小于总页数时加载下页面
+    if(pageIndex < pageCount){
+      that.loadMore()
+    }else{
+      wx.showToast({
+        title: '没有更多数据了',
+      })
+    }
   }
+
 })

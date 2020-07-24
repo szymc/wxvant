@@ -19,7 +19,7 @@
         </view>
     </view>
     <view class="confirmPerson">
-        <block wx:for="{{list1}}" wx:key="item.id" class="confirmPerson_1">
+        <block wx:for="{{list1}}" wx:key="index" class="confirmPerson_1">
             <van-cell>
                 <view slot="title" class="certer">
                     <view class="linetext2">

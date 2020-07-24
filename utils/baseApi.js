@@ -8,7 +8,8 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             ...other,
             header: {
 				'sys-token': token,
-				'content-type': contentType 
+                'content-type': contentType 
+   
             },
             success: function(res) {
               console.log(res.data.msg)
@@ -21,7 +22,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         success: (e) => {
                             if (e.confirm) {
                                 wx.navigateTo({
-                                    url: 'pages/userLogin/userLogin'
+                                    url: '/pages/userLogin/userLogin'
                                 })
                             }
                         },
@@ -50,7 +51,7 @@ const _get = (url, param = {}) => {
         url,
         param,
         method: 'get',
-        contentType:"application/x-www-form-urlencoded"
+        // contentType:"application/x-www-form-urlencoded"
     })
 }
 
@@ -96,6 +97,7 @@ const _upload = (url, file) => {
             })
         })
     }
+
 module.exports = {
     baseUrl,
     _get,    

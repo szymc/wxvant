@@ -1,44 +1,32 @@
+// pages/userLoginInfo/userLoginInfo.js
 var api = require('../../utils/apiManagement.js');
-import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    htmlSnip: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let params ={
-    }
-    api.f_guestbaseInfo(params).then(res => {
-      console.log(res.data.datas)
-      
-      // this.setData({ 
-      //   fileurl:res.data.datas.avatar,
-      //   name:res.data.datas.name,
-      //   age:res.data.datas.age,
-      //   userid:res.data.datas.idNo,
-      //   sex:sexname,
-      //   job:jobname,
-      //   area:arr
-      // });
-    }).catch(e => {
-      Toast(e.errMsg);
-      console.log(e)
-    })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    api.f_noticeGetInfo().then( res => {
+      if (res.data.code == 200) {
+        this.setData({
+          htmlSnip: res.data.datas.content
+        })
+      }     
+    })
   },
 
   /**
