@@ -47,7 +47,7 @@ const contactsModify = params => api._post("contacts/modify", params);
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
-
+const   p_guestcomplete  = params => api._post("guest/complete", params); 
 // 导出接口
 module.exports = {
         login,
@@ -68,5 +68,6 @@ module.exports = {
         f_contactsinfo,
         contactsModify,
         upload,
-        p_introductiongetAllIntrduction
+        p_introductiongetAllIntrduction,
+        p_guestcomplete
 }

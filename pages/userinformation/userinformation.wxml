@@ -17,26 +17,19 @@
             </view>
         </van-popup>
         <van-toast id="van-toast" />
-        <van-cell title="用户姓名" is-link value="{{name}}" size="large" bind:click="showname" value-class="value-class"/>
-        <van-cell title="证件号码" is-link value="{{userid}}" size="large" bind:click="showuserid" value-class="value-class"/>
-        <van-cell title="年龄" is-link value="{{age}}" size="large" bind:click="showage" value-class="value-class"/>
-        <van-cell title="性别" is-link value="{{sex}}" size="large" bind:click="showsex" value-class="value-class"/>
-            <van-action-sheet
-            show="{{ sexshow }}"
-            actions="{{ sexactions }}"
-            bind:close="onClosesexshow"
-            bind:select="onSelectsexshow"
-            />
-        <van-cell title="职业" is-link value="{{job}}" size="large" bind:click="showjob" value-class="value-class"/>
-            <van-action-sheet
-            show="{{ jobshow }}"
-            actions="{{ jobactions }}"
-            bind:close="onClosejobshow"
-            bind:select="onSelectjobshow"
-            />
-        <van-cell title="地区" is-link value="{{area}}" size="large" bind:click="showregion" value-class="value-class"/>
-            <van-popup show="{{ regionshow }}" position="bottom" custom-style="height: 40%;" >
-                <van-area  show-toolbar title="选择地区"  bind:confirm="onConfirm"  bind:cancel="onCancel" area-list="{{ areaList }}" />
-            </van-popup>
+        <van-cell title="真实姓名"  value="{{name}}" size="large"  value-class="value-class"/>
+        <van-cell title="电话号码"  value="{{phone}}" size="large"  value-class="value-class"/>
+        <van-cell title="证件号码"  value="{{userid}}" size="large"  value-class="value-class"/>
+            
+        <van-cell title="年龄"  value="{{age}}" size="large"  value-class="value-class"/>
+        <van-cell title="性别"  value="{{sex}}" size="large" value-class="value-class"/>
+            
+        <van-cell title="职业"  value="{{job}}" size="large"  value-class="value-class"/>
+           
+        <van-cell title="地区"  value="{{area}}" size="large"  value-class="value-class"/>
+           
     </van-cell-group>
+    <view class="btn">
+      <van-button color="#1296DB" size="normal" bind:click = 'gotoModifyinformation'>修改个人信息</van-button>
+    </view>
 </view>

@@ -11,6 +11,7 @@
     "pages/subscribeAdd/subscribeAdd",
     "pages/subscribeEdit/subscribeEdit",
     "pages/userinformation/userinformation",
+    "pages/Modifyinformation/Modifyinformation",
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",
     "pages/changepassword/changepassword",

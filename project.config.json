@@ -103,9 +103,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/changepassword/changepassword",
-					"pathName": "pages/changepassword/changepassword",
+					"id": 5,
+					"name": "pages/Modifyinformation/Modifyinformation",
+					"pathName": "pages/Modifyinformation/Modifyinformation",
 					"query": "",
 					"scene": null
 				}
