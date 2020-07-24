@@ -57,7 +57,7 @@ const update_endorse = params => api._post("order/endorse", params);
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
-
+const   p_guestcomplete  = params => api._post("guest/complete", params); 
 // 导出接口
 module.exports = {
         login,
@@ -82,5 +82,6 @@ module.exports = {
         contactsEel,
         orderSave,
         upload,
-        p_introductiongetAllIntrduction
+        p_introductiongetAllIntrduction,
+        p_guestcomplete
 }

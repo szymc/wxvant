@@ -13,6 +13,7 @@
     "pages/subscribeEdit/subscribeEdit",
     "pages/subscribeSuccess/subscribeSuccess",
     "pages/userinformation/userinformation",
+    "pages/Modifyinformation/Modifyinformation",
     "pages/myreservation/myreservation",
     "pages/bookinginformation/bookinginformation",
     "pages/changepassword/changepassword",
