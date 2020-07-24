@@ -46,19 +46,16 @@ const contactsModify = params => api._post("contacts/modify", params);
 const contactsAdd = params => api._post("contacts/add", params);
 const contactsEel = params => api._post("contacts/del", params);
 
-<<<<<<< HEAD
 // 上传
-const   upload  = params => api._upload("file/upload", params); //  上传   
+// const   upload  = params => api._upload("file/upload", params); //  上传   
 
 //  改签   
 
 const update_endorse = params => api._post("order/endorse", params);    
 
-=======
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
->>>>>>> 565be4cb6b7b68c35fcaae26e41ed3001d852a65
 
 // 导出接口
 module.exports = {
@@ -76,9 +73,7 @@ module.exports = {
         f_guestbaseInfo,
         p_guestavatar,
         f_orderlist,
-<<<<<<< HEAD
-        update_endorse
-=======
+        update_endorse,
         f_contactslist,
         f_contactsinfo,
         contactsModify,
@@ -86,5 +81,4 @@ module.exports = {
         contactsEel,
         upload,
         p_introductiongetAllIntrduction
->>>>>>> 565be4cb6b7b68c35fcaae26e41ed3001d852a65
 }
