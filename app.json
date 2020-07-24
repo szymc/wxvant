@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/userLogin/userLogin",
+    "pages/test/test",
     "pages/launch/launch",
     "pages/userLoginInfo/userLoginInfo",
     "pages/register/register",
-    "pages/userLogin/userLogin",
-    "pages/index/index",
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",
@@ -20,9 +21,8 @@
     "pages/audienceguidelines/audienceguidelines",
     "pages/museumintroduced/museumintroduced",
     "pages/location/location",
-    "pages/upload/upload",
-    "pages/test/test",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/upload/upload"
   ],
   "window": {
     "backgroundTextStyle": "dark",

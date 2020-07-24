@@ -47,6 +47,7 @@
         <van-cell title="门票预约" size="large" icon="bars"/>
         <van-cell title="预约参观日期选择" bind:click="onDisplay" is-link value="{{ subscribeDate }}"/>
             <van-calendar
+         
             show="{{ show }}"
             min-date="{{ minDate }}"
             max-date="{{ maxDate }}"

@@ -75,11 +75,20 @@ Page({
   },
   delete(evnet) {
     let id = evnet.currentTarget.dataset.id
-    // console.log(id)
     Dialog.confirm({
       message: '是否确定删除?',
     }).then(() => {
-      // on close
+      let params = {
+        id: id
+      }
+      api.contactsEel(params).then(res => {
+        if (res.data.code == 200) {
+          Toast.success('删除成功');
+          this.getContactsData()
+        } else {
+          Toast.fail(res.data.message);
+        }
+      })
     }).catch(() => {
 
     });

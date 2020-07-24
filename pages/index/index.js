@@ -1,8 +1,6 @@
 var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
-
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -25,7 +23,6 @@ Page({
     timeSlice2: '00:00-00:00',
     isGotoreinformation: true
   },
-  // 日历
   onDisplay() {
     this.setData({ show: true });
   },
@@ -33,6 +30,8 @@ Page({
     this.setData({ show: false });
   },
   formatDate(date) {
+
+
     date = new Date(date);
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   },
@@ -90,10 +89,11 @@ Page({
       if (this.data.remain1 == 0) {
         Toast.fail('该时间段暂无票，请重新选择');
         return
-      }
+      }    
       timeSlice = this.data.timeSlice1
     } else if (this.data.radio == 2) {
-      if (this.data.remain2 == 0) {
+      if (this.data.remain2 == 0) {3
+
         Toast.fail('该时间段暂无票，请重新选择');
         return
       }
@@ -105,6 +105,7 @@ Page({
 
   ticketInfo() {
     api.getTicketInfo().then(res => {
+      // console.log(res)
       this.setData({
         timeSlice1: res.data.datas.duration1,
         timeSlice2: res.data.datas.duration2,
