@@ -1,4 +1,5 @@
 // pages/subscribeEdit/subscribeEdit.js
+var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import { isCellphone, CheckIdCard } from '../../utils/util'
 import { AreaList } from '../../utils/area'
@@ -8,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id: '',
     name: '',
     idNo: '',
     sex: '请选择性别',
@@ -47,6 +49,7 @@ Page({
     areaCode: [],
     showAreaSelect: false,
     areaList: AreaList,
+    countyCode: '',
     // 表单验证
     nameMsg: '',
     cardMsg: '',
@@ -169,6 +172,9 @@ Page({
     }
     if (this.data.cardMsg.length > 0) return
 
+    if (this.data.sex == '男' || this.data.sex == '女' || this.data.sex == '保密') {
+      this.setData({sexChoose: true})
+    }
     if (!this.data.sexChoose) {
       Toast.fail('请选择性别');
       return
@@ -183,6 +189,9 @@ Page({
     }
     if (this.data.phoneMsg.length > 0) return
 
+    if (this.data.job != '请选择职业') {
+      this.setData({jobChoose: true})
+    }
     if (!this.data.jobChoose) {
       Toast.fail('请选择职业');
       return
@@ -210,21 +219,101 @@ Page({
       job = '5'
     }
 
-    // console.log(this.data.name)
-    // console.log(this.data.idNo)
-    // console.log(sex)
-    // console.log(this.data.phone)
-    // console.log(job)
-    // console.log(this.data.areaCode)
-
-    wx.navigateBack()
+    let params = {
+      id: this.data.id,
+      name: this.data.name,
+      idNo: this.data.idNo,
+      sex: sex,
+      phone: this.data.phone,
+      job: job,
+      province: this.data.areaCode[0],
+      city: this.data.areaCode[1],
+      district: this.data.areaCode[2]
+    }
+    api.contactsModify(params).then(res => {
+      if (res.data.code == 200) {
+        Toast({
+          duration: 1000,
+          type: 'success',
+          message: '提交成功',
+          onClose: () => {
+            this.getData()
+            wx.navigateBack()
+          },
+        });
+      } else {
+        Toast.fail(res.data.message);
+      }
+    }).catch(e => {
+      console.log(e)
+    })
   },
 
+  // 加载数据
+  getData() {
+    let params = {
+      id: this.data.id
+    }
+    api.f_contactsinfo(params).then(res => {
+      if (res.data.code == 200) {
+
+        let sex = '';
+        if (res.data.datas.sex == 0) {
+          sex = '男'
+        } else if (res.data.datas.sex == 1) {
+          sex = '女'
+        } else if (res.data.datas.sex == 2) {
+          sex = '保密'
+        }
+
+        let job = '';
+        if (res.data.datas.job == 1) {
+          job = '在职'
+        } else if (res.data.datas.job == 2) {
+          job = '小学'
+        } else if (res.data.datas.job == 3) {
+          job = '中学'
+        } else if (res.data.datas.job == 4) {
+          job = '大学'
+        } else if (res.data.datas.job == 5) {
+          job = '其他'
+        } 
+
+        let areacodeArr = [res.data.datas.province, res.data.datas.city, res.data.datas.district]
+        let arrName = ''
+        if (res.data.datas.province != null && res.data.datas.province.length > 0) {
+          if (res.data.datas.city != null && res.data.datas.city.length > 0) {
+            if (res.data.datas.district != null && res.data.datas.district.length > 0) {
+              arrName = `${AreaList.province_list[res.data.datas.province]},${AreaList.city_list[res.data.datas.city]},${AreaList.county_list[res.data.datas.district]}`
+              this.setData({
+                areaCode: areacodeArr,
+                countyCode: res.data.datas.district
+              })
+            }
+          }
+        } else {
+          arrName = '请选择地区'
+        }
+
+        this.setData({
+          name: res.data.datas.name,
+          idNo: res.data.datas.idNo,
+          sex: sex,
+          phone: res.data.datas.phone,
+          job: job,
+          area: arrName
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
+    this.setData({
+      id:options.id
+    })
+    this.getData();
   },
 
   /**

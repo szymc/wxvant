@@ -41,6 +41,8 @@ const f_companyInfo = params => api._get("company/info", params);
 const getTickets = params => api._get("order/remain", params);
 const getTicketInfo = params => api._get("order/ticketInfo", params);
 const f_contactslist = params => api._get("contacts/list", params);
+const f_contactsinfo = params => api._get("contacts/info", params);
+const contactsModify = params => api._post("contacts/modify", params);
 
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
@@ -63,6 +65,8 @@ module.exports = {
         p_guestavatar,
         f_orderlist,
         f_contactslist,
+        f_contactsinfo,
+        contactsModify,
         upload,
         p_introductiongetAllIntrduction
 }
