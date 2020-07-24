@@ -1,13 +1,14 @@
 // pages/subscribe/subscribe.js
 var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
-import Dialog  from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    hostid: '',
     subscribeDate: '2020.7.20',
     timeSlice: '00:00-00:00',
     total: 0,
@@ -37,7 +38,7 @@ Page({
     }
     let listarr = []
     if (this.data.list2.length > 0) {
-      this.data.list2.forEach( item => {
+      this.data.list2.forEach(item => {
         if (this.data.result.includes(String(item.id))) {
           listarr.push(item)
         }
@@ -49,7 +50,7 @@ Page({
     });
   },
   add() {
-    wx.navigateTo({url:'/pages/subscribeAdd/subscribeAdd'})
+    wx.navigateTo({ url: '/pages/subscribeAdd/subscribeAdd' })
   },
   onChange(event) {
     // console.log(event.detail)
@@ -70,8 +71,7 @@ Page({
   },
   edit(evnet) {
     let id = evnet.currentTarget.dataset.id
-    // console.log(id)
-    wx.navigateTo({url:'/pages/subscribeEdit/subscribeEdit'})
+    wx.navigateTo({ url: `/pages/subscribeEdit/subscribeEdit?id=${id}` })
   },
   delete(evnet) {
     let id = evnet.currentTarget.dataset.id
@@ -81,11 +81,25 @@ Page({
     }).then(() => {
       // on close
     }).catch(() => {
-      
+
     });
   },
   cmdSubmit() {
     console.log('11')
+  },
+  // 获取游客列表
+  getContactsData() {
+    api.f_contactslist().then(res => {
+      if (res.data.code == 200) {
+        let listArr = res.data.datas2
+        listArr.unshift(res.data.datas)
+        this.setData({
+          hostid: res.data.datas.id,
+          list2: listArr
+        })
+      }
+
+    })
   },
 
   /**
@@ -96,10 +110,6 @@ Page({
       subscribeDate: options.date,
       radio: options.radio,
       timeSlice: options.timeSlice
-    })
-
-    api.f_contactslist().then(res => {
-      console.log(res)
     })
   },
 
@@ -114,7 +124,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getContactsData()
   },
 
   /**
