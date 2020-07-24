@@ -30,7 +30,6 @@ Page({
       pageNo:this.data.pageIndex
     }
     api.f_orderlist(params).then(res => {
-      console.log(res.data.datas)
           var tempList = res.data.datas
           that.setData({
             pageIndex: tempList.pages,
@@ -39,7 +38,6 @@ Page({
             listArr:tempList.records,
           })
     }).catch(e => {
-      console.log(e)
     })
   },
 
@@ -61,9 +59,7 @@ Page({
         pageIndex: pageIndex,
         ['listArr[' + (pageIndex - 1) + ']'] : newList
       })
-      console.log(that.data.listArr)
     }).catch(e => {
-      console.log(e)
     })
 
   },

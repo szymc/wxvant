@@ -1,6 +1,6 @@
 <view class="bc">
     <view class="mianban" wx:for="{{tabledata}}" wx:key="index">
-    <van-panel title="博物馆入场卷" status="{{item.noid}}" use-footer-slot >
+    <van-panel title="博物馆入场卷" status="NO.{{item.id}}" use-footer-slot >
         <view>
             <van-cell-group>
                 <van-field
@@ -10,7 +10,7 @@
                   border="{{ false }}"
                 />
                 <van-field
-                  value="{{item.cardid}}"
+                  value="{{item.idNo}}"
                   label="证件号"
                   readonly
                   border="{{ false }}"
@@ -22,7 +22,7 @@
                   border="{{ false }}"
                 />
                 <van-field
-                  value="{{item.visitiedata}}"
+                  value="{{item.visitDate}}"
                   label="参观日期"
                   readonly
                   border="{{ false }}"
@@ -30,10 +30,12 @@
               </van-cell-group>
         </view>
         <view slot="footer" class="btn">
-          <van-button size="small" color="#1296DB"  bind:click='gotocheck'>取票</van-button>
+          <van-button size="small" color="#1296DB"  bind:click='gotocheck' data-id="{{item.id}}">取票</van-button>
           <van-button size="small" bind:click='changetick'>改签</van-button>
-          <van-button size="small" type="danger">取消</van-button>
+          <van-button size="small" type="danger" bind:click='cancel' data-id="{{item.id}}">取消</van-button>
         </view>
     </van-panel>
     </view>
+    <van-dialog id="van-dialog" />
+    <van-toast id="van-toast" />
 </view>

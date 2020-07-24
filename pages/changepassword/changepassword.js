@@ -1,13 +1,12 @@
-// pages/changepassword/changepassword.js
+var api = require('../../utils/apiManagement.js');
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    expassword:'',
-    newpassword:'',
-    repassword:'',
+    
     expasswordmessage:"",
     acc_expassword:'',
     newpasswordmessage:"",
@@ -16,7 +15,7 @@ Page({
     acc_repassword:'',
   },
   expasswordchange: function (event){
-    const expassword = event.detail || event;
+    const expassword = event.detail ;
     let message = '';
     if(expassword){
       if(/^.{6,20}$/.test(expassword)){
@@ -33,7 +32,7 @@ Page({
     });
   },
   newpasswordchange: function (event){
-    const newpassword = event.detail || event;
+    const newpassword = event.detail ;
     let message = '';
     if(newpassword){
       if(/^.{6,20}$/.test(newpassword)){
@@ -50,7 +49,7 @@ Page({
     });
   },
   repasswordchange: function (event){
-    const repassword = event.detail || event;
+    const repassword = event.detail;
     let message = '';
     if(repassword){
       if(/^.{6,20}$/.test(repassword)){
@@ -72,8 +71,36 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  ensure(){
+    if(this.data.acc_expassword == ""||this.data.acc_newpassword == ""||this.data.acc_repassword == ""){
+      Toast.fail('输入框不能为空');
+    }else{
+      let params ={
+        oldPassword:this.data.acc_expassword,
+        password:this.data.acc_newpassword
+      }
+      api.p_guestpassword(params).then(res => {
+        if (res.data.code == 100007) {
+          Toast.fail(res.data.message);
+          return
+        }
+        Toast.fail(res.data.message);
+        this.setData({
+          expasswordmessage:"",
+          acc_expassword:'',
+          newpasswordmessage:"",
+          acc_newpassword:'',
+          repasswordmessage:"",
+          acc_repassword:'',
+        })
+      }).catch(e => {
+        Toast(e.errMsg);
+      })
+    }
+    
+  },
   onLoad: function (options) {
-
+   
   },
 
   /**

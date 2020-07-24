@@ -53,7 +53,6 @@ Page({
   },
   // 预约
   gotoreinformation(){
-    // console.log(this.data)
     if (!this.data.isCalendar) {
       Toast.fail('请选择一个日期');
       return

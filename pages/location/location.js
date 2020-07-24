@@ -51,8 +51,8 @@ Page({
     wx.getLocation({
       type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
       success: function (res) {
-        console.log(res.latitude)
-        console.log(res.longitude)
+        // console.log(res.latitude)
+        // console.log(res.longitude)
         _this.setData({
           latitude: res.latitude,
           longitude: res.longitude,
@@ -74,21 +74,21 @@ Page({
   },
 
   regionchange(e) {
-    console.log("regionchange===" + e.type)
+    // console.log("regionchange===" + e.type)
   },
 
   //点击merkers
   markertap(e) {
     var _this = this;
-    console.log(e.markerId)
+    // console.log(e.markerId)
 
     wx.showActionSheet({
       itemList: ["出发"],
       success: function (res) {
-        console.log(res.tapIndex)
+        // console.log(res.tapIndex)
       },
       fail: function (res) {
-        console.log(res.errMsg)
+        // console.log(res.errMsg)
       }
     })
   },
@@ -96,7 +96,7 @@ Page({
   //点击缩放按钮动态请求数据
   controltap(e) {
     var that = this;
-    console.log("scale===" + this.data.scale)
+    // console.log("scale===" + this.data.scale)
     if (e.controlId === 1) {
       // if (this.data.scale === 13) {
       that.setData({
