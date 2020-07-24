@@ -3,4 +3,5 @@
         观众须知
     </view>
     <rich-text nodes="{{htmlSnip}}"></rich-text>
+    <van-toast id="van-toast" />
 </view>

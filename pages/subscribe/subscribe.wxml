@@ -23,9 +23,9 @@
             <van-cell>
                 <view slot="title" class="certer">
                     <view class="linetext2">
-                        <view>{{item.name}}</view><view>手机号: {{item.tel}}</view>
+                        <view>{{item.name}}</view><view>手机号: {{item.phone}}</view>
                     </view>
-                    <view>身份证: {{item.no}}</view>
+                    <view>身份证: {{item.idNo}}</view>
                 </view>
             </van-cell>
         </block>
@@ -58,14 +58,16 @@
                 <van-cell-group>
                     <van-cell wx:for="{{ list2 }}" wx:key="index" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
                         <view slot="icon" class="iconsty">
-                            <van-icon class="iconsty_c" name="edit" size="22px" bind:click="edit" data-id="{{item.id}}"/>
-                            <van-icon name="delete" size="22px" bind:click="delete" data-id="{{item.id}}"/>
+                            <view wx:if="{{item.id != hostid}}">
+                                <van-icon class="iconsty_c" name="edit" size="22px" bind:click="edit" data-id="{{item.id}}"/>
+                                <van-icon name="delete" size="22px" bind:click="delete" data-id="{{item.id}}"/>
+                            </view>
                         </view>
                         <view slot="title" class="titlesty">
                             <view class="linetext">
-                                <view>{{item.name}}</view><view>手机号: {{item.tel}}</view>
+                                <view>{{item.name}}</view><view>手机号: {{item.phone}}</view>
                             </view>
-                            <view>身份证: {{item.no}}</view>
+                            <view>身份证: {{item.idNo}}</view>
                         </view>
                         <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" label-disabled="true"/>
                     </van-cell>

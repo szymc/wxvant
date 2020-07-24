@@ -38,7 +38,7 @@
         <van-grid-item
           icon="todo-list"
           link-type="navigateTo"
-          url="/pages/myreservation/myreservation"
+          url="/pages/bookinginformation/bookinginformation"
           text="我的预约"
         />
       </van-grid>

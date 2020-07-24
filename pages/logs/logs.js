@@ -1,99 +1,173 @@
 var api = require('../../utils/apiManagement.js');
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    listArr:[],     //数据集合
-    pageIndex:1,    //展示的当前页码
-    pageSize: 40,   //每页加载的数据量（使用的json数据就是40条，实际工作根据需求来）
-    pageCount:3,    //总页数(假设的，实际应该是根据后台返回的数据)
-
+   lists: [],
+   page: 1,
+   pageCount:3, 
+   pageSize: 10,
   },
-  //加载初始页数据
-  loadInitData(){
+  //监听是否滑到底部
+  nextPage: function () {
     var that = this
-    // var pageIndex = 1
-    // if (that.data.pageIndex === 1){
-    //   wx.showLoading({
-    //     title: '加载中...',
-    //   })
-    // }
-    // 刷新时，清空listArr，防止新数据与原数据冲突
+  //  let new_lists = [];
+   let page = this.data.page;
+
+  //  let startindex = page * 10 + 1;
+   console.log("第" + page + "页滑到底部了,请求第" + (page + 1) + "页");
+   page += 1;
+   if(page<=this.data.pageCount){
+        let params ={
+          pageNo:page
+        }
+        api.f_orderlist(params).then(res => {
+          debugger
+              var newtempList = res.data.datas
+                let newlistArr=[]
+                newtempList.records.forEach(element => {
+                  if(element.status == 1){
+                    newlistArr.push(
+                      {
+                      "id":element.id,
+                      "name":element.name,
+                      "idNo":element.idNo,
+                      "phone":element.phone,
+                      "visitDate":element.visitDate,
+                      "status":'待使用',
+                      "color":"#1AAD19"}
+                      )
+                  }else if(element.status==2){
+                    newlistArr.push(
+                      {
+                      "id":element.id,
+                      "name":element.name,
+                      "idNo":element.idNo,
+                      "phone":element.phone,
+                      "visitDate":element.visitDate,
+                      "status":'已使用',
+                      "color":"#1296DB"}
+                      )
+                  }else if(element.status==3){
+                    newlistArr.push(
+                      {
+                      "id":element.id,
+                      "name":element.name,
+                      "idNo":element.idNo,
+                      "phone":element.phone,
+                      "visitDate":element.visitDate,
+                      "status":'弃票',
+                      "color":"red"}
+                      )
+                  }else if(element.status==4){
+                    newlistArr.push(
+                      {
+                      "id":element.id,
+                      "name":element.name,
+                      "idNo":element.idNo,
+                      "phone":element.phone,
+                      "visitDate":element.visitDate,
+                      "status":'取消预约',
+                      "color":"#323233"}
+                      )
+                  }
+                
+                });
+              that.setData({
+                page: newtempList.currentPage,
+                  pageCount:newtempList.pages,
+                  pageSize:newtempList.pageSize,
+                lists:this.data.lists.concat(newlistArr),
+              })
+            
+            
+        }).catch(e => {
+          Toast(e.errMsg);
+        })
+      }else{
+        Toast.fail('没有更多数据了')
+      }
+   //模拟请求
+  //  for (let i = startindex; i <= startindex + 9; i++) {
+  //   new_lists.push(i);
+  //  }
+  //  this.setData({ lists: this.data.lists.concat(new_lists), page: page });
+  },
+
+  onLoad: function (options) {
+    var that = this
     that.setData({
-      listArr: []
+      lists: []
     })
-
-
     let params ={
-      pageNo:this.data.pageIndex
+      pageNo:this.data.page
     }
     api.f_orderlist(params).then(res => {
           var tempList = res.data.datas
+          let listArr=[]
+          tempList.records.forEach(element => {
+            if(element.status == 1){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'待使用',
+                "color":"#1AAD19"}
+                )
+            }else if(element.status==2){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'已使用',
+                "color":"#1296DB"}
+                )
+            }else if(element.status==3){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'弃票',
+                "color":"red"}
+                )
+            }else if(element.status==4){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'取消预约',
+                "color":"#323233"}
+                )
+            }
+          });
           that.setData({
-            pageIndex: tempList.pages,
-            pageCount:tempList.total,
+            page: tempList.currentPage,
+            pageCount:tempList.pages,
             pageSize:tempList.pageSize,
-            listArr:tempList.records,
+            lists:listArr,
           })
     }).catch(e => {
-    })
-  },
-
-  //加载更多
-  loadMore(){
-    var that = this
-    var pageIndex = that.data.pageIndex
-    pageIndex += 1
-    wx.showLoading({
-      title: '加载第'+ pageIndex +'页',
-    })
-    let params ={
-      pageNo:pageIndex
-    }
-    api.f_orderlist(params).then(res => {
-      //将新一页的数据添加到原数据后面
-      let newList = res.data.data;
-      that.setData({
-        pageIndex: pageIndex,
-        ['listArr[' + (pageIndex - 1) + ']'] : newList
-      })
-    }).catch(e => {
+      Toast(e.errMsg);
     })
 
+
+  //  let lists = [];
+   //模拟请求
+  //  for (let i = this.data.page; i <= this.data.page + 9; i++) {
+  //   lists.push(i)
+  //  }
+  //  this.setData({ lists: lists, });
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.loadInitData()
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    let that = this
-    that.loadInitData()
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    let that= this,
-        pageIndex = that.data.pageIndex,
-        pageCount = that.data.pageCount;
-    //当页面小于总页数时加载下页面
-    if(pageIndex < pageCount){
-      that.loadMore()
-    }else{
-      wx.showToast({
-        title: '没有更多数据了',
-      })
-    }
-  }
-
-})
+ })

@@ -6,3 +6,7 @@
 .log-item {
   margin: 10rpx;
 }
+
+.scroll_view{
+  height:100vh;
+ }
