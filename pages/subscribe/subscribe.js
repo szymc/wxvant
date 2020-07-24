@@ -1,4 +1,5 @@
 // pages/subscribe/subscribe.js
+var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import Dialog  from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
@@ -95,6 +96,10 @@ Page({
       subscribeDate: options.date,
       radio: options.radio,
       timeSlice: options.timeSlice
+    })
+
+    api.f_contactslist().then(res => {
+      console.log(res)
     })
   },
 
