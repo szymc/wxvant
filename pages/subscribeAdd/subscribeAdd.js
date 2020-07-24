@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: '张三',
-    idNo: '360111199511280997',
+    name: '',
+    idNo: '',
     sex: '请选择性别',
     showsex: false,
     actionssex: [
@@ -24,7 +24,7 @@ Page({
         name: '保密',
       },
     ],
-    phone: '13122222222',
+    phone: '',
     jobshow: false,
     job: '请选择职业',
     jobactions: [

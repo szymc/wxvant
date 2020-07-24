@@ -47,8 +47,9 @@
                 <van-button type="info" size="small" class="popupBox_1_2" bind:click="submitChoose">确定</van-button>
             </view>
         </view>
-        <view class="popupBox_2" bindtap="add">
-            <view class="popupBox_2_1">+添加参观人员</view>
+        <view class="popupBox_2">
+            <view class="popupBox_2_1" bindtap="add" wx:if="{{list2.length < 4}}">+添加参观人员</view>
+            <view class="popupBox_2_1 popupBox_2_1_1" wx:else>添加参观人员已达上限</view>
         </view>
         <view class="popupBox_3">
             已选择<span class="tit">{{result.length}}</span>张票，同一账户最多同时预约<span class="tit">{{max}}</span>张票

@@ -113,6 +113,9 @@ page {
     line-height: 36px;
     font-size: 0.8rem;
 }
+.popupBox_2_1_1 {
+    color: red;
+}
 
 .popupBox_3 {
     width: 100%;
