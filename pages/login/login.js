@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    name:'',
+    fileurl:'',
+    totle:'',
+    reserved:'',
   },
 
   /**
@@ -17,20 +20,26 @@ Page({
     let params ={
     }
     api.f_guestbaseInfo(params).then(res => {
-      console.log(res.data.datas)
-      
-      // this.setData({ 
-      //   fileurl:res.data.datas.avatar,
-      //   name:res.data.datas.name,
-      //   age:res.data.datas.age,
-      //   userid:res.data.datas.idNo,
-      //   sex:sexname,
-      //   job:jobname,
-      //   area:arr
-      // });
+      this.setData({ 
+        fileurl:res.data.datas.avatar,
+        name:res.data.datas.name
+      });
     }).catch(e => {
       Toast(e.errMsg);
-      console.log(e)
+    })
+    api.f_orderlist(params).then(res => {
+      this.setData({ 
+        totle:res.data.datas.total,
+      });
+    }).catch(e => {
+      Toast(e.errMsg);
+    })
+    api.f_ordermyOrder(params).then(res => {
+      this.setData({ 
+        reserved:res.data.datas.total,
+      });
+    }).catch(e => {
+      Toast(e.errMsg);
     })
   },
 

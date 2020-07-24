@@ -10,11 +10,8 @@ Page({
   // },
   afterRead(uploadFile) {
     api.upload(uploadFile).then(res => {
-      console.log(res.data)
        var  data= JSON.parse(res.data)
-       console.log(data.datas)
     }).catch(e => {
-    console.log(e)
     })
   },
   /**

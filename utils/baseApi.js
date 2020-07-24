@@ -8,8 +8,12 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             ...other,
             header: {
 				'sys-token': token,
+<<<<<<< HEAD
                 'content-type': contentType 
    
+=======
+				'content-type': contentType 
+>>>>>>> 50bf60ce298bf32c21b93d7605f2dc9452d23fde
             },
             success: function(res) {
               console.log(res.data.msg)
@@ -51,7 +55,7 @@ const _get = (url, param = {}) => {
         url,
         param,
         method: 'get',
-        // contentType:"application/x-www-form-urlencoded"
+        contentType:"application/x-www-form-urlencoded"
     })
 }
 

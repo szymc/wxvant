@@ -25,13 +25,18 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"useIsolateContext": true,
 		"useCompilerModule": false,
+<<<<<<< HEAD
 		"userConfirmedUseCompilerModuleSwitch": false,
 <<<<<<< HEAD
 		"compileHotReLoad": false
 =======
 		"useIsolateContext": true
 >>>>>>> b3b6a42c4823b800897a121ea84e82f72a3ae3d6
+=======
+		"userConfirmedUseCompilerModuleSwitch": false
+>>>>>>> 50bf60ce298bf32c21b93d7605f2dc9452d23fde
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
@@ -102,6 +107,13 @@
 					"id": -1,
 					"name": "预约",
 					"pathName": "pages/subscribe/subscribe",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/changepassword/changepassword",
+					"pathName": "pages/changepassword/changepassword",
 					"query": "",
 					"scene": null
 				}

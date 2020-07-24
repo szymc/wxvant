@@ -5,10 +5,10 @@
         fit="cover"
         width="8rem"
         height="8rem"
-        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        src="{{fileurl}}"
         />
         <view class="text">
-        张三啊
+        {{name}}
         </view>
     </view>
     <view class="main">
@@ -20,13 +20,13 @@
         <van-cell 
         title="我的预约" 
         is-link 
-        value="已预约3张票" 
+        value="已预约{{reserved}}张票" 
         link-type="navigateTo"
         url="/pages/myreservation/myreservation"/>
         <van-cell 
         title="订票信息" 
         is-link 
-        value="3条" 
+        value="{{totle}}条" 
         link-type="navigateTo"
         url="/pages/bookinginformation/bookinginformation"/>
         <van-cell 

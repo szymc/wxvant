@@ -1,18 +1,43 @@
-// pages/ticketdetails/ticketdetails.js
+var api = require('../../utils/apiManagement.js');
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      qrCode:"",
+      visitDate:"",
+      orderNo:"",
+      duration:"",
+      companyName:"",
+      position:"",
+      barCode:"",
+      companyPhone:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let params ={
+      id:options.ticketscoding
+    }
+    api.f_orderinfo(params).then(res => {
+      this.setData({ 
+        qrCode:res.data.datas.qrCode,
+        visitDate:res.data.datas.visitDate,
+        orderNo:res.data.datas.orderNo,
+        duration:res.data.datas.duration,
+        companyName:res.data.datas.companyName,
+        position:res.data.datas.position,
+        barCode:res.data.datas.barCode,
+        companyPhone:res.data.datas.companyPhone,
+      });
+    }).catch(e => {
+      Toast(e.errMsg);
+    })
   },
 
   /**

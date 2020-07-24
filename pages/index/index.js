@@ -8,16 +8,16 @@ Page({
     logo: '',
     banner: '',
     subscribeDate: '选择日期',
-    advance: 0,
     show: false,
     isCalendar: false,
     minDate: new Date().getTime(),
-    // maxDate: new Date(2020,7,30).getTime(),
-    maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 14).getTime(),
+    maxDate: new Date().getTime(),
     time1: '请选择时间段',
     time2: '请选择时间段',
     remain1: 0,
-    remain2: 500,
+    remain2: 0,
+    MonTicketId: -1,
+    AftTicketId: -1,
     radio: '0',
     timeSlice1: '00:00-00:00',
     timeSlice2: '00:00-00:00',
@@ -37,20 +37,26 @@ Page({
   },
   onConfirm(event) {
     let params = {
-      date: new Date(this.formatDate(event.detail))
+      date: String(new Date(this.formatDate(event.detail)))
     }
-    console.log(params.date)
-    console.log(new Date(this.formatDate(event.detail)))
-    api.getTickets(params).then( res => {
-      console.log(res)
+    api.getTickets(params).then(res => {
+      this.setData({
+        show: false,
+        subscribeDate: this.formatDate(event.detail),
+        isCalendar: true,
+      })
+      if (res.data.code == 200) {
+        this.setData({
+          time1: `剩余票数${Number(res.data.datas[0])}张`,
+          time2: `剩余票数${Number(res.data.datas[1])}张`,
+          remain1: Number(res.data.datas[0]),
+          remain2: Number(res.data.datas[1]),
+          MonTicketId: res.data.datas2,
+          AftTicketId: res.data.datas3
+        });
+      }
     })
-    this.setData({
-      show: false,
-      subscribeDate: this.formatDate(event.detail),
-      isCalendar: true,
-      time1: `剩余票数${this.data.remain1}张`,
-      time2: `剩余票数${this.data.remain2}张`,
-    });
+    
   },
   // 时间段
   onChange(event) {
@@ -99,11 +105,10 @@ Page({
 
   ticketInfo() {
     api.getTicketInfo().then(res => {
-      console.log(res)
       this.setData({
-        advance: res.data.datas.advance,
         timeSlice1: res.data.datas.duration1,
-        timeSlice2: res.data.datas.duration2
+        timeSlice2: res.data.datas.duration2,
+        maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * res.data.datas.advance).getTime()
       })
       if (res.data.datas.ticketMax <= 0) {
         this.setData({

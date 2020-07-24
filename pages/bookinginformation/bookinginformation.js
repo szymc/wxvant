@@ -61,53 +61,63 @@ Page({
       pageNo:this.data.pageIndex
     }
     api.f_orderlist(params).then(res => {
-      
           var tempList = res.data.datas
-          
+          let listArr=[]
           tempList.records.forEach(element => {
-            console.log(element)
-            
-            if(tempList.status == 1){
-              let listArr=element.push({status:'待使用',color:"#1AAD19"})
-            //   that.setData({
-            //     tabledata:[
-            //       {
-            //         status:'待使用',
-            //         color:"#1AAD19"
-            //       }
-            //     ]
-              // })
-            }else if(tempList.status==2){
-              let listArr=element.push({status:'已使用',color:"#1296DB"})
-            //   that.setData({
-            //     status:'已使用',
-            //     color:"#1296DB"
-            //   })
-            }else if(tempList.status==3){
-              let listArr=element.push({status:'弃票',color:"red"})
-            //   that.setData({
-            //     status:'弃票',
-            //     color:"red"
-            //   })
-            }else if(tempList.status==4){
-              let listArr=element.push({status:'取消预约',color:"#323233"})
-            //   that.setData({
-            //     status:'取消预约',
-            //     color:"#323233"
-            //   })
+            if(element.status == 1){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'待使用',
+                "color":"#1AAD19"}
+                )
+            }else if(element.status==2){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'已使用',
+                "color":"#1296DB"}
+                )
+            }else if(element.status==3){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'弃票',
+                "color":"red"}
+                )
+            }else if(element.status==4){
+              listArr.push(
+                {
+                "id":element.id,
+                "name":element.name,
+                "idNo":element.idNo,
+                "phone":element.phone,
+                "visitDate":element.visitDate,
+                "status":'取消预约',
+                "color":"#323233"}
+                )
             }
-            console.log(listArr)
           });
-          console.log(listArr)
           that.setData({
             pageIndex: tempList.pages,
             pageCount:tempList.total,
             pageSize:tempList.pageSize,
-            tabledata:tempList.records,
+            tabledata:listArr,
           })
     }).catch(e => {
       Toast(e.errMsg);
-      console.log(e)
     })
   },
 
@@ -116,9 +126,9 @@ Page({
     var that = this
     var pageIndex = that.data.pageIndex
     pageIndex += 1
-    wx.showLoading({
-      title: '加载第'+ pageIndex +'页',
-    })
+    // wx.showLoading({
+    //   title: '加载第'+ pageIndex +'页',
+    // })
     let params ={
       pageNo:pageIndex
     }
@@ -129,10 +139,8 @@ Page({
         pageIndex: pageIndex,
         ['tabledata[' + (pageIndex - 1) + ']'] : newList
       })
-      console.log(that.data.tabledata)
     }).catch(e => {
       Toast(e.errMsg);
-      console.log(e)
     })
 
   },
