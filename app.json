@@ -1,7 +1,5 @@
 {
   "pages": [
-    
-    "pages/logs/logs",
     "pages/launch/launch",
     "pages/userLoginInfo/userLoginInfo",
     "pages/register/register",
@@ -22,7 +20,8 @@
     "pages/museumintroduced/museumintroduced",
     "pages/location/location",
     "pages/upload/upload",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "dark",

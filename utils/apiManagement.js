@@ -44,7 +44,7 @@ const f_contactslist = params => api._get("contacts/list", params);
 
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
-
+const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
 
 // 导出接口
 module.exports = {
@@ -63,5 +63,6 @@ module.exports = {
         p_guestavatar,
         f_orderlist,
         f_contactslist,
-        upload
+        upload,
+        p_introductiongetAllIntrduction
 }

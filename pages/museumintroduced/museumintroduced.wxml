@@ -3,16 +3,16 @@
         <view class="text">
         {{item.title}}
         </view>
-        <rich-text nodes="{{item.htmlSnip}}"></rich-text>
+        <rich-text nodes="{{item.content}}"></rich-text>
         <view class="picture">
             <van-image
             width="10rem"
             height="10rem"
             fit="contain"
-            src="{{item.imgurl}}"
+            src="{{item.img}}"
             />
         </view>
         
     </view>
-    
+    <van-toast id="van-toast" />
 </view>
