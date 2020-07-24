@@ -9,8 +9,9 @@ Page({
    */
   data: {
     hostid: '',
-    subscribeDate: '2020.7.20',
+    subscribeDate: '2020.01.01',
     timeSlice: '00:00-00:00',
+    ticketId: -1,
     total: 0,
     show: false,
     choose: 0,
@@ -94,7 +95,17 @@ Page({
     });
   },
   cmdSubmit() {
-    console.log('11')
+    let params = {
+      ticketId: Number(this.data.ticketId),
+      visitorIds: this.data.result
+    }
+    api.orderSave(params).then(res => {
+      if (res.data.code == 200) {
+        wx.navigateTo({url: '/pages/subscribeSuccess/subscribeSuccess'})
+      } else {
+        Toast.fail(res.data.message)
+      }
+    })
   },
   // 获取游客列表
   getContactsData() {
@@ -117,7 +128,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       subscribeDate: options.date,
-      radio: options.radio,
+      ticketId: options.TicketId,
       timeSlice: options.timeSlice
     })
   },

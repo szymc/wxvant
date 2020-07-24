@@ -12,6 +12,7 @@
     "pages/subscribe/subscribe",
     "pages/subscribeAdd/subscribeAdd",
     "pages/subscribeEdit/subscribeEdit",
+    "pages/subscribeSuccess/subscribeSuccess",
     "pages/userinformation/userinformation",
     "pages/Modifyinformation/Modifyinformation",
     "pages/myreservation/myreservation",
