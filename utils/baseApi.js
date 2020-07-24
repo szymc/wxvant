@@ -7,13 +7,8 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             data: param,
             ...other,
             header: {
-				'sys-token': token,
-<<<<<<< HEAD
-                'content-type': contentType 
-   
-=======
+				'sys-token': '483961780377358336',
 				'content-type': contentType 
->>>>>>> 50bf60ce298bf32c21b93d7605f2dc9452d23fde
             },
             success: function(res) {
               console.log(res.data.msg)
@@ -33,7 +28,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         fail: () => {},
                     })
                 }
-				resolve(res)
+                resolve(res)
 			},
 			fail: function(err) {
 				reject(err)

@@ -2,15 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/userLogin/userLogin",
-
     "pages/test/test",
-
     "pages/launch/launch",
     "pages/userLoginInfo/userLoginInfo",
     "pages/register/register",
-
-   
-
     "pages/login/login",
     "pages/reinformation/reinformation",
     "pages/subscribe/subscribe",

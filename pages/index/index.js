@@ -89,7 +89,7 @@ Page({
       if (this.data.remain1 == 0) {
         Toast.fail('该时间段暂无票，请重新选择');
         return
-      }     //  JSO 
+      }    
       timeSlice = this.data.timeSlice1
     } else if (this.data.radio == 2) {
       if (this.data.remain2 == 0) {3
@@ -105,6 +105,7 @@ Page({
 
   ticketInfo() {
     api.getTicketInfo().then(res => {
+      console.log(res)
       this.setData({
         timeSlice1: res.data.datas.duration1,
         timeSlice2: res.data.datas.duration2,

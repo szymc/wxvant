@@ -44,6 +44,11 @@ const getTicketInfo = params => api._get("order/ticketInfo", params);
 // 上传
 const   upload  = params => api._upload("file/upload", params); //  上传   
 
+//  改签   
+
+const update_endorse = params => api._post("order/endorse", params);    
+
+
 // 导出接口
 module.exports = {
         login,
@@ -61,4 +66,5 @@ module.exports = {
         f_guestbaseInfo,
         p_guestavatar,
         f_orderlist,
+        update_endorse
 }
