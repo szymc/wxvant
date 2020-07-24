@@ -53,9 +53,6 @@ const orderSave = params => api._post("order/save", params);
 //  改签   
 
 const update_endorse = params => api._post("order/endorse", params);                       
-const   p_introductiongetAllIntrduction  = params => api._post("introduction/getAllIntrduction", params); 
-
-const update_endorse = params => api._post("order/endorse", params);    
 
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
