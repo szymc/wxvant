@@ -95,6 +95,10 @@ Page({
     });
   },
   cmdSubmit() {
+    if (this.data.result.length == 0) {
+      Toast.fail('请至少选择一个人员');
+      return
+    }
     let params = {
       ticketId: Number(this.data.ticketId),
       visitorIds: this.data.result
