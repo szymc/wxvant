@@ -11,10 +11,10 @@
         />
       <van-radio-group value="{{ radio }}" bind:change="onChange">
         <van-cell-group>
-          <van-cell center title="上午票" clickable data-name="1" value="请选择时间段" label="{{timeSlice1}}" value-class="value-class" bind:click="onClick">
+          <van-cell center title="上午票" clickable data-name="1" value="{{time1}}" label="{{timeSlice1}}" value-class="value-class" bind:click="onClick">
             <van-radio slot="right-icon" name="1" />
           </van-cell>
-          <van-cell center title="下午票" clickable data-name="2" value="请选择时间段" label="{{timeSlice2}}" value-class="value-class" bind:click="onClick">
+          <van-cell center title="下午票" clickable data-name="2" value="{{time2}}" label="{{timeSlice2}}" value-class="value-class" bind:click="onClick">
             <van-radio slot="right-icon" name="2" />
           </van-cell>
         </van-cell-group>

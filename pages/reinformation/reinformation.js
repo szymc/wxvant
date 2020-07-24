@@ -6,14 +6,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     subscribeDate: '选择日期',
     show: false,
     isCalendar: false,
     minDate: new Date().getTime(),
     maxDate: new Date().getTime(),
+    time1: '请选择时间段',
+    time2: '请选择时间段',
+    remain1: 0,
+    remain2: 0,
+    MonTicketId: -1,
+    AftTicketId: -1,
     radio: '0',
-    timeSlice1: '9:00-11:30',
-    timeSlice2: '14:00-17:00',
+    timeSlice1: '00:00-00:00',
+    timeSlice2: '00:00-00:00',
+    isGotoreinformation: true
   },
   // 日历
   onDisplay() {
@@ -27,11 +35,26 @@ Page({
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   },
   onConfirm(event) {
-    this.setData({
-      show: false,
-      subscribeDate: this.formatDate(event.detail),
-      isCalendar: true
-    });
+    let params = {
+      date: String(new Date(this.formatDate(event.detail)))
+    }
+    api.getTickets(params).then(res => {
+      this.setData({
+        show: false,
+        subscribeDate: this.formatDate(event.detail),
+        isCalendar: true,
+      })
+      if (res.data.code == 200) {
+        this.setData({
+          time1: `剩余票数${Number(res.data.datas[0])}张`,
+          time2: `剩余票数${Number(res.data.datas[1])}张`,
+          remain1: Number(res.data.datas[0]),
+          remain2: Number(res.data.datas[1]),
+          MonTicketId: res.data.datas2,
+          AftTicketId: res.data.datas3
+        });
+      }
+    })
   },
   // 时间段
   onChange(event) {
@@ -124,9 +147,17 @@ Page({
 
   ticketInfo() {
     api.getTicketInfo().then(res => {
+      console.log(res)
       this.setData({
-        maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * (res.data.datas.advance-1)).getTime()
+        timeSlice1: res.data.datas.duration1,
+        timeSlice2: res.data.datas.duration2,
+        maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * res.data.datas.advance).getTime()
       })
+      if (res.data.datas.ticketMax <= 0) {
+        this.setData({
+          isGotoreinformation: false
+        })
+      }
     })
   },
 

@@ -23,6 +23,7 @@
                 />
                 <van-field
                   value="{{item.visitDate}}"
+                  
                   label="参观日期"
                   readonly
                   border="{{ false }}"

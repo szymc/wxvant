@@ -19,7 +19,6 @@ Page({
       method: 'GET',
       header: { 'content-type': 'application/json' },
       data:{
-          
       },
       success: function (res) {
         console.log(res)

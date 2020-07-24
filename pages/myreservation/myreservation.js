@@ -2,7 +2,7 @@ var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
-
+  //  小程序页面加载端
   /**
    * 页面的初始数据
    */
@@ -24,7 +24,10 @@ Page({
     })
   },
   go_update(){
-
+    wx.showToast({
+      title: '改签成功',
+      icon: 'success',
+    })
   },
   cancel(event){
     var index = event.currentTarget.dataset.id
@@ -44,12 +47,12 @@ Page({
       })
     })
     .catch(() => {
-      
     });
   },
   
   /**
    * 生命周期函数--监听页面加载
+   * 
    */
   onLoad: function (options) {
 
