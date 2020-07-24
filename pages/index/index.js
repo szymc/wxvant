@@ -1,5 +1,6 @@
 var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
   /**
    * 页面的初始数据
@@ -72,34 +73,46 @@ Page({
   },
   // 预约
   gotoreinformation() {
-    if (!this.data.isGotoreinformation) {
-      Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
-      return
-    }
-    if (!this.data.isCalendar) {
-      Toast.fail('请选择一个日期');
-      return
-    }
-    if (this.data.radio == 0) {
-      Toast.fail('请选择一个时间段');
-      return
-    }
-    let timeSlice;
-    if (this.data.radio == 1) {
-      if (this.data.remain1 == 0) {
-        Toast.fail('该时间段暂无票，请重新选择');
-        return
-      }    
-      timeSlice = this.data.timeSlice1
-    } else if (this.data.radio == 2) {
-      if (this.data.remain2 == 0) {3
-
-        Toast.fail('该时间段暂无票，请重新选择');
-        return
+    api.f_contactslist().then(res => {
+      if(res.data.code ==1100){
+        Dialog.alert({
+        message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
+        }).then(() => {
+          // on close
+        });
+      }else{
+        if (!this.data.isGotoreinformation) {
+          Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
+          return
+        }
+        if (!this.data.isCalendar) {
+          Toast.fail('请选择一个日期');
+          return
+        }
+        if (this.data.radio == 0) {
+          Toast.fail('请选择一个时间段');
+          return
+        }
+        let timeSlice;
+        if (this.data.radio == 1) {
+          if (this.data.remain1 == 0) {
+            Toast.fail('该时间段暂无票，请重新选择');
+            return
+          }    
+          timeSlice = this.data.timeSlice1
+        } else if (this.data.radio == 2) {
+          if (this.data.remain2 == 0) {3
+    
+            Toast.fail('该时间段暂无票，请重新选择');
+            return
+          }
+          timeSlice = this.data.timeSlice2
+        }
+        
+        wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}` })
+    
       }
-      timeSlice = this.data.timeSlice2
-    }
-    wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}` })
+    });
   },
   noop() { },
 
@@ -122,6 +135,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    api.f_contactslist().then(res => {
+      if(res.data.code ==1100){
+        Dialog.alert({
+          message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
+        }).then(() => {
+          // on close
+        });
+      }
+    });
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     api.f_companyInfo().then(res => {
       this.setData({
         logo: res.data.datas.logo,
@@ -129,20 +164,6 @@ Page({
       })
     });
     this.ticketInfo()
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**

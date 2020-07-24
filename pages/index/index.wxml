@@ -69,4 +69,5 @@
       <van-button color="#1296DB" size="large" bind:click = 'gotoreinformation'>立即预约</van-button>
     </view>
     <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
 </view>

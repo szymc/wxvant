@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/launch/launch",
     "pages/index/index",
     "pages/userLogin/userLogin",
     "pages/test/test",
-    "pages/launch/launch",
+    
     "pages/userLoginInfo/userLoginInfo",
     "pages/register/register",
     "pages/login/login",

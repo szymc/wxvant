@@ -7,7 +7,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             data: param,
             ...other,
             header: {
-				'sys-token': '483961780377358336',
+				'sys-token': token,
 				'content-type': contentType 
             },
             success: function(res) {

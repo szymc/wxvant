@@ -3,6 +3,7 @@ var api = require('../../utils/apiManagement.js');
 import { isCellphone } from '../../utils/util'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -44,11 +45,11 @@ Page({
 
     let params = {
       phone: this.data.phone,
-      isUser: true
+      isUser: false
     }
     api.f_guestsmsCode(params).then(res => {
       if (res.data.code == 200) {
-        Notify({ type: 'primary', message: '验证码发送成功,5分钟内有效' });
+        Notify({ type: 'success', message: '验证码发送成功,5分钟内有效' });
         this.setData({ isSms: true })
       } else {
         Toast.fail(res.data.message);
