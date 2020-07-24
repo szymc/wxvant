@@ -1,45 +1,49 @@
 <view class="bc">
-    <view class="mianban" wx:for="{{tabledata}}" wx:key="index">
-        <van-panel title="博物馆入场卷" status="NO.{{item.id}}">
-            <view>
-                <van-cell-group >
-                    <van-field
-                    label-class="label-class"
-                    value="{{item.name}}"
-                    label="姓名"
-                    readonly
-                    border="{{ false }}"
-                    />
-                    <van-field
-                    label-class="label-class"
-                    value="{{item.idNo}}"
-                    label="证件号"
-                    readonly
-                    border="{{ false }}"
-                    />
-                    <van-field
-                    label-class="label-class"
-                    value="{{item.phone}}"
-                    label="手机号"
-                    readonly
-                    border="{{ false }}"
-                    />
-                    <van-field
-                    label-class="label-class"
-                    value="{{item.visitDate}}"
-                    label="参观日期"
-                    readonly
-                    border="{{ false }}"
-                    />
-                </van-cell-group>
-            </view>
-            <view class="statussty">
-              状态
-              <view style="color: {{item.color}};">
-                {{item.status}}
-              </view>
-            </view>
-        </van-panel>
-    </view>
+    <scroll-view class="scroll_view" scroll-y bindscrolltolower="nextPage">
+        <view class="mianban">
+            <block  wx:for="{{tabledata}}" wx:key="index">
+                <van-panel title="博物馆入场卷" status="NO.{{item.id}}">
+                    <view>
+                        <van-cell-group >
+                            <van-field
+                            label-class="label-class"
+                            value="{{item.name}}"
+                            label="姓名"
+                            readonly
+                            border="{{ false }}"
+                            />
+                            <van-field
+                            label-class="label-class"
+                            value="{{item.idNo}}"
+                            label="证件号"
+                            readonly
+                            border="{{ false }}"
+                            />
+                            <van-field
+                            label-class="label-class"
+                            value="{{item.phone}}"
+                            label="手机号"
+                            readonly
+                            border="{{ false }}"
+                            />
+                            <van-field
+                            label-class="label-class"
+                            value="{{item.visitDate}}"
+                            label="参观日期"
+                            readonly
+                            border="{{ false }}"
+                            />
+                        </van-cell-group>
+                    </view>
+                    <view class="statussty">
+                    状态
+                    <view style="color: {{item.color}};">
+                        {{item.status}}
+                    </view>
+                    </view>
+                </van-panel>
+            </block>
+        </view>
+    </scroll-view>
     <van-toast id="van-toast" />
 </view>
