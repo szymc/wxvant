@@ -14,7 +14,7 @@ page {
 .statussty{
   position: absolute;
   top: 50%;
-  left: 82%;
+  left: 77%;
   transform: translate(-25%,-25%);
   line-height: 40px;
   border-left: 1px solid #b6b6b6;

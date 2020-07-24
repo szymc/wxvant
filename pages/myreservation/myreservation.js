@@ -1,4 +1,6 @@
-// pages/myreservation/myreservation.js
+var api = require('../../utils/apiManagement.js');
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -8,32 +10,32 @@ Page({
     tabledata:[
       {
         id:'1',
-        noid:"NO.123456789",
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
+        visitDate:'2020-07-20 14：00-17：30',
       },
       {
         id:'2',
-        noid:"NO.123456789",
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
+        visitDate:'2020-07-20 14：00-17：30',
       },
       {
         id:'3',
-        noid:"NO.123456789",
         name:'张三啊',
-        cardid:'360103199910310049',
+        idNo:'360103199910310049',
         phone:'18702695874',
-        visitiedata:'2020-07-20 14：00-17：30',
+        visitDate:'2020-07-20 14：00-17：30',
       },
-    ]
+    ],
+    queryBean:'',
+    queryList:'',
   },
-  gotocheck(){
-    wx.navigateTo({ url: '/pages/ticketdetails/ticketdetails',})
+  gotocheck(event){
+  	var index = event.currentTarget.dataset.id
+    wx.navigateTo({ url: '/pages/ticketdetails/ticketdetails?ticketscoding='+ index,})
   },
   changetick(){
     wx.navigateTo({
@@ -43,11 +45,42 @@ Page({
   go_update(){
     console.log('我更新啦')
   },
+  cancel(event){
+    var index = event.currentTarget.dataset.id
+    Dialog.confirm({
+    title: '提示',
+    message: '将取消此次预约, 是否继续?',
+  })
+    .then(() => {
+      let params ={
+        id:index
+      }
+      api.p_ordercancel(params).then(res => {
+        Toast(res.data.message);
+        this.onLoad()
+      }).catch(e => {
+        Toast(e.errMsg);
+      })
+    })
+    .catch(() => {
+      
+    });
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let params ={
+    }
+    api.f_ordermyOrder(params).then(res => {
+      this.setData({ 
+        tabledata:res.data.datas.records,
+      });
+    }).catch(e => {
+      Toast(e.errMsg);
+      console.log(e)
+    })
   },
 
   /**

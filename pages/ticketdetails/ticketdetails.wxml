@@ -6,16 +6,16 @@
                     width="100%"
                     height="100%"
                     fit="cover"
-                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+                    src="{{qrCode}}"
                     />
             </view>
-            <view class="code">NO.48154207784123546</view>
+            <view class="code">NO.{{orderNo}}</view>
             <view class="img2">
                 <van-image
                     width="100%"
                     height="100%"
                     fit="cover"
-                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+                    src="{{barCode}}"
                     />
             </view>
             <view class="notice_body">
@@ -34,38 +34,38 @@
             <view class="center">
                 <van-cell-group >
                     <van-field
-                    value="48154207784123546"
+                    value="{{orderNo}}"
                     label="门票编号"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="2020-07-20 14：00-17：30"
+                    value="{{visitDate}}"
                     label="预约日期"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="下午"
+                    value="{{duration}}"
                     label="预约场次"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="江西省南昌市圣东智能有限公司"
+                    value="{{position}}"
                     label="地址"
                     readonly
                     border="{{ false }}"
                     />
                     <van-field
-                    value="400-88104832"
+                    value="{{companyPhone}}"
                     label="联系电话"
                     readonly
                     border="{{ false }}"
                     />
                 </van-cell-group>
             </view>
-            <view class="logo">
+            <view>
                 <cover-image class="pic" src="../../icons/logo.png" mode="aspectFit"></cover-image>
             </view>
             <view class="notice_body">

@@ -26,7 +26,10 @@ const   login  = params => api._post("guest/login", params);
 const   f_guestbaseInfo  = params => api._get("guest/baseInfo", params); 
 const   f_orderlist  = params => api._get("order/list", params); 
 const   p_guestavatar  = params => api._post("guest/avatar", params); 
-
+const   f_ordermyOrder  = params => api._get("order/myOrder", params); 
+const   f_orderinfo  = params => api._get("order/info", params); 
+const   p_ordercancel  = params => api._post("order/cancel", params); 
+const   p_guestpassword  = params => api._post("guest/password", params); 
 // 登录注册
 const p_guestregister = params => api._post("guest/register", params);
 const f_guestsmsCode = params => api._get("guest/smsCode", params);
@@ -49,6 +52,10 @@ module.exports = {
         p_guestregister,
         f_guestsmsCode,
         f_noticeGetInfo,
+        f_ordermyOrder,
+        f_orderinfo,
+        p_ordercancel,
+        p_guestpassword,
         f_companyInfo,
         getTickets,
         getTicketInfo,

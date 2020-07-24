@@ -67,7 +67,6 @@ Page({
 		this.setData({ sexshow: false });
 	},
 	onSelectsexshow(event) {
-		console.log(event.detail.name);
 		this.setData({
 			sex:event.detail.name
 		})
@@ -81,7 +80,6 @@ Page({
 		this.setData({ jobshow: false });
 	},
 	onSelectjobshow(event) {
-		console.log(event.detail.name);
 		this.setData({
 			job:event.detail.name
 		})
@@ -93,7 +91,6 @@ Page({
 		const areaValues = event.detail.values
 		let arr = [areaValues[0].name, areaValues[1].name, areaValues[2].name]
 		let arrcode = [areaValues[0].code, areaValues[1].code, areaValues[2].code]
-		console.log(arr);
 		this.setData({ 
 			area : arr,
 			regionshow: false,
@@ -111,25 +108,18 @@ Page({
 	  },
 	afterRead(uploadFile) {
 		api.upload(uploadFile).then(res => {
-			console.log(res.data)
 			var  data= JSON.parse(res.data)
-			console.log(11)
-			console.log(data.datas)
-			console.log(22)
 			let params={
 				avatar:data.datas
 			}
 			api.p_guestavatar(params).then(res => {
-				console.log(res)
 				this.setData({ 
 					fileurl:data.datas,
 					imgshow: false
 					});
 			}).catch(e => {
-			console.log(e)
 			})
 		}).catch(e => {
-		console.log(e)
 		})
 
 	},
@@ -140,7 +130,6 @@ onLoad: function (options) {
 	let params ={
 	}
 	api.f_guestbaseInfo(params).then(res => {
-		console.log(res.data.datas)
 		let sexname=""
 		if(res.data.datas.sex == 0){
 			sexname="男"
@@ -162,7 +151,6 @@ onLoad: function (options) {
 			jobname="其他"
 		}
 		let arr = JSON.parse(res.data.datas.region)
-		console.log(arr)
 		this.setData({ 
 			fileurl:res.data.datas.avatar,
 			name:res.data.datas.name,
@@ -174,7 +162,6 @@ onLoad: function (options) {
 		});
 	}).catch(e => {
 		Toast(e.errMsg);
-		console.log(e)
 	})
 },
 
