@@ -34,6 +34,13 @@ const   p_guestpassword  = params => api._post("guest/password", params);
 const p_guestregister = params => api._post("guest/register", params);
 const f_guestsmsCode = params => api._get("guest/smsCode", params);
 const f_noticeGetInfo = params => api._get("notice/getInfo", params); // 用户须知
+
+// 基本信息
+const f_companyInfo = params => api._get("company/info", params);
+// 预约
+const getTickets = params => api._get("order/remain", params);
+const getTicketInfo = params => api._get("order/ticketInfo", params);
+
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
 
@@ -41,9 +48,6 @@ const   upload  = params => api._upload("file/upload", params); //  上传
 // 导出接口
 module.exports = {
         login,
-        f_guestbaseInfo,
-        p_guestavatar,
-        f_orderlist,
         p_guestregister,
         f_guestsmsCode,
         f_noticeGetInfo,
@@ -51,5 +55,11 @@ module.exports = {
         f_ordermyOrder,
         f_orderinfo,
         p_ordercancel,
-        p_guestpassword
+        p_guestpassword,
+        f_companyInfo,
+        getTickets,
+        getTicketInfo,
+        f_guestbaseInfo,
+        p_guestavatar,
+        f_orderlist,
 }
