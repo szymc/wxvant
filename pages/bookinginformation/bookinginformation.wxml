@@ -1,7 +1,6 @@
 <view class="bc">
     <scroll-view class="scroll_view" scroll-y bindscrolltolower="nextPage">
-        <view class="mianban">
-            <block  wx:for="{{tabledata}}" wx:key="index">
+        <view class="mianban" wx:for="{{tabledata}}" wx:key="index">
                 <van-panel title="博物馆入场卷" status="NO.{{item.id}}">
                     <view>
                         <van-cell-group >
@@ -42,7 +41,6 @@
                     </view>
                     </view>
                 </van-panel>
-            </block>
         </view>
     </scroll-view>
     <van-toast id="van-toast" />
