@@ -11,7 +11,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
 				'content-type': contentType 
             },
             success: function(res) {
-              console.log(res.data.msg)
+            //   console.log(res.data.msg)
                 if(res.data.code==1102){
                     wx.showModal({
                         title: '登录提示',
