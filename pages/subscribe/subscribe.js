@@ -9,8 +9,9 @@ Page({
    */
   data: {
     hostid: '',
-    subscribeDate: '2020.7.20',
+    subscribeDate: '2020.01.01',
     timeSlice: '00:00-00:00',
+    ticketId: -1,
     total: 0,
     show: false,
     choose: 0,
@@ -75,17 +76,36 @@ Page({
   },
   delete(evnet) {
     let id = evnet.currentTarget.dataset.id
-    // console.log(id)
     Dialog.confirm({
       message: '是否确定删除?',
     }).then(() => {
-      // on close
+      let params = {
+        id: id
+      }
+      api.contactsEel(params).then(res => {
+        if (res.data.code == 200) {
+          Toast.success('删除成功');
+          this.getContactsData()
+        } else {
+          Toast.fail(res.data.message);
+        }
+      })
     }).catch(() => {
 
     });
   },
   cmdSubmit() {
-    console.log('11')
+    let params = {
+      ticketId: Number(this.data.ticketId),
+      visitorIds: this.data.result
+    }
+    api.orderSave(params).then(res => {
+      if (res.data.code == 200) {
+        wx.navigateTo({url: '/pages/subscribeSuccess/subscribeSuccess'})
+      } else {
+        Toast.fail(res.data.message)
+      }
+    })
   },
   // 获取游客列表
   getContactsData() {
@@ -108,7 +128,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       subscribeDate: options.date,
-      radio: options.radio,
+      ticketId: options.TicketId,
       timeSlice: options.timeSlice
     })
   },

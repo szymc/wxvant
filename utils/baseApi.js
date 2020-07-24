@@ -7,11 +7,11 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             data: param,
             ...other,
             header: {
-				'sys-token': '483961780377358336',
+				'sys-token': token,
 				'content-type': contentType 
             },
             success: function(res) {
-              console.log(res.data.msg)
+            //   console.log(res.data.msg)
                 if(res.data.code==1102){
                     wx.showModal({
                         title: '登录提示',

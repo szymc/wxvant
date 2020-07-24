@@ -1,4 +1,4 @@
-// pages/subscribeAdd/subscribeAdd.js
+// pages/subscribeEdit/subscribeEdit.js
 var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import { isCellphone, CheckIdCard } from '../../utils/util'
@@ -9,8 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: '张三',
-    idNo: '360111199511280997',
+    id: '',
+    name: '',
+    idNo: '',
     sex: '请选择性别',
     showsex: false,
     actionssex: [
@@ -24,7 +25,7 @@ Page({
         name: '保密',
       },
     ],
-    phone: '13122222222',
+    phone: '',
     jobshow: false,
     job: '请选择职业',
     jobactions: [
@@ -48,6 +49,7 @@ Page({
     areaCode: [],
     showAreaSelect: false,
     areaList: AreaList,
+    countyCode: '',
     // 表单验证
     nameMsg: '',
     cardMsg: '',
@@ -137,9 +139,9 @@ Page({
     this.setData({ showAreaSelect: false })
   },
   confirmArea(event) {
-    // console.log(event.detail.values)
     const areaValues = event.detail.values
     let arr = [areaValues[0].name, areaValues[1].name, areaValues[2].name]
+    
     let arrcode = [areaValues[0].code, areaValues[1].code, areaValues[2].code]
     this.setData({
       area: arr,
@@ -156,14 +158,23 @@ Page({
       Toast.fail('用户姓名不能为空');
       return
     }
+    if (!(/^[\u4e00-\u9fa5]{2,6}$/.test(this.data.name))) {
+      this.setData({nameMsg: '用户姓名输入有误'})
+    }
     if (this.data.nameMsg.length > 0) return
-
+  
     if (this.data.idNo.length == 0) {
       Toast.fail('证件号码不能为空');
       return
     }
+    if (CheckIdCard(this.data.idNo) != 2) {
+      this.setData({cardMsg: '请输入正确的证件号码格式'})
+    }
     if (this.data.cardMsg.length > 0) return
 
+    if (this.data.sex == '男' || this.data.sex == '女' || this.data.sex == '保密') {
+      this.setData({sexChoose: true})
+    }
     if (!this.data.sexChoose) {
       Toast.fail('请选择性别');
       return
@@ -173,8 +184,14 @@ Page({
       Toast.fail('手机号码不能为空');
       return
     }
+    if (!isCellphone(this.data.phone)) {
+      this.setData({phoneMsg: '请输入正确的手机格式'})
+    }
     if (this.data.phoneMsg.length > 0) return
 
+    if (this.data.job != '请选择职业') {
+      this.setData({jobChoose: true})
+    }
     if (!this.data.jobChoose) {
       Toast.fail('请选择职业');
       return
@@ -201,36 +218,26 @@ Page({
     } else {
       job = '5'
     }
-
-    let params = {}
-    if (this.data.areaCode.length > 0) {
-      params = {
-        name: this.data.name,
-        idNo: this.data.idNo,
-        sex: sex,
-        phone: this.data.phone,
-        job: job,
-        province: this.data.areaCode[0],
-        city: this.data.areaCode[1],
-        district: this.data.areaCode[2]
-      }
-    } else {
-      params = {
-        name: this.data.name,
-        idNo: this.data.idNo,
-        sex: sex,
-        phone: this.data.phone,
-        job: job
-      }
+    let newarr = JSON.stringify(this.data.area)
+    let params = {
+      name: this.data.name,
+      idNo: this.data.idNo,
+      sex: sex,
+      phone: this.data.phone,
+      job: job,
+      province: this.data.areaCode[0],
+      city: this.data.areaCode[1],
+      district: this.data.areaCode[2],
+      region:newarr
     }
-
-    api.contactsAdd(params).then(res => {
+    api.p_guestcomplete(params).then(res => {
       if (res.data.code == 200) {
         Toast({
           duration: 1000,
           type: 'success',
-          message: '添加成功',
+          message: '提交成功',
           onClose: () => {
+            this.onLoad()
             wx.navigateBack()
           },
         });
@@ -246,7 +253,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(AreaList)
+    let params ={
+    }
+    api.f_guestbaseInfo(params).then(res => {
+      let sexname=""
+      if(res.data.datas.sex == 0){
+        sexname="男"
+      }else if(res.data.datas.sex == 1){
+        sexname="女"
+      }else{
+        sexname="保密"
+      }
+      let jobname=""
+      if(res.data.datas.job == 1){
+        jobname="在职"
+      }else if(res.data.datas.job == 2){
+        jobname="小学"
+      }else if(res.data.datas.job == 3){
+        jobname="中学"
+      }else if(res.data.datas.job == 4){
+        jobname="大学"
+      }else{
+        jobname="其他"
+      }
+      let arr = JSON.parse(res.data.datas.region)
+      this.setData({ 
+        name:res.data.datas.name,
+        phone:res.data.datas.phone,
+        idNo:res.data.datas.idNo,
+        sex:sexname,
+        job:jobname,
+        area:arr
+      });
+    }).catch(e => {
+      Toast(e.errMsg);
+    })
   },
 
   /**

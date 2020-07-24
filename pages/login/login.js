@@ -17,6 +17,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+  },
+  cancel(){
+    Dialog.confirm({
+    title: '提示',
+    message: '将退出登录, 是否继续?',
+  })
+    .then(() => {
+      wx.removeStorage({
+        key: 'token',
+        success (res) {
+          console.log(res)
+        }
+
+      })
+      wx.redirectTo({
+        url: '/pages/userLogin/userLogin',
+        
+      })
+    })
+    .catch(() => {
+      
+    });
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     let params ={
     }
     api.f_guestbaseInfo(params).then(res => {
@@ -41,49 +76,6 @@ Page({
     }).catch(e => {
       Toast(e.errMsg);
     })
-  },
-  cancel(){
-    Dialog.confirm({
-    title: '提示',
-    message: '将退出登录, 是否继续?',
-  })
-    .then(() => {
-      wx.removeStorage({
-        key: 'token',
-        success (res) {
-          console.log(res)
-        }
-
-      })
-      wx.redirectTo({
-        url: '/pages/userLogin/userLogin',
-        success: function(res){
-          // success
-        },
-        fail: function() {
-          // fail
-        },
-        complete: function() {
-          // complete
-        }
-      })
-    })
-    .catch(() => {
-      
-    });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**

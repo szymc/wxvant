@@ -1,0 +1,25 @@
+/* pages/subscribeSuccess/subscribeSuccess.wxss */
+page {
+    background: #f5f5f5;
+}
+.rowbox {
+    width: 100%;
+    height: 500rpx;
+    background: white;
+    overflow:hidden
+}
+.row_1 {
+    margin-top: 100rpx;
+    color: red;
+    font-size: 45rpx;
+    text-align: center;
+}
+.row_2 {
+    margin-top: 40rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+.row_3 {
+    margin-top: 60rpx;
+    text-align: center;
+}

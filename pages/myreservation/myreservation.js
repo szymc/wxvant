@@ -41,7 +41,7 @@ Page({
       }
       api.p_ordercancel(params).then(res => {
         Toast(res.data.message);
-        this.onLoad()
+        this.onShow()
       }).catch(e => {
         Toast(e.errMsg);
       })
