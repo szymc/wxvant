@@ -46,6 +46,7 @@ Page({
         isCalendar: true,
       })
       if (res.data.code == 200) {
+        // console.log(res)
         this.setData({
           time1: `剩余票数${Number(res.data.datas[0])}张`,
           time2: `剩余票数${Number(res.data.datas[1])}张`,
@@ -56,7 +57,7 @@ Page({
         });
       }
     })
-    
+
   },
   // 时间段
   onChange(event) {
@@ -85,36 +86,40 @@ Page({
       return
     }
     let timeSlice;
+    let TicketId;
     if (this.data.radio == 1) {
       if (this.data.remain1 == 0) {
         Toast.fail('该时间段暂无票，请重新选择');
         return
-      }    
+      }
       timeSlice = this.data.timeSlice1
+      TicketId = this.data.MonTicketId
     } else if (this.data.radio == 2) {
-      if (this.data.remain2 == 0) {3
-
+      if (this.data.remain2 == 0) {
         Toast.fail('该时间段暂无票，请重新选择');
         return
       }
       timeSlice = this.data.timeSlice2
+      TicketId = this.data.AftTicketId
     }
-    wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&radio=${this.data.radio}&timeSlice=${timeSlice}` })
+    wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&TicketId=${TicketId}&timeSlice=${timeSlice}` })
   },
   noop() { },
 
   ticketInfo() {
     api.getTicketInfo().then(res => {
       // console.log(res)
-      this.setData({
-        timeSlice1: res.data.datas.duration1,
-        timeSlice2: res.data.datas.duration2,
-        maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * res.data.datas.advance).getTime()
-      })
-      if (res.data.datas.ticketMax <= 0) {
+      if (res.data.code == 200) {
         this.setData({
-          isGotoreinformation: false
+          timeSlice1: res.data.datas.duration1,
+          timeSlice2: res.data.datas.duration2,
+          maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * (res.data.datas.advance - 1)).getTime()
         })
+        if (res.data.datas.ticketMax <= 0) {
+          this.setData({
+            isGotoreinformation: false
+          })
+        }
       }
     })
   },

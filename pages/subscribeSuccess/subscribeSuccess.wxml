@@ -1,0 +1,13 @@
+<view class="rowbox">
+    <van-row>
+        <view class="row_1">
+            <van-row>预约成功</van-row>
+        </view>
+        <view class="row_2">
+            <van-row>您已成功预约门票、可在用户中心查看订票信息</van-row>
+        </view>
+        <view class="row_3">
+            <van-button type="default" bind:click="btn">返回首页</van-button>
+        </view>
+    </van-row>
+</view>

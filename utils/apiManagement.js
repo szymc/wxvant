@@ -45,6 +45,7 @@ const f_contactsinfo = params => api._get("contacts/info", params);
 const contactsModify = params => api._post("contacts/modify", params);
 const contactsAdd = params => api._post("contacts/add", params);
 const contactsEel = params => api._post("contacts/del", params);
+const orderSave = params => api._post("order/save", params);
 
 // 上传
 // const   upload  = params => api._upload("file/upload", params); //  上传   
@@ -79,6 +80,7 @@ module.exports = {
         contactsModify,
         contactsAdd,
         contactsEel,
+        orderSave,
         upload,
         p_introductiongetAllIntrduction
 }
