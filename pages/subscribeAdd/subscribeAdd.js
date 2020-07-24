@@ -1,4 +1,5 @@
 // pages/subscribeAdd/subscribeAdd.js
+var api = require('../../utils/apiManagement.js');
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import { isCellphone, CheckIdCard } from '../../utils/util'
 import { AreaList } from '../../utils/area'
@@ -140,8 +141,8 @@ Page({
     const areaValues = event.detail.values
     let arr = [areaValues[0].name, areaValues[1].name, areaValues[2].name]
     let arrcode = [areaValues[0].code, areaValues[1].code, areaValues[2].code]
-    this.setData({ 
-      area : arr,
+    this.setData({
+      area: arr,
       areaCode: arrcode
     })
     this.onCloseArea()
@@ -201,14 +202,44 @@ Page({
       job = '5'
     }
 
-    // console.log(this.data.name)
-    // console.log(this.data.idNo)
-    // console.log(sex)
-    // console.log(this.data.phone)
-    // console.log(job)
-    // console.log(this.data.areaCode)
+    let params = {}
+    if (this.data.areaCode.length > 0) {
+      params = {
+        name: this.data.name,
+        idNo: this.data.idNo,
+        sex: sex,
+        phone: this.data.phone,
+        job: job,
+        province: this.data.areaCode[0],
+        city: this.data.areaCode[1],
+        district: this.data.areaCode[2]
+      }
+    } else {
+      params = {
+        name: this.data.name,
+        idNo: this.data.idNo,
+        sex: sex,
+        phone: this.data.phone,
+        job: job
+      }
+    }
 
-    wx.navigateBack()
+    api.contactsAdd(params).then(res => {
+      if (res.data.code == 200) {
+        Toast({
+          duration: 1000,
+          type: 'success',
+          message: '添加成功',
+          onClose: () => {
+            wx.navigateBack()
+          },
+        });
+      } else {
+        Toast.fail(res.data.message);
+      }
+    }).catch(e => {
+      console.log(e)
+    })
   },
 
   /**

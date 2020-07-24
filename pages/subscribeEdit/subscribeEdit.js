@@ -219,17 +219,30 @@ Page({
       job = '5'
     }
 
-    let params = {
-      id: this.data.id,
-      name: this.data.name,
-      idNo: this.data.idNo,
-      sex: sex,
-      phone: this.data.phone,
-      job: job,
-      province: this.data.areaCode[0],
-      city: this.data.areaCode[1],
-      district: this.data.areaCode[2]
+    let params = {}
+    if (this.data.areaCode.length > 0) {
+      params = {
+        id: this.data.id,
+        name: this.data.name,
+        idNo: this.data.idNo,
+        sex: sex,
+        phone: this.data.phone,
+        job: job,
+        province: this.data.areaCode[0],
+        city: this.data.areaCode[1],
+        district: this.data.areaCode[2]
+      }
+    } else {
+      params = {
+        id: this.data.id,
+        name: this.data.name,
+        idNo: this.data.idNo,
+        sex: sex,
+        phone: this.data.phone,
+        job: job
+      }
     }
+    
     api.contactsModify(params).then(res => {
       if (res.data.code == 200) {
         Toast({
@@ -237,7 +250,6 @@ Page({
           type: 'success',
           message: '提交成功',
           onClose: () => {
-            this.getData()
             wx.navigateBack()
           },
         });

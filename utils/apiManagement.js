@@ -43,6 +43,8 @@ const getTicketInfo = params => api._get("order/ticketInfo", params);
 const f_contactslist = params => api._get("contacts/list", params);
 const f_contactsinfo = params => api._get("contacts/info", params);
 const contactsModify = params => api._post("contacts/modify", params);
+const contactsAdd = params => api._post("contacts/add", params);
+const contactsEel = params => api._post("contacts/del", params);
 
 // 
 const   upload  = params => api._upload("file/upload", params); //  上传                       
@@ -67,6 +69,8 @@ module.exports = {
         f_contactslist,
         f_contactsinfo,
         contactsModify,
+        contactsAdd,
+        contactsEel,
         upload,
         p_introductiongetAllIntrduction
 }
