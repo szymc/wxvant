@@ -31,7 +31,7 @@
         </view>
         <view slot="footer" class="btn">
           <van-button size="small" color="#1296DB"  bind:click='gotocheck' data-id="{{item.id}}">取票</van-button>
-          <van-button size="small" bind:click='changetick'>改签</van-button>
+          <van-button size="small" bind:click='changetick' data-id="{{item.id}}" >改签</van-button>
           <van-button size="small" type="danger" bind:click='cancel' data-id="{{item.id}}">取消</van-button>
         </view>
     </van-panel>

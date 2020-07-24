@@ -7,6 +7,7 @@
         max-date="{{ maxDate }}"
         bind:close="onClose" 
         bind:confirm="onConfirm"
+   
         />
       <van-radio-group value="{{ radio }}" bind:change="onChange">
         <van-cell-group>
@@ -20,7 +21,7 @@
       </van-radio-group>
 </view>
 <view class="btn">
-    <van-button plain color="#1296DB" size="normal"  bind:click = 'gotoreturn'>  取 消  </van-button>
+  <van-button plain color="#1296DB" size="normal"  bind:click = 'gotoreturn'>  取 消  </van-button>
   <van-button color="#1296DB" size="normal" bind:click = 'gotoreinformation'>  确 定  </van-button>
 </view>
 <van-toast id="van-toast" />

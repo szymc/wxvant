@@ -7,29 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabledata:[
-      {
-        id:'1',
-        name:'张三啊',
-        idNo:'360103199910310049',
-        phone:'18702695874',
-        visitDate:'2020-07-20 14：00-17：30',
-      },
-      {
-        id:'2',
-        name:'张三啊',
-        idNo:'360103199910310049',
-        phone:'18702695874',
-        visitDate:'2020-07-20 14：00-17：30',
-      },
-      {
-        id:'3',
-        name:'张三啊',
-        idNo:'360103199910310049',
-        phone:'18702695874',
-        visitDate:'2020-07-20 14：00-17：30',
-      },
-    ],
+    tabledata:[],
     queryBean:'',
     queryList:'',
   },
@@ -37,13 +15,16 @@ Page({
   	var index = event.currentTarget.dataset.id
     wx.navigateTo({ url: '/pages/ticketdetails/ticketdetails?ticketscoding='+ index,})
   },
-  changetick(){
+  changetick(event){
+    console.log
+    var index = event.currentTarget.dataset.id
+    console.log(index)
     wx.navigateTo({
-      url: '/pages/reinformation/reinformation'
+      url: '/pages/reinformation/reinformation?id='+ index
     })
   },
   go_update(){
-    console.log('我更新啦')
+
   },
   cancel(event){
     var index = event.currentTarget.dataset.id
@@ -71,16 +52,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let params ={
-    }
-    api.f_ordermyOrder(params).then(res => {
-      this.setData({ 
-        tabledata:res.data.datas.records,
-      });
-    }).catch(e => {
-      Toast(e.errMsg);
-      console.log(e)
-    })
+
   },
 
   /**
@@ -94,11 +66,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let params ={
+    }
+    api.f_ordermyOrder(params).then(res => {
+      this.setData({ 
+        tabledata:res.data.datas.records,
+      });
+    }).catch(e => {
+      Toast(e.errMsg);
+      console.log(e)
+    })
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 生命周期函数--监听页面隐藏                     
    */
   onHide: function () {
 

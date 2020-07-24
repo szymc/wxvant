@@ -7,11 +7,12 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             data: param,
             ...other,
             header: {
-				'sys-token': token,
+				'sys-token': '483961780377358336',
 				'content-type': contentType 
             },
             success: function(res) {
-                if(res.data.code==1102&&res.data.msg=="登陆失败--onLoginFailure"){
+              console.log(res.data.msg)
+                if(res.data.code==1102){
                     wx.showModal({
                         title: '登录提示',
                         content: '您尚未登录，是否立即登录？',
@@ -27,7 +28,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                         fail: () => {},
                     })
                 }
-				resolve(res)
+                resolve(res)
 			},
 			fail: function(err) {
 				reject(err)
@@ -63,6 +64,7 @@ const _post = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
+
 //  delete方法
 
 const _delete = (url, param = {}) => {
@@ -73,6 +75,7 @@ const _delete = (url, param = {}) => {
         contentType:"application/x-www-form-urlencoded"
     })
 }
+
 // 上传方法
 
 const _upload = (url, file) => {
@@ -96,7 +99,7 @@ const _upload = (url, file) => {
 
 module.exports = {
     baseUrl,
-    _get,
+    _get,    
     _post,
     _delete,
     _upload
