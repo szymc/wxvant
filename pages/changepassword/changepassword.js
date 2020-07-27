@@ -74,7 +74,7 @@ Page({
   ensure(){
     if(this.data.acc_expassword == ""||this.data.acc_newpassword == ""||this.data.acc_repassword == ""){
       Toast.fail('输入框不能为空');
-    }else{
+    }else if(this.data.acc_newpassword == this.data.acc_repassword ){
       let params ={
         oldPassword:this.data.acc_expassword,
         password:this.data.acc_newpassword
@@ -99,6 +99,8 @@ Page({
       }).catch(e => {
         Toast(e.errMsg);
       })
+    }else{
+      Toast.fail('两次输入密码不一致!');
     }
     
   },
