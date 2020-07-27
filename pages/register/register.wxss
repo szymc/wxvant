@@ -16,3 +16,8 @@
     margin: 26rpx;
     font-size: 14px;
 }
+cover-image{
+    margin: auto;
+    width: 15%;
+    height: 15%;
+}

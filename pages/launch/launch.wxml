@@ -1,11 +1,6 @@
 <view>
   <view class="pic">
-    <van-image
-    width="10rem"
-    height="10rem"
-    fit="cover"
-    src="https://img.yzcdn.cn/vant/cat.jpeg"
-  />
+    <cover-image src="../../icons/piao.png"  />
   </view>
   <view class="text">
       票务预约系统

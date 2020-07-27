@@ -2,7 +2,8 @@
     <view class="box">
         <van-row class="boxrow">
             <view class="boxrow_1">
-                <van-image width="75" height="75" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <!-- <van-image width="75" height="75" src="https://img.yzcdn.cn/vant/cat.jpeg" /> -->
+                <cover-image src="../../icons/piao.png"  />
             </view>
             <view class="boxrow_2">
                 <van-cell-group>

@@ -24,3 +24,8 @@
     font-size: 28rpx;
     margin-top: 30rpx;
 }
+cover-image{
+    margin: auto;
+    width: 15%;
+    height: 15%;
+}

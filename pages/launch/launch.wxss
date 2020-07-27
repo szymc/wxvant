@@ -1,10 +1,16 @@
 /* pages/launch/launch.wxss */
 .pic{
     text-align: center;
+    margin-top: 40px;
 }
 .text{
     text-align: center;
     line-height: 60px;
     font-size: 24px;
     font-weight: bold;
+}
+cover-image{
+    margin: auto;
+    width: 15%;
+    height: 15%;
 }
