@@ -31,8 +31,6 @@ Page({
     this.setData({ show: false });
   },
   formatDate(date) {
-
-
     date = new Date(date);
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   },
@@ -41,11 +39,6 @@ Page({
       date: String(new Date(this.formatDate(event.detail)))
     }
     api.getTickets(params).then(res => {
-      this.setData({
-        show: false,
-        subscribeDate: this.formatDate(event.detail),
-        isCalendar: true,
-      })
       if (res.data.code == 200) {
         // console.log(res)
         this.setData({
@@ -56,6 +49,22 @@ Page({
           MonTicketId: res.data.datas2,
           AftTicketId: res.data.datas3
         });
+        this.setData({
+          show: false,
+          subscribeDate: this.formatDate(event.detail),
+          isCalendar: true,
+        })
+      } else if (res.data.code == 1100) {
+        Toast.fail(res.data.message)
+      } else {
+        this.setData({
+          time1: '请选择时间段',
+          time2: '请选择时间段',
+          remain1: 0,
+          remain2: 0,
+          MonTicketId: -1,
+          AftTicketId: -1,
+        })
       }
     })
 
@@ -75,13 +84,13 @@ Page({
   // 预约
   gotoreinformation() {
     api.f_contactslist().then(res => {
-      if(res.data.code ==1100){
+      if (res.data.code == 1100) {
         Dialog.alert({
-        message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
+          message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
         }).then(() => {
           // on close
         });
-      }else{
+      } else {
         if (!this.data.isGotoreinformation) {
           Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
           return
@@ -112,7 +121,7 @@ Page({
           TicketId = this.data.AftTicketId
         }
         wx.navigateTo({ url: `/pages/subscribe/subscribe?date=${this.data.subscribeDate}&TicketId=${TicketId}&timeSlice=${timeSlice}` })
-    
+
       }
     });
   },
@@ -135,12 +144,27 @@ Page({
       }
     })
   },
+  // 重置data数据
+  resetData() {
+    this.setData({
+      subscribeDate: '选择日期',
+      isCalendar: false,
+      time1: '请选择时间段',
+      time2: '请选择时间段',
+      remain1: 0,
+      remain2: 0,
+      MonTicketId: -1,
+      AftTicketId: -1,
+      radio: '0',
+      isGotoreinformation: true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     api.f_contactslist().then(res => {
-      if(res.data.code ==1100){
+      if (res.data.code == 1100) {
         Dialog.alert({
           message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
         }).then(() => {
@@ -154,13 +178,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.resetData()
     api.f_companyInfo().then(res => {
       this.setData({
         logo: res.data.datas.logo,
