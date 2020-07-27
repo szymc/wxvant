@@ -1,5 +1,5 @@
 .main{
-    height: 1180rpx;
+    height: 1187rpx;
     border: 10rpx solid #1296DB;
 }
 .notice_box_cls .notice_body0 {
