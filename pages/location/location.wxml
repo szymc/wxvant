@@ -5,9 +5,16 @@
     scale="{{scale}}" 
     controls="{{controls}}" 
     bindcontroltap="controltap" 
-    markers="{{markers}}" 
+    markers="{{markers}}"
+    bindtap="getClickLocation" 
     bindmarkertap="markertap" 
     bindregionchange="regionchange" 
     show-location 
-    style="width: 100%; height:{{view.Height}}px;"></map>
+    show-compass="{{true}}"
+    style="width: 100%; height:{{view.Height * 0.65}}px;"></map>
 </view>
+<view class="btn-area">
+    <button bindtap="museumLoc" class="page-body-button" type="primary">博物馆位置</button>
+    <button bindtap="curLoc" class="page-body-button" type="primary">当前位置</button>
+</view>
+<van-toast id="van-toast" />
