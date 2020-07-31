@@ -147,7 +147,7 @@ Page({
 
   ticketInfo() {
     api.getTicketInfo().then(res => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         timeSlice1: res.data.datas.duration1,
         timeSlice2: res.data.datas.duration2,

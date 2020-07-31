@@ -18,7 +18,7 @@ Page({
   changetick(event){
     console.log
     var index = event.currentTarget.dataset.id
-    console.log(index)
+    // console.log(index)
     wx.navigateTo({
       url: '/pages/reinformation/reinformation?id='+ index
     })

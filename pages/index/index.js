@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    logo: '',
-    banner: '',
+    logo: 'admin',
+    banner: '123456',
     subscribeDate: '选择日期',
     show: false,
     isCalendar: false,
