@@ -69,7 +69,7 @@ Page({
     });
   },
   // 预约
-  gotoreinformation(){
+  gotoreinformation() {
     // console.log(this.data)
     if (!this.data.isCalendar) {
       Toast.fail('请选择一个日期');
@@ -86,60 +86,48 @@ Page({
       timeSlice = this.data.timeSlice2
     }
     let radio;
-    if (this.data.radio==1) {
-        radio=0
-    }else if (this.data.radio ==2) {
-        radio=1
+    if (this.data.radio == 1) {
+      radio = 0
+    } else if (this.data.radio == 2) {
+      radio = 1
     }
-    let  params={
-      id:this.data.id,
-      newDate:this.data.subscribeDate,
-      choose:radio
+    let params = {
+      id: this.data.id,
+      newDate: this.data.subscribeDate,
+      choose: radio
     }
     api.update_endorse(params).then(res => {
-      if (res.data.code==200) {
-            wx.showLoading({
-              title: '改签成功',
-            })
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 500)
-        }
-      else if (res.data.code==1100) {
+      if (res.data.code == 200) {
+        wx.showLoading({
+          title: '改签成功',
+        })
+        setTimeout(function () {
+          wx.navigateBack({         //返回上一页  
+            delta: 1
+          })
+        }, 500)
+      }
+      else if (res.data.code == 1100) {
         wx.showModal({
           title: '改签失败',
-          content:res.data.message
+          content: res.data.message
         })
       }
-        }).catch(e => {
-            wx.showLoading({
-              title: res.data.message,
-            })
-            setTimeout(function () {
-              wx.hideLoading()
-        }, 1000)
-    })
-    let pages = getCurrentPages();   //获取小程序页面栈
-    let beforePage = pages[pages.length -2];  //获取上个页面的实例对象
-    beforePage.setData({      //直接修改上个页面的数据（可通过这种方式直接传递参数）
-      txt:'修改数据了'
-    })
-    beforePage.go_update();   //触发上个页面自定义的go_update方法
-    wx.navigateBack({         //返回上一页  
-      delta:1
+    }).catch(e => {
+      wx.showLoading({
+        title: res.data.message,
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1000)
     })
   },
-  gotoreturn(){
-    wx.navigateBack({
-      delta: 1
-    })
-  },
-  noop() {},
+  noop() { },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.id=options.id
+    this.data.id = options.id
     this.ticketInfo()
   },
 
@@ -165,48 +153,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })
