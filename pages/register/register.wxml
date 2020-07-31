@@ -18,7 +18,7 @@
                 </van-cell-group>
                 <view class="boxrow_21">
                     <van-checkbox value="{{ checked }}" bind:change="onUserInfo" label-disabled>
-                    已阅读，并同意《<span catchtap="userInfo">用户须知</span>》
+                    已阅读，并同意《<span catchtap="userInfo" style="color:rgba(33,139,249)">用户须知</span>》
                 </van-checkbox>
                 </view>
                 

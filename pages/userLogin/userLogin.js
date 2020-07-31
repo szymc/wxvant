@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username: '',
-    password: '',
+    username: 'admin',
+    password: '123456',
     nameErr: '',
     passErr: ''
   },

@@ -16,7 +16,7 @@ Page({
     wx.navigateTo({ url: '/pages/ticketdetails/ticketdetails?ticketscoding='+ index,})
   },
   changetick(event){
-    console.log
+    // console.log
     var index = event.currentTarget.dataset.id
     // console.log(index)
     wx.navigateTo({

@@ -17,7 +17,7 @@ Page({
       wx.redirectTo({ 
         url: '/pages/userLogin/userLogin'
       });  
-    }, 3000)
+    }, 1000)
   },
   
   /**
