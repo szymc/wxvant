@@ -1,4 +1,5 @@
-const baseUrl = 'http://192.168.4.220:8082/api/'//	192 
+// const baseUrl = 'http://192.168.4.220:8082/api/'//	192 
+const baseUrl = 'https://www.sunorient.com.cn/api/'//	192 
 const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
     const token = wx.getStorageSync('token');
     return new Promise((resolve, reject) => {
@@ -91,7 +92,7 @@ const _upload = (url, file) => {
                   'sys-token': token,
                       },
                 success: function (res) {
-                 console.log(res)
+                //  console.log(res)
                     resolve(res)
                 }
             })
