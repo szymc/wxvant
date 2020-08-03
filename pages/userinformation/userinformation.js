@@ -36,6 +36,7 @@ Page({
 			let params={
 				avatar:data.datas
 			}
+			
 			api.p_guestavatar(params).then(res => {
 				this.setData({ 
 					fileurl:data.datas,
