@@ -85,11 +85,15 @@ Page({
   gotoreinformation() {
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
-        Dialog.alert({
+        Dialog.confirm({
           message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
         }).then(() => {
-          // on close
-        });
+          wx.navigateTo({
+            url: '/pages/Modifyinformation/Modifyinformation'
+          })
+        }).catch(() => {
+          // on cancel
+        });;
       } else {
         if (!this.data.isGotoreinformation) {
           Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
@@ -165,10 +169,15 @@ Page({
   onLoad: function (options) {
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
-        Dialog.alert({
+        Dialog.confirm({
           message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
-        }).then(() => {
-          // on close
+        }) .then(() => {
+          wx.navigateTo({
+            url: '/pages/Modifyinformation/Modifyinformation'
+          })
+        })
+        .catch(() => {
+          // on cancel
         });
       }
     });
