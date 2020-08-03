@@ -3,7 +3,6 @@
     longitude="{{longitude}}" 
     latitude="{{latitude}}" 
     scale="{{scale}}" 
-    controls="{{controls}}" 
     bindcontroltap="controltap" 
     markers="{{markers}}"
     bindtap="getClickLocation" 

@@ -9,6 +9,11 @@ page {
   font-size: 20px;
   margin: 20rpx 0;
 }
+.text2 {
+  font-size: 15px;
+  margin: 20rpx 0;
+  color: rgba(150,151,153);
+}
 .van-cell{
   margin: 50rpx 0;
 }
