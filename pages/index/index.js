@@ -167,6 +167,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
         Dialog.confirm({
@@ -181,19 +195,6 @@ Page({
         });
       }
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
     this.resetData()
     api.f_companyInfo().then(res => {
       this.setData({
@@ -202,6 +203,7 @@ Page({
       })
     });
     this.ticketInfo()
+    
   },
 
   /**
