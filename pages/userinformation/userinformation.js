@@ -15,7 +15,7 @@ Page({
 		job:'',
 		area:'',
 		imgshow: false,
-		fileurl:'https://img.yzcdn.cn/vant/cat.jpeg',
+		fileurl:'',
 		phone: '',
 	},
 	gotoModifyinformation(){

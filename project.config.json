@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -107,6 +107,13 @@
 					"id": 5,
 					"name": "launch",
 					"pathName": "pages/launch/launch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/location/location",
+					"pathName": "pages/location/location",
 					"query": "",
 					"scene": null
 				}

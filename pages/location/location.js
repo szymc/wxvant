@@ -11,16 +11,16 @@ Page({
   },
   // 点击获取坐标
   getClickLocation(event) {
-    this.setData({
-      markers: [{
-        id: 2,
-        latitude: event.detail.latitude,
-        longitude: event.detail.longitude,
-        width: 25,
-        height: 25,
-        iconPath: "../../icons/位置.png"
-      }]
-    })
+    // this.setData({
+    //   markers: [{
+    //     id: 2,
+    //     latitude: event.detail.latitude,
+    //     longitude: event.detail.longitude,
+    //     width: 25,
+    //     height: 25,
+    //     iconPath: "../../icons/位置.png"
+    //   }]
+    // })
   },
   // 博物馆位置
   museumLoc() {
@@ -55,18 +55,42 @@ Page({
         _this.setData({
           latitude: res.latitude,
           longitude: res.longitude,
-          markers: [{
-            id: 1,
-            latitude: res.latitude,
-            longitude: res.longitude,
-            width: 25,
-            height: 25,
-            iconPath: "../../icons/位置.png",
-            title: "当前位置"
-          }]
+          // markers: [{
+          //   id: 1,
+          //   latitude: res.latitude,
+          //   longitude: res.longitude,
+          //   width: 25,
+          //   height: 25,
+          //   iconPath: "../../icons/位置.png",
+          //   title: "当前位置"
+          // }]
         })
       }
     })
+  },
+
+  go() {
+    api.f_companyInfo().then(res => {
+      if (res.data.code == 200) {
+        if (!res.data.datas.longitude || !res.data.datas.latitude) {
+          Toast.fail('该博物馆暂未设置经纬度');
+        } else {
+          // this.setData({
+          //   latitude: res.data.datas.longitude,
+          //   longitude: res.data.datas.latitude,
+          // })
+          wx.openLocation({
+            latitude: Number(res.data.datas.longitude),
+            longitude: Number(res.data.datas.latitude),
+            name: "博物馆",
+            address: "博物馆地址",
+            success: function (r) {
+              console.log(r)
+            }
+          })
+        }
+      }
+    })   
   },
 
   onLoad: function () {
@@ -89,15 +113,15 @@ Page({
         _this.setData({
           latitude: res.latitude,
           longitude: res.longitude,
-          markers: [{
-            id: 1,
-            latitude: res.latitude,
-            longitude: res.longitude,
-            width: 25,
-            height: 25,
-            iconPath: "../../icons/位置.png",
-            title: "当前位置"
-          }],
+          // markers: [{
+          //   id: 1,
+          //   latitude: res.latitude,
+          //   longitude: res.longitude,
+          //   width: 25,
+          //   height: 25,
+          //   iconPath: "../../icons/位置.png",
+          //   title: "当前位置"
+          // }],
         })
       }
     })
@@ -110,16 +134,28 @@ Page({
 
   //点击merkers
   markertap(e) {
-    var _this = this;
-    // console.log(e.markerId)
+    let _this = this;
+    console.log(e.markerId)
 
     wx.showActionSheet({
       itemList: ["出发"],
       success: function (res) {
-        // console.log(res.tapIndex)
+        // let lat = _this.data.markers[0].latitude
+        // let lon = _this.data.markers[0].longitude
+        let lat = Number(_this.data.latitude)
+        let lon = Number(_this.data.longitude)
+        wx.openLocation({
+          latitude: lat,
+          longitude: lon,
+          name: "博物馆",
+          address: "博物馆地址",
+          success: function (r) {
+            console.log(r)
+          }
+        })
       },
       fail: function (res) {
-        // console.log(res.errMsg)
+        console.log(res)
       }
     })
   },

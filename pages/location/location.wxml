@@ -15,5 +15,6 @@
 <view class="btn-area">
     <button bindtap="museumLoc" class="page-body-button" type="primary">博物馆位置</button>
     <button bindtap="curLoc" class="page-body-button" type="primary">当前位置</button>
+    <button bindtap="go" class="page-body-button" type="primary">出发前往</button>
 </view>
 <van-toast id="van-toast" />
