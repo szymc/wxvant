@@ -1,21 +1,41 @@
 page {
     background: #f5f5f5;
-  }
-  .bc{
+}
+
+.bc {
     margin: 40rpx;
 }
-.text{
+
+.text {
     text-align: center;
     font-size: 24px;
     font-weight: normal;
     margin-bottom: 20rpx;
 }
-rich-text{
+
+rich-text {
     font-size: 14px;
 }
-.picture{
+
+.picture {
     text-align: center;
 }
-.cell{
+
+.cell {
     margin-bottom: 20rpx;
+}
+
+.full {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+  }
+
+.tit {
+    color: #DDD;
 }

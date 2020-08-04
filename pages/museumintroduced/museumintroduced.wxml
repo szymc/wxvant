@@ -1,18 +1,17 @@
 <view class="bc">
-    <view class="cell" wx:for="{{tabledata}}" wx:key="index">
-        <view class="text">
-        {{item.title}}
+    <view wx:if="{{tabledata != null && tabledata.length > 0}}">
+        <view class="cell" wx:for="{{tabledata}}" wx:key="index">
+            <view class="text">
+                {{item.title}}
+            </view>
+            <rich-text nodes="{{item.content}}"></rich-text>
+            <view class="picture">
+                <van-image width="10rem" height="10rem" fit="contain" src="{{item.img}}" />
+            </view>
         </view>
-        <rich-text nodes="{{item.content}}"></rich-text>
-        <view class="picture">
-            <van-image
-            width="10rem"
-            height="10rem"
-            fit="contain"
-            src="{{item.img}}"
-            />
-        </view>
-        
+    </view>
+    <view class="full" wx:else>
+        <view class="tit">管理员暂未添加馆内介绍</view>
     </view>
     <van-toast id="van-toast" />
 </view>
