@@ -15,7 +15,7 @@ Page({
 		job:'',
 		area:'',
 		imgshow: false,
-		fileurl:'https://img.yzcdn.cn/vant/cat.jpeg',
+		fileurl:'',
 		phone: '',
 	},
 	gotoModifyinformation(){
@@ -43,11 +43,51 @@ Page({
 					imgshow: false
 					});
 			}).catch(e => {
+
 			})
 		}).catch(e => {
 		})
 
 	},
+
+	clickpic(){
+    var that = this;
+    wx.chooseImage({
+			count: 1,
+			sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+				// 无论用户是从相册选择还是直接用相机拍摄，路径都是在这里面
+				console.log(res)
+        var filePath = res.tempFilePaths[0];
+        //将刚才选的照片/拍的 放到下面view视图中
+        
+        api.upload(filePath).then(res => {
+					var  data= JSON.parse(res.data)
+					let params={
+						avatar:data.datas
+					}
+					api.p_guestavatar(params).then(res => {
+						that.setData({ 
+							fileurl:data.datas,
+							imgshow: false
+							});
+					}).catch(e => {
+						Toast(e.errMsg);
+					})
+				}).catch(e => {
+					Toast(e.errMsg);
+				})
+      },
+      fail: function (error) {
+        console.error("调用本地相册文件时出错")
+        console.warn(error)
+      },
+      complete: function () {
+
+      }
+    });
+  },
 /**
  * 生命周期函数--监听页面加载
  */

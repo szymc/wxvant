@@ -11,9 +11,13 @@
         </van-cell>
         <van-popup show="{{ imgshow }}" closeable position="bottom" custom-style="height: 20%;" bind:close="onCloseimgshow">
             <view class="btnimg">
-                <van-uploader bind:after-read="afterRead">
-                    <van-button icon="photo"  type="info">上传图片</van-button>
-                </van-uploader>
+
+                <!-- <van-uploader bind:after-read="afterRead"> -->
+                    <!-- <van-button icon="photo"  type="info">上传图片</van-button> -->
+                    <van-button icon="photo"  type="info" bindtap='clickpic'>上传图片</van-button>
+                    <!-- <input type="file" id="logimg"  accept="image/*"  @change="afterRead" /> -->
+   <!-- <img class='camera-icon'   :src="img.camera" /> -->
+                <!-- </van-uploader> -->
             </view>
         </van-popup>
         <van-toast id="van-toast" />
