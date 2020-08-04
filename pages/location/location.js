@@ -7,29 +7,6 @@ Page({
     latitude: "",
     longitude: "",
     markers: [],
-    controls: [{
-      id: 1,
-      iconPath: '../../icons/减.png',
-      position: {
-        left: 300,
-        top: 100 - 50,
-        width: 30,
-        height: 30
-      },
-      clickable: true
-    },
-    {
-      id: 2,
-      iconPath: '../../icons/加.png',
-      position: {
-        left: 330,
-        top: 100 - 50,
-        width: 30,
-        height: 30
-      },
-      clickable: true
-    }
-    ],
 
   },
   // 点击获取坐标
