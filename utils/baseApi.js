@@ -86,7 +86,7 @@ const _upload = (url, file) => {
         return new Promise((resolve, reject) => {
             wx.uploadFile({
                 url: getUrl(url), // 上传的服务器接口地址
-                filePath: file.detail.file.path, 
+                filePath: file, 
                 name: 'file', //上传的所需字段，后端提供
                 header: {
                   'sys-token': token,
