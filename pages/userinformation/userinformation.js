@@ -129,9 +129,19 @@ onShow: function () {
 		}else{
 			jobname="其他"
 		}
+		let catimg=""
+		if(res.data.datas.avatar!=''){
+			this.setData({
+				fileurl:res.data.datas.avatar,
+			})
+		}else{
+			this.setData({
+				fileurl:'../../icons/cat.jpg',
+			})
+		}
 		let arr = JSON.parse(res.data.datas.region)
 		this.setData({ 
-			fileurl:res.data.datas.avatar,
+			
 			name:res.data.datas.name,
 			phone:res.data.datas.phone,
 			age:res.data.datas.age,
