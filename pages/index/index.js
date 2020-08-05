@@ -89,6 +89,7 @@ Page({
   },
   // 预约
   gotoreinformation() {
+    var token = wx.getStorageSync('token');
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
         Dialog.confirm({
@@ -100,7 +101,7 @@ Page({
         }).catch(() => {
           // on cancel
         });;
-      } else {
+      } else if(token != ''){
         if (!this.data.isGotoreinformation) {
           Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
           return
