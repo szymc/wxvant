@@ -24,7 +24,9 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
                           url: '/pages/userLogin/userLogin'
                         })
                       }).catch(() => {
-                        // on cancel
+                        wx.switchTab({ 
+                            url: '/pages/index/index'
+                          });  
                       });;
                     // wx.showModal({
                     //     title: '登录提示',
