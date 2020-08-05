@@ -51,7 +51,7 @@ Page({
         wx.switchTab({url: '/pages/index/index'})
       } 
     }).catch(e => {
-      console.log(e)
+      // console.log(e)
     })
 
   },

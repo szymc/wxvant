@@ -20,12 +20,18 @@ Page({
     MonTicketId: -1,
     AftTicketId: -1,
     radio: '0',
-    timeSlice1: '00:00-00:00',
-    timeSlice2: '00:00-00:00',
+    timeSlice1: '',
+    timeSlice2: '',
     isGotoreinformation: true
   },
   onDisplay() {
+    var token = wx.getStorageSync('token');
+    // console.log(token)
+    if(token == ''){
+      Toast.fail("您尚未登录，请先登录")
+    }else{
     this.setData({ show: true });
+    }
   },
   onClose() {
     this.setData({ show: false });
@@ -168,7 +174,7 @@ Page({
    */
   onLoad: function (options) {
     var token = wx.getStorageSync('token');
-    console.log(token)
+    // console.log(token)
     if(token == ''){
       
     }else{
@@ -201,7 +207,7 @@ Page({
    */
   onShow: function () {
     var token = wx.getStorageSync('token');
-    console.log(token)
+    // console.log(token)
     if(token == ''){
       
     }else{

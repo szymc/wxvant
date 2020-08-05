@@ -58,7 +58,7 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
 				// 无论用户是从相册选择还是直接用相机拍摄，路径都是在这里面
-				console.log(res)
+				// console.log(res)
         var filePath = res.tempFilePaths[0];
         //将刚才选的照片/拍的 放到下面view视图中
         

@@ -21,12 +21,12 @@ Page({
       data:{
       },
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         that.setData({
           pageIndex: pageIndex,
           list: res.data.data
         })
-        console.log(that.data.list)
+        // console.log(that.data.list)
       },
       fail: function (res) { },
       complete: function (res) {
@@ -59,7 +59,7 @@ Page({
 
         let newList = originList.concat(data)
 
-        console.log(newList)
+        // console.log(newList)
         that.setData({
           pageIndex: pageIndex,
           list: newList
@@ -82,7 +82,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('触发下拉刷新')
+    // console.log('触发下拉刷新')
     var that = this
     that.loadInitData()
   },
@@ -90,7 +90,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('触发上拉加载')
+    // console.log('触发上拉加载')
     var that = this
     that.loadMore()
   }

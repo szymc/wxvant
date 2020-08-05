@@ -28,7 +28,7 @@ Page({
       wx.removeStorage({
         key: 'token',
         success (res) {
-          console.log(res)
+          // console.log(res)
         }
 
       })

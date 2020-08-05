@@ -55,7 +55,7 @@ Page({
         Toast.fail(res.data.message);
       }
     }).catch(err => {
-      console.log(err)
+      // console.log(err)
     })
 
   },

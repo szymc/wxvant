@@ -257,7 +257,7 @@ Page({
         Toast.fail(res.data.message);
       }
     }).catch(e => {
-      console.log(e)
+      // console.log(e)
     })
   },
 

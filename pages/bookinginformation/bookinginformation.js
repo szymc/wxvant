@@ -16,7 +16,7 @@ Page({
   nextPage: function () {
     var that = this
     let page = this.data.pageIndex;
-    console.log("第" + page + "页滑到底部了,请求第" + (page + 1) + "页");
+    // console.log("第" + page + "页滑到底部了,请求第" + (page + 1) + "页");
     page += 1;
     if(page<=this.data.pageCount){
         let params ={

@@ -77,7 +77,7 @@ Page({
       });
     }).catch(e => {
       // Toast(e.errMsg);
-      console.log(e)
+      // console.log(e)
     })
   },
 

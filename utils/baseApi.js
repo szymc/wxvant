@@ -16,7 +16,7 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
             success: function(res) {
               
                 if(res.data.code==1102){
-                    console.log("shibushi")
+                    // console.log("shibushi")
                     Dialog.confirm({
                         message: '您尚未登录，是否立即登录？',
                       }).then(() => {
@@ -94,7 +94,7 @@ const _delete = (url, param = {}) => {
 // 上传方法
 
 const _upload = (url, file) => {
-    console.log(file)
+    // console.log(file)
         const token = wx.getStorageSync('token');
         return new Promise((resolve, reject) => {
             wx.uploadFile({

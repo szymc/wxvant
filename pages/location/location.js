@@ -85,7 +85,7 @@ Page({
             name: "博物馆",
             address: "博物馆地址",
             success: function (r) {
-              console.log(r)
+              // console.log(r)
             }
           })
         }
@@ -135,7 +135,7 @@ Page({
   //点击merkers
   markertap(e) {
     let _this = this;
-    console.log(e.markerId)
+    // console.log(e.markerId)
 
     wx.showActionSheet({
       itemList: ["出发"],
@@ -150,12 +150,12 @@ Page({
           name: "博物馆",
           address: "博物馆地址",
           success: function (r) {
-            console.log(r)
+            // console.log(r)
           }
         })
       },
       fail: function (res) {
-        console.log(res)
+        // console.log(res)
       }
     })
   },
