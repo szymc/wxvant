@@ -167,6 +167,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var token = wx.getStorageSync('token');
+    console.log(token)
+    if(token == ''){
+      
+    }else{
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
         Dialog.confirm({
@@ -181,34 +186,26 @@ Page({
         });
       }
     });
+  }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // api.f_contactslist().then(res => {
-    //   if (res.data.code == 1100) {
-    //     Dialog.confirm({
-    //       message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
-    //     }) .then(() => {
-    //       wx.navigateTo({
-    //         url: '/pages/Modifyinformation/Modifyinformation'
-    //       })
-    //     })
-    //     .catch(() => {
-    //       // on cancel
-    //     });
-    //   }
-    // });
-    this.resetData()
+    var token = wx.getStorageSync('token');
+    console.log(token)
+    if(token == ''){
+      
+    }else{
+      this.resetData()
     api.f_companyInfo().then(res => {
       this.setData({
         logo: res.data.datas.logo,
@@ -216,7 +213,13 @@ Page({
       })
     });
     this.ticketInfo()
-    
+    }
+    // wx.getStorage({
+    //   key: 'token',
+    //   success (res) {
+    //     console.log(res)
+    //   }
+    // })
   },
 
   /**

@@ -14,8 +14,9 @@ Page({
   onLoad () {
     let timer = setTimeout(() => {
       clearTimeout(timer)
-      wx.redirectTo({ 
-        url: '/pages/userLogin/userLogin'
+      
+      wx.switchTab({ 
+        url: '/pages/index/index'
       });  
     }, 1000)
   },
