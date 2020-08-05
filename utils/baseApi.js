@@ -1,4 +1,5 @@
 // const baseUrl = 'http://192.168.4.220:8082/api/'//	192 
+import Dialog from '../miniprogram_npm/@vant/weapp/dialog/dialog';
 const baseUrl = 'https://www.sunorient.com.cn/api/'//	192 
 const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
     const token = wx.getStorageSync('token');
@@ -16,20 +17,29 @@ const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
               
                 if(res.data.code==1102){
                     console.log("shibushi")
-                    wx.showModal({
-                        title: '登录提示',
-                        content: '您尚未登录，是否立即登录？',
-                        showCancel: true,
-                        confirmText: '登录',
-                        success: (e) => {
-                            if (e.confirm) {
-                                wx.navigateTo({
-                                    url: '/pages/userLogin/userLogin'
-                                })
-                            }
-                        },
-                        fail: () => {},
-                    })
+                    Dialog.confirm({
+                        message: '您尚未登录，是否立即登录？',
+                      }).then(() => {
+                        wx.navigateTo({
+                          url: '/pages/userLogin/userLogin'
+                        })
+                      }).catch(() => {
+                        // on cancel
+                      });;
+                    // wx.showModal({
+                    //     title: '登录提示',
+                    //     content: '您尚未登录，是否立即登录？',
+                    //     showCancel: true,
+                    //     confirmText: '登录',
+                    //     success: (e) => {
+                    //         if (e.confirm) {
+                    //             wx.navigateTo({
+                    //                 url: '/pages/userLogin/userLogin'
+                    //             })
+                    //         }
+                    //     },
+                    //     fail: () => {},
+                    // })
                 }
                 resolve(res)
 			},

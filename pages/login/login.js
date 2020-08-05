@@ -60,21 +60,21 @@ Page({
         name:res.data.datas.name
       });
     }).catch(e => {
-      Toast(e.errMsg);
+      // Toast("数据错误");
     })
     api.f_orderlist(params).then(res => {
       this.setData({ 
         totle:res.data.datas.total,
       });
     }).catch(e => {
-      Toast(e.errMsg);
+      // Toast("数据错误");
     })
     api.f_ordermyOrder(params).then(res => {
       this.setData({ 
         reserved:res.data.datas.total,
       });
     }).catch(e => {
-      Toast(e.errMsg);
+      // Toast("数据错误");
     })
   },
 

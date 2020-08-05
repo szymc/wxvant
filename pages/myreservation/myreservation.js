@@ -43,7 +43,7 @@ Page({
         Toast(res.data.message);
         this.onShow()
       }).catch(e => {
-        Toast(e.errMsg);
+        // Toast(e.errMsg);
       })
     })
     .catch(() => {
@@ -76,7 +76,7 @@ Page({
         tabledata:res.data.datas.records,
       });
     }).catch(e => {
-      Toast(e.errMsg);
+      // Toast(e.errMsg);
       console.log(e)
     })
   },
