@@ -16,6 +16,7 @@ Page({
     show: false,
     choose: 0,
     max: 3,
+    ticketMax: 0,
     list1: [],
     list2: [],
     result: []
@@ -125,6 +126,16 @@ Page({
 
     })
   },
+  ticketInfo() {
+    api.getTicketInfo().then(res => {
+      // console.log(res)
+      if (res.data.code == 200) {
+        this.setData({
+          ticketMax: res.data.datas.ticketMax
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -135,6 +146,7 @@ Page({
       ticketId: options.TicketId,
       timeSlice: options.timeSlice
     })
+    this.ticketInfo()
   },
 
   /**

@@ -52,10 +52,11 @@
             <view class="popupBox_2_1 popupBox_2_1_1" wx:else>添加参观人员已达上限</view>
         </view>
         <view class="popupBox_3">
-            已选择<span class="tit">{{result.length}}</span>张票，同一账户最多同时预约<span class="tit">{{max}}</span>张票
+            <!-- <view>同一账户最多同时预约<span class="tit">{{max}}</span>张票，本账号已经预约张票</view> -->
+            <view>已选择<span class="tit">{{result.length}}</span>张票，还可以预约{{ticketMax - result.length}}张票</view>
         </view>
         <view class="popupBox_4">
-            <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ max }}">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ ticketMax }}">
                 <van-cell-group>
                     <van-cell wx:for="{{ list2 }}" wx:key="index" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
                         <view slot="icon" class="iconsty">
