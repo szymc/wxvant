@@ -177,7 +177,7 @@ Page({
     var token = wx.getStorageSync('token');
     // console.log(token)
     if(token == ''){
-      
+      // console.log('token')
     }else{
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
@@ -210,7 +210,7 @@ Page({
     var token = wx.getStorageSync('token');
     // console.log(token)
     if(token == ''){
-      
+      // console.log('token')
     }else{
       this.resetData()
     api.f_companyInfo().then(res => {
