@@ -1,6 +1,7 @@
 // pages/userLogin/userLogin.js
 var api = require('../../utils/apiManagement.js');
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -10,15 +11,18 @@ Page({
     username: '',
     password: '',
     nameErr: '',
-    passErr: ''
+    passErr: '',
+    company: '',
+    showCompany: false,
+    companyList: []
   },
-  inputName(event) {
+  inputName (event) {
     this.setData({ username: event.detail })
   },
-  inputPass(event) {
+  inputPass (event) {
     this.setData({ password: event.detail })
   },
-  submit() {
+  submit () {
     if (this.data.username.length == 0) {
       this.setData({ nameErr: '用户名不能为空' })
       return
@@ -31,9 +35,14 @@ Page({
     } else {
       this.setData({ passErr: '' })
     }
+    if (!wx.getStorageSync('pwcompanyid')) {
+      Toast.fail('请选择一个登录的博物馆');
+      return
+    }
     let params = {
       phone: this.data.username,
       password: this.data.password,
+      companyId: wx.getStorageSync('pwcompanyid')
     }
     api.login(params).then(res => {
       // console.log(res)
@@ -41,22 +50,52 @@ Page({
         Dialog.alert({
           message: `${res.data.message}`,
         }).then(() => {
-          
+
         });
       } else {
         wx.setStorage({
           key: 'token',
           data: res.data.datas
         })
-        wx.switchTab({url: '/pages/index/index'})
-      } 
+        wx.switchTab({ url: '/pages/index/index' })
+      }
     }).catch(e => {
       // console.log(e)
     })
 
   },
-  register() {
+  register () {
     wx.navigateTo({ url: '/pages/register/register' })
+  },
+  // 加载博物馆数据
+  getCompanys () {
+    api.f_companyList().then(res => {
+      if (res.data.code == 200) {
+        this.setData({
+          companyList: res.data.datas
+        })
+      } else {
+        Toast.fail(res.data.message || '博物馆查询失败')
+      }
+    }).catch(err => { })
+  },
+  openCompany () {
+    this.setData({ showCompany: true })
+  },
+  cmdConfirm (event) {
+    let id = event.currentTarget.dataset.id
+    let name = event.currentTarget.dataset.name
+    Dialog.confirm({
+      message: `是否确认选择${name}?`,
+      zIndex: 200
+    }).then(() => {
+      wx.setStorageSync('pwcompanyid', id)
+      wx.setStorageSync('pwcompanyname', name)
+      this.setData({ showCompany: false, company: name })
+    }).catch(() => { })
+  },
+  onClose () {
+    this.setData({ showCompany: false })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -76,10 +115,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getCompanys()
+    let name = wx.getStorageSync('pwcompanyname')
     this.setData({
       username: '',
-      password: ''
+      password: '',
+      company: name || '空'
     })
+
   },
 
   /**

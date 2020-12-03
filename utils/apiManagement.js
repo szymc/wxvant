@@ -37,6 +37,9 @@ const f_noticeGetInfo = params => api._get("notice/getInfo", params); // 用户�
 
 // 基本信息
 const f_companyInfo = params => api._get("company/info", params);
+const f_companyList = params => api._get("company/choose", params);
+const f_companyVisit = params => api._get("company/visit", params);
+const f_companyIntro = params => api._get("company/intro", params);
 // 预约
 const getTickets = params => api._get("order/remain", params);
 const getTicketInfo = params => api._get("order/ticketInfo", params);
@@ -69,6 +72,9 @@ module.exports = {
         p_ordercancel,
         p_guestpassword,
         f_companyInfo,
+        f_companyList,
+        f_companyVisit,
+        f_companyIntro,
         getTickets,
         getTicketInfo,
         f_guestbaseInfo,

@@ -21,3 +21,9 @@ cover-image{
     width: 15%;
     height: 15%;
 }
+.value-class {
+    -webkit-flex: 4 !important;
+    flex: 4 !important;
+    text-align: left !important;
+    padding-left: 68rpx;
+}

@@ -7,26 +7,32 @@ Page({
    */
   data: {
     htmlSnip: "",
+    companyid: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      companyid: options.companyid
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    api.f_noticeGetInfo().then( res => {
+    let params = {
+      companyId: this.data.companyid
+    }
+    api.f_noticeGetInfo(params).then( res => {
       if (res.data.code == 200) {
         this.setData({
           htmlSnip: res.data.datas.content
         })
       }     
-    })
+    }).catch(err => {})
   },
 
   /**

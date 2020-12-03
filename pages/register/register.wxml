@@ -1,34 +1,39 @@
 <van-row>
-    <view class="box">
-        <van-row class="boxrow">
-            <view class="boxrow_1">
-                <cover-image src="../../icons/piao.png"  />
-                <!-- <van-image width="75" height="75" src="../../icons/piao.png" /> -->
-            </view>
-            <view class="boxrow_2">
-                <van-cell-group>
-                    <van-field value="{{ name }}" clearable label="账号名" placeholder="请输入用户名" bind:change="inputName" error-message="{{nameMsg}}"/>
-                    <van-field value="{{ phone }}" clearable label="手机号" placeholder="请输入手机号" bind:change="inputPhone" error-message="{{phoneMsg}}"/>
-                    <van-field value="{{ sms }}" center clearable label="短信验证码" placeholder="请输入短信验证码"  bind:change="inputSms" use-button-slot error-message="{{smsMsg}}">
-                        <van-button slot="button" size="small" type="primary" bind:click="sendSms">发送验证码</van-button>
-                    </van-field>
-                    <van-field value="{{ password }}" type="password" label="密码" placeholder="设置登录密码(6-20位)"  bind:change="inputPass" error-message="{{passMsg}}"/>
-                    <van-field value="{{ checkpass }}" type="password" label="确认密码" placeholder="确认登录密码" bind:change="inputCheckpass" bind:blur="blurCheckpass" error-message="{{checkpassMsg}}"/>
-                    
-                </van-cell-group>
-                <view class="boxrow_21">
-                    <van-checkbox value="{{ checked }}" bind:change="onUserInfo" label-disabled>
-                    已阅读，并同意《<span catchtap="userInfo" style="color:rgba(33,139,249)">用户须知</span>》
-                </van-checkbox>
-                </view>
-                
-            </view>
-            <view class="boxrow_3">
-                <van-button type="info" round size="large" bind:click="submit">确认</van-button>
-            </view>
-        </van-row>
-        <van-toast id="van-toast" />
-        <van-dialog id="van-dialog" />
-    </view>
+  <view class="box">
+    <van-row class="boxrow">
+      <view class="boxrow_1">
+        <cover-image src="../../icons/piao.png" />
+        <!-- <van-image width="75" height="75" src="../../icons/piao.png" /> -->
+      </view>
+      <view class="boxrow_2">
+        <van-cell-group>
+          <van-field value="{{ name }}" clearable label="账号名" placeholder="请输入用户名" bind:change="inputName"
+            error-message="{{nameMsg}}" />
+          <van-field value="{{ phone }}" clearable label="手机号" placeholder="请输入手机号" bind:change="inputPhone"
+            error-message="{{phoneMsg}}" />
+          <van-field value="{{ sms }}" center clearable label="短信验证码" placeholder="请输入短信验证码" bind:change="inputSms"
+            use-button-slot error-message="{{smsMsg}}">
+            <van-button slot="button" size="small" type="primary" bind:click="sendSms">发送验证码</van-button>
+          </van-field>
+          <van-field value="{{ password }}" type="password" label="密码" placeholder="设置登录密码(6-20位)"
+            bind:change="inputPass" error-message="{{passMsg}}" />
+          <van-field value="{{ checkpass }}" type="password" label="确认密码" placeholder="确认登录密码"
+            bind:change="inputCheckpass" bind:blur="blurCheckpass" error-message="{{checkpassMsg}}" />
+          <van-cell title="博物馆" is-link value="{{company}}" bind:click="showcompanys" value-class="value-class"/>
+            <van-action-sheet show="{{ showcompany }}" actions="{{ actionscompany }}" bind:close="onClose" bind:select="onSelect" />
+        </van-cell-group>
+        <view class="boxrow_21">
+          <van-checkbox value="{{ checked }}" bind:change="onUserInfo" label-disabled disabled="{{ isShow }}">
+            已阅读，并同意《<span catchtap="userInfo" style="color:rgba(33,139,249)">用户须知</span>》
+          </van-checkbox>
+        </view>
+      </view>
+      <view class="boxrow_3">
+        <van-button type="info" round size="large" bind:click="submit">确认</van-button>
+      </view>
+    </van-row>
+    <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
+  </view>
 </van-row>
 <van-notify id="van-notify" />

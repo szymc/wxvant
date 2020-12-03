@@ -2,30 +2,64 @@
 .box {
     margin: 100rpx 60rpx;
 }
+
 .boxrow_1 {
     text-align: center;
 }
+
 .boxrow_2 {
     margin-top: 100rpx;
 }
+
 .boxrow_3 {
     text-align: right;
-    color: rgba(33,139,249);
+    color: rgba(33, 139, 249);
     font-size: 25rpx;
     margin-top: 20rpx;
 }
+
 .boxrow_4 {
     margin-top: 68rpx;
     text-align: center;
 }
+
 .boxrow_5 {
     text-align: center;
-    color: rgba(33,139,249);
+    color: rgba(33, 139, 249);
     font-size: 28rpx;
     margin-top: 30rpx;
 }
-cover-image{
+
+cover-image {
     margin: auto;
     width: 15%;
     height: 15%;
+}
+
+.company {
+    margin-left: 30rpx;
+    margin-top: 30rpx;
+    font-size: 25rpx;
+}
+
+.name {
+    color: rgb(25, 137, 250);
+}
+
+.companyBox {
+    text-align: center;
+}
+
+.companyChoose {
+    margin-top: 20rpx;
+    font-size: 40;
+    font-weight: bold;
+}
+
+.companys {
+    margin-top: 30rpx;
+}
+
+.companyView {
+    margin-top: 18rpx;
 }

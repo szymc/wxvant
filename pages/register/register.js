@@ -17,12 +17,19 @@ Page({
     password: '',
     checkpass: '',
     checked: false,
+    company: '请选择一个博物馆',
+    companyid: '',
     // 表单验证
     nameMsg: '',
     phoneMsg: '',
     smsMsg: '',
     passMsg: '',
-    checkpassMsg: ''
+    checkpassMsg: '',
+    //
+    showcompany: false,
+    actionscompany: [],
+    companyChoose: false,
+    isShow: true
   },
   inputName(event) {
     this.setData({ name: event.detail })
@@ -79,8 +86,25 @@ Page({
       checked: event.detail,
     });
   },
+  showcompanys() {
+    this.setData({ showcompany: true });
+  },
+  onClose() {
+    this.setData({ showcompany: false });
+  },
+  // 选择博物馆
+  onSelect(event) {
+    this.setData({
+      company: event.detail.name,
+      companyid: event.detail.id,
+      companyChoose: true,
+      isShow: false
+    })
+  },
   userInfo() {
-    wx.navigateTo({ url: '/pages/userLoginInfo/userLoginInfo' })
+    if (this.data.companyid) {
+      wx.navigateTo({ url: '/pages/userLoginInfo/userLoginInfo?companyid=' +  this.data.companyid})
+    }
   },
   submit() {
     if (this.data.name.length == 0) {
@@ -133,6 +157,11 @@ Page({
     }
     if (this.data.checkpassMsg.length > 0) return
 
+    if (!this.data.companyChoose) {
+      Toast.fail('请选择一个博物馆');
+      return
+    }
+
     if (!this.data.checked) {
       Toast.fail('注册需同意用户须知');
       return
@@ -144,7 +173,8 @@ Page({
       captcha: this.data.sms,
       password: this.data.password,
       password2: this.data.checkpass,
-      read: String(this.data.checked)
+      read: String(this.data.checked),
+      companyId: this.data.companyid
     }
     api.p_guestregister(params).then(res => {
       if (res.data.code == 200) {
@@ -158,6 +188,18 @@ Page({
       }
     })
     // wx.navigateBack()
+  },
+  // 加载博物馆数据
+  getCompanys () {
+    api.f_companyList().then(res => {
+      if (res.data.code == 200) {
+        this.setData({
+          actionscompany: res.data.datas
+        })
+      } else {
+        Toast.fail(res.data.message || '博物馆查询失败')
+      }
+    }).catch(err => { })
   },
 
   /**
@@ -178,7 +220,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getCompanys()
   },
 
   /**

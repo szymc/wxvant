@@ -32,6 +32,8 @@ Page({
         }
 
       })
+      wx.removeStorageSync('pwcompanyid')
+      wx.removeStorageSync('pwcompanyname')
       wx.redirectTo({
         url: '/pages/userLogin/userLogin',
         

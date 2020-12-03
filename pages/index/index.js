@@ -22,25 +22,27 @@ Page({
     radio: '0',
     timeSlice1: '',
     timeSlice2: '',
-    isGotoreinformation: true
+    isGotoreinformation: true,
+    showCompany: false,
+    companyList: []
   },
-  onDisplay() {
+  onDisplay () {
     var token = wx.getStorageSync('token');
     // console.log(token)
-    if(token == ''){
+    if (token == '') {
       Toast.fail("您尚未登录，请先登录")
-    }else{
-    this.setData({ show: true });
+    } else {
+      this.setData({ show: true });
     }
   },
-  onClose() {
+  onClose () {
     this.setData({ show: false });
   },
-  formatDate(date) {
+  formatDate (date) {
     date = new Date(date);
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   },
-  onConfirm(event) {
+  onConfirm (event) {
     let params = {
       date: String(new Date(this.formatDate(event.detail)))
     }
@@ -76,19 +78,19 @@ Page({
 
   },
   // 时间段
-  onChange(event) {
+  onChange (event) {
     this.setData({
       radio: event.detail,
     });
   },
-  onClick(event) {
+  onClick (event) {
     const { name } = event.currentTarget.dataset;
     this.setData({
       radio: name,
     });
   },
   // 预约
-  gotoreinformation() {
+  gotoreinformation () {
     var token = wx.getStorageSync('token');
     api.f_contactslist().then(res => {
       if (res.data.code == 1100) {
@@ -101,7 +103,7 @@ Page({
         }).catch(() => {
           // on cancel
         });;
-      } else if(token != ''){
+      } else if (token != '') {
         if (!this.data.isGotoreinformation) {
           Toast.fail('当前已超过单人可预约最大数量，请处理其他票务预约后再来预约');
           return
@@ -136,9 +138,9 @@ Page({
       }
     });
   },
-  noop() { },
+  noop () { },
 
-  ticketInfo() {
+  ticketInfo () {
     api.getTicketInfo().then(res => {
       // console.log(res)
       if (res.data.code == 200) {
@@ -155,8 +157,36 @@ Page({
       }
     })
   },
+  // 加载博物馆数据
+  getCompanys () {
+    api.f_companyList().then(res => {
+      if (res.data.code == 200) {
+        this.setData({
+          companyList: res.data.datas
+        })
+      } else {
+        Toast.fail(res.data.message || '博物馆查询失败')
+      }
+    }).catch(err => { })
+  },
+  cmdConfirm (event) {
+    let id = event.currentTarget.dataset.id
+    let name = event.currentTarget.dataset.name
+    Dialog.confirm({
+      message: `是否确认选择${name}?`,
+      zIndex: 200
+    }).then(() => {
+      wx.setStorageSync('pwcompanyid', id)
+      wx.setStorageSync('pwcompanyname', name)
+      this.setData({ showCompany: false })
+      this.onShow()
+    }).catch(() => { })
+  },
+  clkIcon() {
+    this.setData({ showCompany: true })
+  },
   // 重置data数据
-  resetData() {
+  resetData () {
     this.setData({
       subscribeDate: '选择日期',
       isCalendar: false,
@@ -175,32 +205,34 @@ Page({
    */
   onLoad: function (options) {
     var token = wx.getStorageSync('token');
+    var id = wx.getStorageSync('pwcompanyid');
     // console.log(token)
-    if(token == ''){
+    if (token == '') {
       // console.log('token')
-    }else{
-    api.f_contactslist().then(res => {
-      if (res.data.code == 1100) {
-        Dialog.confirm({
-          message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
-        }) .then(() => {
-          wx.navigateTo({
-            url: '/pages/Modifyinformation/Modifyinformation'
+    } else {
+      api.f_contactslist().then(res => {
+        if (res.data.code == 1100) {
+          Dialog.confirm({
+            message: '为了确保预约门票时信息完善，请前往个人中心完善用户基本信息',
+          }).then(() => {
+            wx.navigateTo({
+              url: '/pages/Modifyinformation/Modifyinformation'
+            })
           })
-        })
-        .catch(() => {
-          // on cancel
-        });
-      }
-    });
-  }
+            .catch(() => {
+              // on cancel
+            });
+        }
+      });
+    };
+    this.getCompanys()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -208,25 +240,27 @@ Page({
    */
   onShow: function () {
     var token = wx.getStorageSync('token');
-    // console.log(token)
-    if(token == ''){
-      // console.log('token')
-    }else{
+    let id = wx.getStorageSync('pwcompanyid')
+    if (id) {
       this.resetData()
-    api.f_companyInfo().then(res => {
-      this.setData({
-        logo: res.data.datas.logo,
-        banner: res.data.datas.banner
-      })
-    });
-    this.ticketInfo()
+      let params = {
+        companyId: id
+      }
+      api.f_companyInfo(params).then(res => {
+        // console.log(res)
+        this.setData({
+          logo: res.data.datas.logo,
+          banner: res.data.datas.banner
+        })
+      });
+    } else {
+      this.setData({ showCompany: true })
     }
-    // wx.getStorage({
-    //   key: 'token',
-    //   success (res) {
-    //     console.log(res)
-    //   }
-    // })
+    if (token == '') {
+
+    } else {
+      this.ticketInfo()
+    }
   },
 
   /**

@@ -21,7 +21,9 @@ Page({
     radio: '0',
     timeSlice1: '00:00-00:00',
     timeSlice2: '00:00-00:00',
-    isGotoreinformation: true
+    isGotoreinformation: true,
+    visitResult: [],
+    visitList: []
   },
   // 日历
   onDisplay() {
@@ -68,6 +70,32 @@ Page({
       radio: name,
     });
   },
+  // 获取景点
+  getVisits() {
+    let params = {
+      companyId: wx.getStorageSync('pwcompanyid')
+    }
+    api.f_companyVisit(params).then(res => {
+      // console.log(res)
+      if (res.data.code == 200) {
+        this.setData({
+          visitList: res.data.datas
+        })
+      }
+    }).catch(() => {})
+  },
+  // 选择景点
+  onChangeVisit(event) {
+    this.setData({
+      visitResult: event.detail
+    })
+  },
+  // toggleVisit(event) {
+  //   const { id } = event.currentTarget.dataset;
+  //   this.setData({
+  //     visitResult: id,
+  //   })
+  // },
   // 预约
   gotoreinformation() {
     // console.log(this.data)
@@ -91,10 +119,15 @@ Page({
     } else if (this.data.radio == 2) {
       radio = 1
     }
+    if (this.data.visitResult.length == 0) {
+      Toast.fail('尚未选择任何景点');
+      return
+    }
     let params = {
       id: this.data.id,
       newDate: this.data.subscribeDate,
-      choose: radio
+      choose: radio,
+      scene: this.data.visitResult
     }
     api.update_endorse(params).then(res => {
       if (res.data.code == 200) {
@@ -129,6 +162,7 @@ Page({
   onLoad: function (options) {
     this.data.id = options.id
     this.ticketInfo()
+    this.getVisits()
   },
 
 

@@ -47,6 +47,16 @@
                 <van-button type="info" size="small" class="popupBox_1_2" bind:click="submitChoose">确定</van-button>
             </view>
         </view>
+        <view class="popupBoxVisit">
+            <view style="text-align: center;">请至少选择一个景点</view>
+            <van-checkbox-group value="{{ visitResult }}" bind:change="onChangeVisit">
+                <van-cell-group>
+                    <van-cell wx:for="{{ visitList }}" wx:key="index" title="{{item.name}}" value-class="value-class" clickable data-id="{{ item.id }}" bind:click="toggleVisit">                     
+                        <van-checkbox catch:tap="noopVisit" class="checkboxes-{{ index }}" name="{{ item.id }}"/>
+                    </van-cell>
+                </van-cell-group>
+            </van-checkbox-group>
+        </view>
         <view class="popupBox_2">
             <view class="popupBox_2_1" bindtap="add" wx:if="{{list2.length < 4}}">+添加参观人员</view>
             <view class="popupBox_2_1 popupBox_2_1_1" wx:else>添加参观人员已达上限</view>

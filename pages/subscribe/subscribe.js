@@ -19,7 +19,9 @@ Page({
     ticketMax: 0,
     list1: [],
     list2: [],
-    result: []
+    result: [],
+    visitResult: [],
+    visitList: []
   },
 
   choosePerson() {
@@ -34,6 +36,10 @@ Page({
     this.setData({ show: false });
   },
   submitChoose() {
+    if (this.data.visitResult.length == 0) {
+      Toast.fail('至少选择一个景点');
+      return
+    }
     if (this.data.result.length == 0) {
       Toast.fail('至少选择一个参观人员');
       return
@@ -71,6 +77,12 @@ Page({
   noop() {
 
   },
+  onChangeVisit(event) {
+    this.setData({
+      visitResult: event.detail
+    })
+  },
+  noopVisit() { },
   edit(evnet) {
     let id = evnet.currentTarget.dataset.id
     wx.navigateTo({ url: `/pages/subscribeEdit/subscribeEdit?id=${id}` })
@@ -96,13 +108,18 @@ Page({
     });
   },
   cmdSubmit() {
+    if (this.data.visitResult.length == 0) {
+      Toast.fail('尚未选择任何景点');
+      return
+    }
     if (this.data.result.length == 0) {
       Toast.fail('请至少选择一个人员');
       return
     }
     let params = {
       ticketId: Number(this.data.ticketId),
-      visitorIds: this.data.result
+      visitorIds: this.data.result,
+      scene: this.data.visitResult
     }
     api.orderSave(params).then(res => {
       if (res.data.code == 200) {
@@ -136,6 +153,20 @@ Page({
       }
     })
   },
+  // 获取景点
+  getVisits() {
+    let params = {
+      companyId: wx.getStorageSync('pwcompanyid')
+    }
+    api.f_companyVisit(params).then(res => {
+      // console.log(res)
+      if (res.data.code == 200) {
+        this.setData({
+          visitList: res.data.datas
+        })
+      }
+    }).catch(() => {})
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -161,6 +192,7 @@ Page({
    */
   onShow: function () {
     this.getContactsData()
+    this.getVisits()
   },
 
   /**

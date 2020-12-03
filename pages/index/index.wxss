@@ -49,3 +49,17 @@ van-checkbox{
 van-radio{
   margin-left: 10rpx;
 }
+.companyBox {
+  text-align: center;
+}
+.companyChoose {
+  margin-top: 20rpx;
+  font-size: 40;
+  font-weight: bold;
+}
+.companys {
+  margin-top: 30rpx;
+}
+.companyView {
+  margin-top: 18rpx;
+}

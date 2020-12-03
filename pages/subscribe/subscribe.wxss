@@ -102,6 +102,9 @@ page {
 .popupBox_1_2 {
     float: right;
 }
+.popupBoxVisit {
+    margin: 10px 15px;
+}
 
 .popupBox_2_1 {
     margin: 0 15px;

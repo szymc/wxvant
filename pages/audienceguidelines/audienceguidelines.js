@@ -14,7 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    api.f_companyInfo().then(res => {
+    let id = wx.getStorageSync('pwcompanyid')
+    let params = {
+      companyId: id
+    }
+    api.f_companyInfo(params).then(res => {
       this.setData({
         htmlSnip: res.data.datas.information
       })

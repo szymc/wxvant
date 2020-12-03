@@ -4,9 +4,9 @@ page {
 .value-class {
   flex: none !important;
 }
-van-checkbox{
+/* van-checkbox{
   margin-left: 10rpx;
-}
+} */
 .btn{
   margin:0 30rpx;
   margin-top: 30rpx;
@@ -19,3 +19,6 @@ van-checkbox{
 van-radio{
   margin-left: 10rpx;
 }
+/* .popupBoxVisit .van-cell {
+  height: 180rpx;
+} */

@@ -1,24 +1,36 @@
-<van-row>
+<view>
+  <van-row>
     <view class="box">
-        <van-row class="boxrow">
-            <view class="boxrow_1">
-                <!-- <van-image width="75" height="75" src="https://img.yzcdn.cn/vant/cat.jpeg" /> -->
-                <cover-image src="../../icons/piao.png"  />
-            </view>
-            <view class="boxrow_2">
-                <van-cell-group>
-                    <van-field value="{{ username }}" clearable label="账号名" placeholder="请输入用户名或手机号" bind:change="inputName"
-                        error-message="{{nameErr}}" />
-                    <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码"
-                        border="{{ false }}" bind:change="inputPass" error-message="{{passErr}}" />
-                </van-cell-group>
-            </view>
-            <view class="boxrow_3">忘记密码</view>
-            <view class="boxrow_4">
-                <van-button type="info" round size="large" bind:click="submit">登录</van-button>
-            </view>
-            <view class="boxrow_5" catchtap="register">没有账号？请注册</view>
-        </van-row>
+      <van-row class="boxrow">
+        <view class="boxrow_1">
+          <!-- <van-image width="75" height="75" src="https://img.yzcdn.cn/vant/cat.jpeg" /> -->
+          <cover-image src="../../icons/piao.png" />
+        </view>
+        <view class="boxrow_2">
+          <van-cell-group>
+            <van-field value="{{ username }}" clearable label="账号名" placeholder="请输入用户名或手机号" bind:change="inputName"
+              error-message="{{nameErr}}" />
+            <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" border="{{ false }}"
+              bind:change="inputPass" error-message="{{passErr}}" />
+          </van-cell-group>
+        </view>
+        <view class="company">当前选择登录的博物馆为<text class="name" bindtap="openCompany">{{company}}</text></view>
+        <!-- <view class="boxrow_3">忘记密码</view> -->
+        <view class="boxrow_4">
+          <van-button type="info" round size="large" bind:click="submit">登录</van-button>
+        </view>
+        <view class="boxrow_5" catchtap="register">没有账号？请注册</view>
+      </van-row>
     </view>
-</van-row>
-<van-dialog id="van-dialog" />
+  </van-row>
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
+  <van-popup show="{{ showCompany }}" position="bottom" custom-style="height: 40%;" bind:close="onClose">
+    <view class="companyBox">
+      <view class="companyChoose">请选择一个博物馆</view>
+      <view class="companys">
+        <view wx:for="{{ companyList }}" wx:key="index" class="companyView" catchtap="cmdConfirm" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</view>
+      </view>
+    </view>
+  </van-popup>
+</view>

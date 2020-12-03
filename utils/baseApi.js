@@ -1,6 +1,6 @@
 // const baseUrl = 'http://192.168.4.220:8082/api/'//	192 
 import Dialog from '../miniprogram_npm/@vant/weapp/dialog/dialog';
-const baseUrl = 'https://www.sunorient.com.cn/api/'//	192 
+const baseUrl = 'https://www.sunorient.com.cn/ticket/api/'//	192 
 const http = ({ url = '', param = {} ,contentType,...other } = {}) => {
     const token = wx.getStorageSync('token');
     return new Promise((resolve, reject) => {

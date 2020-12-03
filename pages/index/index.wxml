@@ -44,7 +44,10 @@
       </van-grid>
     </view>
     <view class="cell">
-        <van-cell title="门票预约" size="large" icon="bars"/>
+        <!-- <van-cell title="门票预约" size="large" icon="bars"/> -->
+        <van-cell title="门票预约" size="large">
+          <van-icon slot="icon" name="bars" bind:click="clkIcon"/>
+        </van-cell>
         <van-cell title="预约参观日期选择" bind:click="onDisplay" is-link value="{{ subscribeDate }}"/>
             <van-calendar
          
@@ -69,5 +72,13 @@
       <van-button color="#1296DB" size="large" bind:click = 'gotoreinformation'>立即预约</van-button>
     </view>
     <van-toast id="van-toast" />
-    <van-dialog id="van-dialog" />
+    <van-dialog id="van-dialog"/>
+    <van-popup show="{{ showCompany }}" position="bottom" custom-style="height: 40%;">
+      <view class="companyBox">
+        <view class="companyChoose">请选择一个博物馆</view>
+        <view class="companys">
+          <view wx:for="{{ companyList }}" wx:key="index" class="companyView" catchtap="cmdConfirm" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+    </van-popup>
 </view>
